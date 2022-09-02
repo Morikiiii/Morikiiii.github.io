@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C-学习开始-基础语法专题（2） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="运算符 相关内容 2：| 关系运算符：   运算符 描述 实例    &#x3D;&#x3D; 检查两个操作数的值是否相等，如果相等则条件为真。 (A &#x3D;&#x3D; B) 不为真。   !&#x3D; 检查两个操作数的值是否相等，如果不相等则条件为真。 (A !&#x3D; B) 为真。   &gt; 检查左操作数的值是否大于右操作数的值，如果是则条件为真。 (A &gt; B) 不为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C-学习开始-基础语法专题（2）">
+<meta property="og:url" content="http://example.com/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="运算符 相关内容 2：| 关系运算符：   运算符 描述 实例    &#x3D;&#x3D; 检查两个操作数的值是否相等，如果相等则条件为真。 (A &#x3D;&#x3D; B) 不为真。   !&#x3D; 检查两个操作数的值是否相等，如果不相等则条件为真。 (A !&#x3D; B) 为真。   &gt; 检查左操作数的值是否大于右操作数的值，如果是则条件为真。 (A &gt; B) 不为">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-02T14:35:24.000Z">
+<meta property="article:modified_time" content="2022-09-02T14:38:24.805Z">
+<meta property="article:author" content="Morikiiii">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C-学习开始-基础语法专题（2）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2022-09-02T14:35:24.000Z" itemprop="datePublished">2022-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C-学习开始-基础语法专题（2）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="运算符-相关内容-2："><a href="#运算符-相关内容-2：" class="headerlink" title="运算符 相关内容 2："></a>运算符 相关内容 2：</h2><h4 id="关系运算符："><a href="#关系运算符：" class="headerlink" title="| 关系运算符："></a>| 关系运算符：</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;&#x3D;</td>
+<td>检查两个操作数的值是否相等，如果相等则条件为真。</td>
+<td>(A &#x3D;&#x3D; B) 不为真。</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>检查两个操作数的值是否相等，如果不相等则条件为真。</td>
+<td>(A !&#x3D; B) 为真。</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>检查左操作数的值是否大于右操作数的值，如果是则条件为真。</td>
+<td>(A &gt; B) 不为真。</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>检查左操作数的值是否小于右操作数的值，如果是则条件为真。</td>
+<td>(A &lt; B) 为真。</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。</td>
+<td>(A &gt;&#x3D; B) 不为真。</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。</td>
+<td>(A &lt;&#x3D; B) 为真。</td>
+</tr>
+</tbody></table>
+<h4 id="逻辑运算符："><a href="#逻辑运算符：" class="headerlink" title="| 逻辑运算符："></a>| 逻辑运算符：</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;&amp;</td>
+<td>称为逻辑与运算符。如果两个操作数都非零，则条件为真。</td>
+<td>(A &amp;&amp; B) 为假。</td>
+</tr>
+<tr>
+<td>II</td>
+<td>称为逻辑或运算符。如果两个操作数中有任意一个非零，则条件为真。</td>
+<td>(A II B) 为真。</td>
+</tr>
+<tr>
+<td>!</td>
+<td>称为逻辑非运算符。用来逆转操作数的逻辑状态。如果条件为真则逻辑非运算符将使其为假。</td>
+<td>!(A &amp;&amp; B) 为真。</td>
+</tr>
+</tbody></table>
+<h4 id="三目运算符："><a href="#三目运算符：" class="headerlink" title="| 三目运算符："></a>| 三目运算符：</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>？</td>
+<td>条件表达式</td>
+<td>a &gt; b ? a : b 如果条件为真，? 返回 a，否则返回 b</td>
+</tr>
+</tbody></table>
+<p><strong>课程内容 - 关系运算符：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func1</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &gt; &gt;= &lt; &lt;= == !=</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* if ( a &gt; b )</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;a &gt; b&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    else if (a &lt; b)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;a &lt; b&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    else</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;a == b&quot;);</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ( a != b )</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;a != b&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;a == b&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>课程内容 - 逻辑运算符：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func2</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// &amp;&amp; || !</span></span><br><span class="line">    <span class="comment">// &amp;&amp; 关系表达式中 所有条件都满足，才为 true</span></span><br><span class="line">    <span class="comment">// || 关系表达式中 只要一个条件满足，就为 true</span></span><br><span class="line">    <span class="comment">// !  逻辑非运算符 就是 true 变成 false ，false 变成 true</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* if (a != 0 &amp;&amp; b != 0)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;---&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    else</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;+++&quot;);</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* if (a &gt; 2 || b == 2)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;---&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    else</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;+++&quot;);</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!(a &gt; <span class="number">2</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;---&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;+++&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>课程内容 - 三目（元）运算符：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func3</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 条件 ? 表达式1 : 表达式2</span></span><br><span class="line">    <span class="comment">// 满足条件 --》 执行表达式1，否则执行表达式2</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> c = a &gt; b ? <span class="number">100</span> : <span class="number">1000</span>;</span><br><span class="line">    Debug.Log(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="运算符-相关内容-3："><a href="#运算符-相关内容-3：" class="headerlink" title="运算符 相关内容 3："></a>运算符 相关内容 3：</h2><h4 id="位运算符："><a href="#位运算符：" class="headerlink" title="| 位运算符："></a>| 位运算符：</h4><p>下表列出了 C# 支持的位运算符。假设变量 <strong>A</strong> 的值为 60，变量 <strong>B</strong> 的值为 13，则：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>如果同时存在于两个操作数中，二进制 AND 运算符复制一位到结果中。</td>
+<td>(A &amp; B) 将得到 12，即为 0000 1100</td>
+</tr>
+<tr>
+<td>|</td>
+<td>如果存在于任一操作数中，二进制 OR 运算符复制一位到结果中。</td>
+<td>(A | B) 将得到 61，即为 0011 1101</td>
+</tr>
+<tr>
+<td>^</td>
+<td>如果存在于其中一个操作数中但不同时存在于两个操作数中，二进制异或运算符复制一位到结果中。</td>
+<td>(A ^ B) 将得到 49，即为 0011 0001</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位取反运算符是一元运算符，具有”翻转”位效果，即0变成1，1变成0，包括符号位。</td>
+<td>(~A ) 将得到 -61，即为 1100 0011，一个有符号二进制数的补码形式。</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>二进制左移运算符。左操作数的值向左移动右操作数指定的位数。</td>
+<td>A &lt;&lt; 2 将得到 240，即为 1111 0000</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>二进制右移运算符。左操作数的值向右移动右操作数指定的位数。</td>
+<td>A &gt;&gt; 2 将得到 15，即为 0000 1111</td>
+</tr>
+</tbody></table>
+<p><strong>课程内容：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func1</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// &amp; 相同位都为 1，才为 1，否则为 0</span></span><br><span class="line">    <span class="comment">// | 相同位只要有一个为 1，那就为 1，否则为 0</span></span><br><span class="line">    <span class="comment">// ^ 相同位标志位一致的话，则为 0，否则为 1</span></span><br><span class="line">    <span class="comment">// ~ 对每一位进行取反 0--》1；1--》0  同时运算符的符号 需要取反</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">60</span>; <span class="comment">// 0011 1100</span></span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">13</span>; <span class="comment">// 0000 1101</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  c          0000 1100</span></span><br><span class="line">    <span class="comment">//  d          0011 1101</span></span><br><span class="line">    <span class="comment">//  e          0011 0001</span></span><br><span class="line">    <span class="comment">//  f          1100 0011</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> c = a &amp; b;</span><br><span class="line">    Debug.Log(<span class="string">&quot;c:&quot;</span> + c);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> d = a | b;</span><br><span class="line">    Debug.Log(<span class="string">&quot;d:&quot;</span> + d);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> e = a ^ b;</span><br><span class="line">    Debug.Log(<span class="string">&quot;e:&quot;</span> + e);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> f = ~a;</span><br><span class="line">    Debug.Log(<span class="string">&quot;f:&quot;</span> + f);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="逻辑判断语句-相关内容："><a href="#逻辑判断语句-相关内容：" class="headerlink" title="逻辑判断语句 相关内容："></a>逻辑判断语句 相关内容：</h2><h4 id="分为两类："><a href="#分为两类：" class="headerlink" title="| 分为两类："></a>| 分为两类：</h4><ol>
+<li><p><code> if()&#123;&#125;else&#123;&#125;</code> ：条件检测的方式是 线性判断，只要满足前者条件，那后续条件就检测直接跳过</p>
+</li>
+<li><p><code> switch(xxx)&#123; case:&#123;&#125;break; default:&#123;&#125;break; &#125;</code> ：后面一定要跟着 break；</p>
+</li>
+</ol>
+<h4 id="一些知识点："><a href="#一些知识点：" class="headerlink" title="| 一些知识点："></a>| 一些知识点：</h4><ol>
+<li><p>Start ：Unity 初始运行时 只被执行一次 ，即在第一帧被调用</p>
+</li>
+<li><p>Update ：Unity运行时，会被实时调用，即在每一帧被调用，且渲染帧不固定</p>
+</li>
+<li><p>变量：</p>
+<ol>
+<li><p>局部变量 - 作用域 限于本函数内临近的{…}</p>
+</li>
+<li><p>类的成员变量 - 作用域 类内的任何地方，都可以访问到这个变量</p>
+</li>
+<li><p>public 可以在监视面板使用成员变量</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="制定行为："><a href="#制定行为：" class="headerlink" title="| 制定行为："></a>| 制定行为：</h4><ol>
+<li><p>起床</p>
+</li>
+<li><p>洗漱</p>
+</li>
+<li><p>吃饭</p>
+</li>
+<li><p>找小姐姐</p>
+</li>
+<li><p>…Unknow：不知道</p>
+</li>
+</ol>
+<p><strong>课程内容 - if：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> <span class="keyword">value</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Func1();</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func1</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* if (value &gt; 5)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;value &gt; 5&quot;);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    else if(value &gt; 10)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;value &gt; 10&quot;);</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">value</span> == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;1.起床&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">value</span> == <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;2.洗漱&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">value</span> == <span class="number">3</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;3.吃饭&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">value</span> == <span class="number">4</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;4.找小姐姐&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;...不到呀&quot;</span>);</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="comment">/* if (value == 1)  // 单句可以不加括号</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;1.起床&quot;); </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    /*if (value == 1 ||value == 2)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        Debug.Log(&quot;if满足条件&quot;);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>课程内容 - switch：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">int</span> <span class="keyword">value</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Func1();</span><br><span class="line">    Func2();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func2</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/*switch (value)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        case 1:</span></span><br><span class="line"><span class="comment">        case 2:</span></span><br><span class="line"><span class="comment">            Debug.Log(&quot;switch满足条件&quot;);</span></span><br><span class="line"><span class="comment">            break;</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">value</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                Debug.Log(<span class="string">&quot;1.起床&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                Debug.Log(<span class="string">&quot;2.洗漱&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                Debug.Log(<span class="string">&quot;3.吃饭&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                Debug.Log(<span class="string">&quot;4.找小姐姐&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="literal">default</span>:</span><br><span class="line">            &#123;</span><br><span class="line">                Debug.Log(<span class="string">&quot;...不到呀&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="枚举-相关内容："><a href="#枚举-相关内容：" class="headerlink" title="枚举 相关内容："></a>枚举 相关内容：</h2><h4 id="概念介绍："><a href="#概念介绍：" class="headerlink" title="| 概念介绍："></a>| 概念介绍：</h4><p>枚举类型使用 <code> enum</code> 关键字声明，包含一些易读的标识符。</p>
+<p><code> enum &lt;enum_name&gt;&#123;enumeration list&#125;;</code></p>
+<p><strong>课程内容：</strong></p>
+<ol>
+<li><p><code> Enum &lt;-&gt; int</code></p>
+</li>
+<li><p><code> Enum &lt;-&gt; srting</code></p>
+</li>
+<li><p>使用本节课讲解的枚举，对上节课的行为做 易读性处理， 来体现 枚举的意义</p>
+</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System;          <span class="comment">// 本节课新加 using</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EnumTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">enum</span> emAction</span><br><span class="line">    &#123;</span><br><span class="line">        None,</span><br><span class="line">        GetUp,</span><br><span class="line">        Wash,</span><br><span class="line">        Eat,</span><br><span class="line">        Play,</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*None = 0,</span></span><br><span class="line"><span class="comment">        GetUp,          // 0 + 1 = 1</span></span><br><span class="line"><span class="comment">        Wash,           // 1 + 1 = 2</span></span><br><span class="line"><span class="comment">        Eat,            // 2 + 1 = 3</span></span><br><span class="line"><span class="comment">        Play,           // 3 + 1 = 4*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/*None = 10,</span></span><br><span class="line"><span class="comment">        GetUp,          // 10 + 1 = 11</span></span><br><span class="line"><span class="comment">        Wash,           // 11 + 1 = 12</span></span><br><span class="line"><span class="comment">        Eat,   </span></span><br><span class="line"><span class="comment">        Play,*/</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> emAction mAction = emAction.None;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Func1();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Func1();</span></span><br><span class="line">        Func2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Func1</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Debug.Log(mAction);</span></span><br><span class="line">        <span class="comment">// Debug.Log(mAction.ToString());</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Enum &lt;-&gt; string</span></span><br><span class="line">        <span class="comment">// mAction.ToString()  Enum --&gt; string</span></span><br><span class="line">        <span class="comment">// mAction = (emAction)Enum.Parse( typeof(emAction), &quot;Wash&quot; );          string --》 Enum</span></span><br><span class="line">        <span class="comment">// mAction = (emAction)Enum.Parse( typeof(emAction), &quot;Wash111&quot; );       没有这个 Wash111 所以会报error</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Enum &lt;-&gt; int</span></span><br><span class="line">        <span class="comment">// int iPlay = (int)mAction;                                            Enum -&gt; int</span></span><br><span class="line">        <span class="comment">// mAction = (emAction)3;                                               int  -&gt; Enum</span></span><br><span class="line">        <span class="comment">// mAction = (emAction)Enum.ToObject(typeof(emAction), 1);              int -&gt; Enum</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Debug.Log( &quot;Enum --》 int：&quot; + iPlay );</span></span><br><span class="line">        <span class="comment">// Debug.Log(&quot;int --》 Enum：&quot; + mAction);</span></span><br><span class="line">        <span class="comment">// Debug.Log( &quot;int --》 Enum：&quot; + mAction );</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (mAction)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> emAction.GetUp:</span><br><span class="line">                &#123;</span><br><span class="line">                    Debug.Log(<span class="string">&quot;1.起床&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> emAction.Wash:</span><br><span class="line">                &#123;</span><br><span class="line">                    Debug.Log(<span class="string">&quot;2.洗漱&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> emAction.Eat:</span><br><span class="line">                &#123;</span><br><span class="line">                    Debug.Log(<span class="string">&quot;3.吃饭&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> emAction.Play:</span><br><span class="line">                &#123;</span><br><span class="line">                    Debug.Log(<span class="string">&quot;4.找小姐姐&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="literal">default</span>:</span><br><span class="line">                &#123;</span><br><span class="line">                    Debug.Log(<span class="string">&quot;...不到呀&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Func2</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 自练</span></span><br><span class="line">        <span class="keyword">if</span> (mAction == emAction.GetUp)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;1.起床&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (mAction == emAction.Wash)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;2.洗漱&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (mAction == emAction.Eat)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;3.吃饭&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (mAction == emAction.Play)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;4.找小姐姐&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;...不到呀&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="循环语句-相关内容："><a href="#循环语句-相关内容：" class="headerlink" title="循环语句 相关内容："></a>循环语句 相关内容：</h2><h4 id="for-循环："><a href="#for-循环：" class="headerlink" title="| for 循环："></a>| for 循环：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(条件表达式)</span><br><span class="line">&#123;</span><br><span class="line">    循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>演示：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 语法问题</span></span><br><span class="line">    <span class="comment">// int i = 0;  定义变量</span></span><br><span class="line">    <span class="comment">// i &lt; length; 检测条件</span></span><br><span class="line">    <span class="comment">// i ++        自增自减语句</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//  Times      i的值</span></span><br><span class="line">    <span class="comment">//    1          0 </span></span><br><span class="line">    <span class="comment">//    2          1 </span></span><br><span class="line">    <span class="comment">//    3          2 </span></span><br><span class="line">    <span class="comment">//   ...           </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) <span class="comment">// i++ == i = i+1</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Debug.Log(<span class="string">&quot;----------------------------------------&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  Times      i的值</span></span><br><span class="line">    <span class="comment">//    1         10</span></span><br><span class="line">    <span class="comment">//    2          9</span></span><br><span class="line">    <span class="comment">//    3          8</span></span><br><span class="line">    <span class="comment">//   ...           </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">10</span>; i &gt; <span class="number">0</span>; i--) <span class="comment">// i-- == i = i-1</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// % 取模运算符 输出一个余数</span></span><br><span class="line">    <span class="comment">// 通过for循环语句的形式，将 1 ~ 100 之间的能被 2 整除的数，把他们找出来</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">&quot;能被 2 整除：&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogWarning(<span class="string">&quot;不能被 2 整除：&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="while-循环："><a href="#while-循环：" class="headerlink" title="| while 循环："></a>| while 循环：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件表达式)</span><br><span class="line">&#123;</span><br><span class="line">    循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>演示：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 语法</span></span><br><span class="line"><span class="comment">// while  关键字</span></span><br><span class="line"><span class="comment">// (true) 检测条件</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">    Debug.Log(i);</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">int i = 10;</span></span><br><span class="line"><span class="comment">while (i &gt; 10)  // 首先会 前置检测条件是否满足，满足的话，才执行循环体，否则跳过</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">    Debug.Log(&quot;+++&quot;);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">Debug.Log(&quot;!!!&quot;);</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="do-while-循环："><a href="#do-while-循环：" class="headerlink" title="| do while 循环："></a>| do while 循环：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    循环体</span><br><span class="line">&#125; <span class="keyword">while</span>(条件表达式)</span><br></pre></td></tr></table></figure>
+
+<p><strong>演示：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;do while +++&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">while</span> (i &gt; <span class="number">10</span>);</span><br><span class="line">Debug.Log(<span class="string">&quot;!!!&quot;</span>);  <span class="comment">// 两个都会被打印出来</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>小作业：</strong></p>
+<p>&#x2F;&#x2F; % 取模运算符，输出一个余数</p>
+<p>&#x2F;&#x2F; 通过 while 循环语句的形式，将 1~100 之间的能被 2 整除的数，找出来</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;=<span class="number">100</span> )</span><br><span class="line">&#123;</span><br><span class="line">    i++;</span><br><span class="line">    <span class="keyword">if</span> (i % <span class="number">2</span> ==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;能被 2 整除：&quot;</span>+ i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="补充知识："><a href="#补充知识：" class="headerlink" title="| 补充知识："></a>| 补充知识：</h4><ol>
+<li><p>continue 跳过</p>
+</li>
+<li><p>break 打断</p>
+</li>
+<li><p>++ i 和 i ++ 的区别:</p>
+<ol>
+<li><p><strong>++i ：</strong> 先对 i 的值执行 i &#x3D; i + 1，然后在对左侧的变量赋值。【先加后用】</p>
+</li>
+<li><p><strong>i++ ：</strong> 先对左侧的变量赋值，执行完该语句后，在对其进行重新赋值。【先用后加】</p>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>1、2演示：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检索 1~100 之间的值</span></span><br><span class="line"><span class="comment">// 如果值 = 50 跳过，但是继续执行  continue</span></span><br><span class="line"><span class="comment">// 如果值 = 51 终止循环语句       break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//if (i == 50)</span></span><br><span class="line">    <span class="comment">//    continue;</span></span><br><span class="line">    <span class="comment">//Debug.Log(i);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">51</span>)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    Debug.Log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3演示：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> i = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">int</span> j = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> a = ++i; <span class="comment">// i = i + 1 </span></span><br><span class="line"><span class="built_in">int</span> b = j++; <span class="comment">// j = j + 1 在这一行以下才会 +1</span></span><br><span class="line"></span><br><span class="line">Debug.Log(<span class="string">&quot;[前置++]a:&quot;</span> + a);<span class="comment">// 11</span></span><br><span class="line">Debug.Log(<span class="string">&quot;[后置++]b:&quot;</span> + b);<span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>小作业：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检索 1~100 之间的值</span></span><br><span class="line"><span class="comment">// 如果值 = 50 跳过，但是继续执行  continue</span></span><br><span class="line"><span class="comment">// 如果值 = 51 终止循环语句       break</span></span><br><span class="line"><span class="comment">// 用 while 演示</span></span><br><span class="line"><span class="built_in">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i&lt;=<span class="number">100</span>)</span><br><span class="line">&#123;</span><br><span class="line">    i++;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    if(i == 50)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        continue;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    Debug.Log(i);</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">51</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Debug.Log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<center>那么基础篇完结！</center>
+<center>森木清树.</center>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/" data-id="cl7kl1dys0002zodxd28qbf2r" data-title="C-学习开始-基础语法专题（2）" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-Class%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          C-学习开始-Class专题（1）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">C#学习开始 - 基础语法专题（1）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-Class%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/">C-学习开始-Class专题（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-Class%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/">C-学习开始-Class专题（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/">C-学习开始-基础语法专题（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/">C#学习开始 - 基础语法专题（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Morikiiii<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

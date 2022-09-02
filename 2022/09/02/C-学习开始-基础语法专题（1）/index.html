@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C#学习开始 - 基础语法专题（1） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Unity + VS 安装Unity 编辑器版本 ：2019.4.15f1c1 LTS 此乃准备工作 下一步 go –&gt;  C# 与 Unity 的关系| C# 简介: C# 是一个现代的、通用的、面向对象的编程语言，它是由微软（Microsoft）开发的，由 Ecma 和 ISO 核准认可的。由 Anders Hejlsberg 和他的团队在 .Net 框架开发期间开发的。专为公共语言基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#学习开始 - 基础语法专题（1）">
+<meta property="og:url" content="http://example.com/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Unity + VS 安装Unity 编辑器版本 ：2019.4.15f1c1 LTS 此乃准备工作 下一步 go –&gt;  C# 与 Unity 的关系| C# 简介: C# 是一个现代的、通用的、面向对象的编程语言，它是由微软（Microsoft）开发的，由 Ecma 和 ISO 核准认可的。由 Anders Hejlsberg 和他的团队在 .Net 框架开发期间开发的。专为公共语言基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-02T14:33:33.000Z">
+<meta property="article:modified_time" content="2022-09-02T14:37:28.218Z">
+<meta property="article:author" content="Morikiiii">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C-学习开始-基础语法专题（1）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2022-09-02T14:33:33.000Z" itemprop="datePublished">2022-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C#学习开始 - 基础语法专题（1）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Unity-VS-安装"><a href="#Unity-VS-安装" class="headerlink" title="Unity + VS 安装"></a>Unity + VS 安装</h2><p>Unity 编辑器版本 ：<u>2019.4.15f1c1 LTS</u></p>
+<p>此乃准备工作</p>
+<p>下一步</p>
+<p>go –&gt;</p>
+<hr>
+<h2 id="C-与-Unity-的关系"><a href="#C-与-Unity-的关系" class="headerlink" title="C# 与 Unity 的关系"></a>C# 与 Unity 的关系</h2><h4 id="C-简介"><a href="#C-简介" class="headerlink" title="| C# 简介:"></a>| C# 简介:</h4><blockquote>
+<p>C# 是一个现代的、通用的、面向对象的编程语言，它是由微软（Microsoft）开发的，由 Ecma 和 ISO 核准认可的。由 Anders Hejlsberg 和他的团队在 .Net 框架开发期间开发的。专为公共语言基础结构（CLI）设计的。CLI 由可执行代码和运行时环境组成，允许在不同的计算机平台和体系结构上使用各种高级语言。</p>
+</blockquote>
+<h4 id="相关内容："><a href="#相关内容：" class="headerlink" title="| 相关内容："></a>| 相关内容：</h4><ul>
+<li><p>C# → 通过编辑器形成一个中间代码（IL）→ CLR虚拟机 → 二进制机器码 → 运行</p>
+</li>
+<li><p>下面列出了 C# 成为一种广泛应用的专业语言的原因：</p>
+<ul>
+<li><p>现代的、通用的编程语言。</p>
+</li>
+<li><p>面向对象。</p>
+</li>
+<li><p>面向组件。</p>
+</li>
+<li><p>容易学习。</p>
+</li>
+<li><p>结构化语言。</p>
+</li>
+<li><p>它产生高效率的程序。</p>
+</li>
+<li><p>它可以在多种计算机平台上编译。</p>
+</li>
+<li><p>.Net 框架的一部分。</p>
+</li>
+</ul>
+</li>
+<li><p>Unity跨平台解决方案 - 一个代码可以多平台运行</p>
+</li>
+</ul>
+<hr>
+<h2 id="第一个C-小示例"><a href="#第一个C-小示例" class="headerlink" title="第一个C#小示例"></a>第一个C#小示例</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">        Debug.LogWarning(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">        Debug.LogError(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="一些知识点"><a href="#一些知识点" class="headerlink" title="| 一些知识点:"></a>| 一些知识点:</h4><ul>
+<li><p>“ : “代表继承</p>
+</li>
+<li><p>MonoBehaviour 是Unity提供给我们的父类，里面包含很多生命周期的方法，可以去覆盖</p>
+</li>
+<li><p>’ Start ‘ 代表函数</p>
+</li>
+<li><p>‘ Debug ‘是Unity提供的日志接口</p>
+</li>
+<li><p>C#脚本</p>
+</li>
+</ul>
+<hr>
+<h2 id="变量（Variable）"><a href="#变量（Variable）" class="headerlink" title="变量（Variable）"></a>变量（Variable）</h2><h4 id="变量赋值："><a href="#变量赋值：" class="headerlink" title="| 变量赋值："></a>| 变量赋值：</h4><p><code> &lt;data_type&gt; &lt;variable_name&gt; = value</code></p>
+<p><code> int a = 10</code></p>
+<p>&#x2F;&#x2F; data_type - 数据类型</p>
+<p>&#x2F;&#x2F; variable_name - 变量名字</p>
+<p>&#x2F;&#x2F; value - 数值 &#x2F; 存储的内容</p>
+<h4 id="数据类型取值范围："><a href="#数据类型取值范围：" class="headerlink" title="| 数据类型取值范围："></a>| 数据类型取值范围：</h4><p>&#x2F;&#x2F; 存放内容不同</p>
+<blockquote>
+<p>Q：为什么要有数据类型和取值范围？</p>
+<p>A：比如说文本 &#x3D;&#x3D;&#x3D;》 string    即 ‘ 文本 ’ 能存在 string 里123 &#x3D;&#x3D;&#x3D;》 int     即 ‘ 123 ’ 能存在 int 里</p>
+</blockquote>
+<h6 id="整数行："><a href="#整数行：" class="headerlink" title="整数行："></a>整数行：</h6><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>System命名空间中的名字</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sbyte</td>
+<td>System.Sbyte</td>
+<td>-128 ~ 127 之间的整数</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>System.Byte</td>
+<td>0 ~ 255 之间的整数</td>
+</tr>
+<tr>
+<td>short</td>
+<td>System.Int16</td>
+<td>-32768 ~ 32767 之间的整数</td>
+</tr>
+<tr>
+<td>usbort</td>
+<td>System.UInt16</td>
+<td>0 ~ 65535 之间的整数</td>
+</tr>
+<tr>
+<td>int</td>
+<td>System.Int32</td>
+<td>-2147483648 ~ 2147483647 之间的整数</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>System.UInt32</td>
+<td>0 ~ 4294967295 之间的整数</td>
+</tr>
+<tr>
+<td>long</td>
+<td>System.Int64</td>
+<td>-9223372036854775808 ~ 9223372036854775807 之间的整数</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>System.UInt64</td>
+<td>0 ~ 18446744073709551615 之间的整数</td>
+</tr>
+</tbody></table>
+<h6 id="小数点行："><a href="#小数点行：" class="headerlink" title="小数点行："></a>小数点行：</h6><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>System命名空间中的名字</th>
+<th>取值范围</th>
+<th>m的最小值</th>
+<th>m的最大值</th>
+<th>e的最小值</th>
+<th>e的最大值</th>
+<th>近似的最小值</th>
+<th>近似的最大值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>System.Single</td>
+<td>3.4E-38 ~ 3.4E+38</td>
+<td>0</td>
+<td>2<sup>24</sup></td>
+<td>-149</td>
+<td>104</td>
+<td>1.5x10<sup>-45</sup></td>
+<td>3.4x10<sup>38</sup></td>
+</tr>
+<tr>
+<td>double</td>
+<td>System.Double</td>
+<td>1.7E-308 ~ 1.7E+308</td>
+<td>0</td>
+<td>2<sup>53</sup></td>
+<td>-1075</td>
+<td>970</td>
+<td>5.0x10<sup>-324</sup></td>
+<td>1.7x10<sup>306</sup></td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>System.Decimal</td>
+<td>正负 1.0×10-28 ~ 7.9×1028之间</td>
+<td>0</td>
+<td>2<sup>96</sup></td>
+<td>-26</td>
+<td>0</td>
+<td>1.0x10<sup>-28</sup></td>
+<td>7.9x10<sup>28</sup></td>
+</tr>
+</tbody></table>
+<h6 id="a小数点非整数："><a href="#a小数点非整数：" class="headerlink" title="a小数点非整数："></a>a小数点非整数：</h6><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>System命名空间中的名字</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>System.Char</td>
+<td>一个Unicode字符，存储 0 ~ 65535 之间的整数</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>System.Boolean</td>
+<td>布尔值，true 或 false</td>
+</tr>
+<tr>
+<td>string</td>
+<td>System.String</td>
+<td>一组字符</td>
+</tr>
+</tbody></table>
+<h4 id="常用的数据类型："><a href="#常用的数据类型：" class="headerlink" title="| 常用的数据类型："></a>| 常用的数据类型：</h4><ul>
+<li><p>‘ char ’ 表示一个字符，字母 数字 @#￥%……&amp; * （）一个汉字</p>
+</li>
+<li><p>‘ string ’ 是一个 char 的数组（数组之后介绍）先认为是字符的集合</p>
+</li>
+</ul>
+<p><strong>注意点：</strong></p>
+<ol>
+<li><p>变量如何声明和赋值</p>
+</li>
+<li><p>声明变量的方式</p>
+</li>
+<li><p>推荐的变量命名规则</p>
+</li>
+<li><p>示范常用的数据类型</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 变量的声明</span></span><br><span class="line">    <span class="built_in">int</span> a;</span><br><span class="line">    <span class="comment">// 变量的赋值（当变量第一次赋值的时候，称之为 初始化）</span></span><br><span class="line">    a = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">// 变量的声明 + 赋值</span></span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">20</span>;</span><br><span class="line">    <span class="comment">// 单行赋值多个相同数据类型的变量</span></span><br><span class="line">    <span class="built_in">int</span> c = <span class="number">30</span>, d = <span class="number">40</span>;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 匈牙利命名法（驼峰式）</span></span><br><span class="line">   </span><br><span class="line">    <span class="built_in">int</span> hpValue = <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">int</span> iHpValue = <span class="number">2000</span>;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// string str</span></span><br><span class="line">    <span class="built_in">string</span> strMonsterName = <span class="string">&quot;treeman&quot;</span>;</span><br><span class="line">    <span class="comment">//char ch</span></span><br><span class="line">    <span class="built_in">char</span> chUnicode = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">    <span class="comment">//short sh</span></span><br><span class="line">    <span class="built_in">short</span> shID = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">//long l</span></span><br><span class="line">    <span class="built_in">long</span> lID = <span class="number">1000</span>;</span><br><span class="line">    <span class="comment">//bool true or false   b is(常用)</span></span><br><span class="line">    <span class="built_in">bool</span> isOpen = <span class="literal">true</span>;</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;a:&quot;</span> + a + <span class="string">&quot;,b:&quot;</span> + b + <span class="string">&quot;,c:&quot;</span> + c + <span class="string">&quot;,d:&quot;</span> + d);</span><br><span class="line">    Debug.Log(<span class="string">&quot;hpValue:&quot;</span> + hpValue + <span class="string">&quot;,iHpValue:&quot;</span> + iHpValue + <span class="string">&quot;,strMonsterName:&quot;</span> + strMonsterName + <span class="string">&quot;,chUnicode:&quot;</span> + chUnicode + <span class="string">&quot;,shID:&quot;</span> + shID + <span class="string">&quot;,lID:&quot;</span> + lID + <span class="string">&quot;,isOpen:&quot;</span> + isOpen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h3><p>存储一个怪物信息：</p>
+<ul>
+<li><p>名字</p>
+</li>
+<li><p>血量</p>
+</li>
+<li><p>等级</p>
+</li>
+<li><p>经验值</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> strName = <span class="string">&quot;MonsterA&quot;</span>;</span><br><span class="line">    <span class="built_in">int</span> iHpValue = <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">int</span> iLevel = <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">long</span> lExp = <span class="number">100000000000</span>;</span><br><span class="line">  </span><br><span class="line">    Debug.Log(<span class="string">&quot;名字：&quot;</span> + strName + <span class="string">&quot;，血量：&quot;</span> + iHpValue + <span class="string">&quot;，等级：&quot;</span> + iLevel + <span class="string">&quot;，经验值：&quot;</span> + lExp);</span><br><span class="line">    Debug.LogFormat(<span class="string">&quot;名字:&#123;0&#125;，血量:&#123;1&#125;，等级:&#123;2&#125;，经验值:&#123;3&#125;&quot;</span>, strName, iHpValue, iLevel, lExp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="数组（Array）"><a href="#数组（Array）" class="headerlink" title="数组（Array）"></a>数组（Array）</h2><p><strong>数组的概念：</strong></p>
+<blockquote>
+<p>数组，是有序的相同数据类型元素组成的有限集合，内存是线性连续的。</p>
+</blockquote>
+<p><strong>声明方式：</strong></p>
+<p>一维数组：<code>&lt;data_type&gt;[] variable_name</code></p>
+<p>二维数组：在<code>[]</code>里加一个逗号</p>
+<p>三维数组：在<code>[]</code>里加两个逗号</p>
+<p>N维数组：（♯▼皿▼）</p>
+<p><strong>数据容量和下标的关系：</strong> 下标 &#x3D; 容量 - 1</p>
+<p><strong>注意点：</strong></p>
+<ol>
+<li><p>数组初始化的几种方式</p>
+</li>
+<li><p>访问数组 修改数据</p>
+</li>
+<li><p>如何获取数组的长度</p>
+</li>
+<li><p>示范二维数组</p>
+</li>
+<li><p>（循环）访问数组</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="built_in">int</span>[] array;                <span class="comment">// 数组的声明 并没有分配内存</span></span><br><span class="line">    <span class="built_in">int</span>[] array2 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>];  <span class="comment">// 数组的声明和内存分配</span></span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 第一种 数组初始化</span></span><br><span class="line">    <span class="built_in">int</span>[] array3 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>];</span><br><span class="line">    array3[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">    array3[<span class="number">1</span>] = <span class="number">20</span>;</span><br><span class="line">    array3[<span class="number">2</span>] = <span class="number">30</span>;</span><br><span class="line">    array3[<span class="number">3</span>] = <span class="number">40</span>;</span><br><span class="line">    array3[<span class="number">4</span>] = <span class="number">50</span>;</span><br><span class="line">    <span class="comment">// array3[5] = 60;             不可以，运行时数组越界</span></span><br><span class="line">    Debug.Log(<span class="string">&quot;[原始数据]访问第4个元素（第3个下标）代表的数据：&quot;</span> + array3[<span class="number">3</span>]);</span><br><span class="line">    array3[<span class="number">3</span>] = <span class="number">400</span>;</span><br><span class="line">    Debug.Log(<span class="string">&quot;[修正数据]访问第4个元素（第3个下标）代表的数据：&quot;</span> + array3[<span class="number">3</span>]);</span><br><span class="line">    <span class="comment">// 第二种 数组初始化</span></span><br><span class="line">    <span class="built_in">int</span>[] array4 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>] &#123; <span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">500</span> &#125;;  <span class="comment">// 容量显示声明</span></span><br><span class="line">    <span class="built_in">int</span>[] array5 = <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">500</span> &#125;;   <span class="comment">// 容量隐式分配</span></span><br><span class="line">    <span class="comment">// 第三种 数组初始化</span></span><br><span class="line">    <span class="built_in">int</span>[] array6 = &#123; <span class="number">1000</span>, <span class="number">2000</span>, <span class="number">3000</span>, <span class="number">4000</span>, <span class="number">5000</span> &#125;;        <span class="comment">// 有几个打印出来的就是几个</span></span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;获取 array6 的数组长度（容量）=&quot;</span> + array6.Length);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line">    <span class="built_in">int</span>[,] array7 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>, <span class="number">2</span>];  <span class="comment">// 2行2列的数组</span></span><br><span class="line">    array7[<span class="number">0</span>, <span class="number">0</span>] = <span class="number">100</span>;             <span class="comment">// 1行1列</span></span><br><span class="line">    array7[<span class="number">0</span>, <span class="number">1</span>] = <span class="number">200</span>;             <span class="comment">// 1行2列</span></span><br><span class="line">    array7[<span class="number">1</span>, <span class="number">0</span>] = <span class="number">300</span>;             <span class="comment">// 2行1列</span></span><br><span class="line">    array7[<span class="number">1</span>, <span class="number">1</span>] = <span class="number">400</span>;             <span class="comment">// 2行2列</span></span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;[原始数据]打印第二行第一列的数据：&quot;</span> + array7[<span class="number">1</span>, <span class="number">0</span>]);</span><br><span class="line">    array7[<span class="number">1</span>, <span class="number">0</span>] = <span class="number">3000</span>;</span><br><span class="line">    Debug.Log(<span class="string">&quot;[修正数据]打印第二行第一列的数据：&quot;</span> + array7[<span class="number">1</span>, <span class="number">0</span>]);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 常用写法 1</span></span><br><span class="line">    <span class="built_in">int</span>[,] array8 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>, <span class="number">2</span>]</span><br><span class="line">    &#123;</span><br><span class="line">        &#123;<span class="number">1000</span>,<span class="number">2000</span> &#125;,</span><br><span class="line">        &#123;<span class="number">3000</span>,<span class="number">4000</span> &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 常用写法 2</span></span><br><span class="line">    <span class="built_in">int</span>[,] array9;</span><br><span class="line">    array9 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">    &#123;</span><br><span class="line">        &#123;<span class="number">1000</span>,<span class="number">2000</span>,<span class="number">9</span> &#125;,</span><br><span class="line">        &#123;<span class="number">3000</span>,<span class="number">4000</span>,<span class="number">8</span> &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 总长度（容量）：&quot;</span>+array9.Length);</span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 行数：&quot;</span> + array9.GetLength(<span class="number">0</span>));</span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 列数：&quot;</span> + array9.GetLength(<span class="number">1</span>));</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">//x,y,z 作业如下：存储数据，并读取数据</span></span><br><span class="line">    <span class="built_in">int</span>[,,] array10 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>];</span><br><span class="line">    array10[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>] = <span class="number">100</span>;</span><br><span class="line">    array10[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>] = <span class="number">200</span>;</span><br><span class="line">    array10[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>] = <span class="number">300</span>;</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;array10 总长度（容量）：&quot;</span> + array10.Length);</span><br><span class="line">    Debug.Log(<span class="string">&quot;array10 行数：&quot;</span> + array10.GetLength(<span class="number">0</span>));</span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 列数：&quot;</span> + array10.GetLength(<span class="number">1</span>));</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;[未存储数据]打印 array10 数据：&quot;</span> + array10[<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line">    Debug.Log(<span class="string">&quot;[存储数据]打印 array10 数据：&quot;</span> + array10[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 数组访问两种方式</span></span><br><span class="line">    <span class="comment">// 1.下标的方式</span></span><br><span class="line">    <span class="comment">// 2.循环遍历的方式（研究）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="函数（Function）"><a href="#函数（Function）" class="headerlink" title="函数（Function）"></a>函数（Function）</h2><p><strong>注意点：</strong></p>
+<ol>
+<li><p>函数返回值的分类</p>
+<p>（1）无返回值：<code> void + FunctionName + (args) + &#123;&#125;</code></p>
+<p>（2）有返回值：<code> type + Function + (args) + &#123;return type;&#125;</code></p>
+</li>
+<li><p>函数调用：函数调用时，传入的参数的数据类型，必须和被调用的函数参数的数据类型，顺序保持一致。</p>
+</li>
+<li><p>扩展内容 - 如何调试程序：选中某一行 F9 → 附加到Unity，同时启动Unity → F11进入函数体内，F10单步执行 → F5退出当前的断点</p>
+</li>
+<li><p>小作业：调试函数，更改数组某个下标值，通过跟踪调试，看下设置的值有没有生效</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    ShowContxt();</span><br><span class="line">    ShowName(<span class="string">&quot;森木清树&quot;</span>);</span><br><span class="line">    ShowName2(<span class="string">&quot;森木清树&quot;</span>,<span class="number">22</span>);</span><br><span class="line">    <span class="comment">// ShowName2(22,&quot;森木清树&quot;);  错误</span></span><br><span class="line">   </span><br><span class="line">    <span class="built_in">int</span> result = GetSum(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    Debug.Log(<span class="string">&quot;和：&quot;</span> + result);</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowContxt</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;ShowContxt 被调用&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowName</span>(<span class="params"><span class="built_in">string</span> strName</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;ShowName 输出参数：&quot;</span> + strName);</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowName2</span>(<span class="params"><span class="built_in">string</span> strName, <span class="built_in">int</span> iAge</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;ShowName 输出参数：&quot;</span> + strName + <span class="string">&quot;,年龄：&quot;</span> + iAge);</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="built_in">int</span> <span class="title">GetSum</span>(<span class="params"><span class="built_in">int</span> a,<span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> sum = a + b;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h2 id="运算符-相关内容-1："><a href="#运算符-相关内容-1：" class="headerlink" title="运算符 相关内容 1："></a>运算符 相关内容 1：</h2><h4 id="算术运算符："><a href="#算术运算符：" class="headerlink" title="|算术运算符："></a>|算术运算符：</h4><p>下表显示了 C# 支持的所有算术运算符。假设变量 <strong>A</strong> 的值为 10，变量 <strong>B</strong> 的值为 20，则：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>把两个操作数相加</td>
+<td>A + B 将得到 30</td>
+</tr>
+<tr>
+<td>-</td>
+<td>从第一个操作数中减去第二个操作数</td>
+<td>A - B 将得到 -10</td>
+</tr>
+<tr>
+<td>*</td>
+<td>把两个操作数相乘</td>
+<td>A * B 将得到 200</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>分子除以分母</td>
+<td>B &#x2F; A 将得到 2</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取模运算符，整除后的余数</td>
+<td>B % A 将得到 0</td>
+</tr>
+<tr>
+<td>++</td>
+<td>自增运算符，整数值增加 1</td>
+<td>A++ 将得到 11</td>
+</tr>
+<tr>
+<td>–</td>
+<td>自减运算符，整数值减少 1</td>
+<td>A– 将得到 9</td>
+</tr>
+</tbody></table>
+<h4 id="赋值运算符："><a href="#赋值运算符：" class="headerlink" title="| 赋值运算符："></a>| 赋值运算符：</h4><p>下表列出了 C# 支持的赋值运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>简单的赋值运算符，把右边操作数的值赋给左边操作数</td>
+<td>C &#x3D; A + B 将把 A + B 的值赋给 C</td>
+</tr>
+<tr>
+<td>+&#x3D;</td>
+<td>加且赋值运算符，把右边操作数加上左边操作数的结果赋值给左边操作数</td>
+<td>C +&#x3D; A 相当于 C &#x3D; C + A</td>
+</tr>
+<tr>
+<td>-&#x3D;</td>
+<td>减且赋值运算符，把左边操作数减去右边操作数的结果赋值给左边操作数</td>
+<td>C -&#x3D; A 相当于 C &#x3D; C - A</td>
+</tr>
+<tr>
+<td>*&#x3D;</td>
+<td>乘且赋值运算符，把右边操作数乘以左边操作数的结果赋值给左边操作数</td>
+<td>C *&#x3D; A 相当于 C &#x3D; C * A</td>
+</tr>
+<tr>
+<td>&#x2F;&#x3D;</td>
+<td>除且赋值运算符，把左边操作数除以右边操作数的结果赋值给左边操作数</td>
+<td>C &#x2F;&#x3D; A 相当于 C &#x3D; C &#x2F; A</td>
+</tr>
+<tr>
+<td>%&#x3D;</td>
+<td>求模且赋值运算符，求两个操作数的模赋值给左边操作数</td>
+<td>C %&#x3D; A 相当于 C &#x3D; C % A</td>
+</tr>
+<tr>
+<td>&lt;&lt;&#x3D;</td>
+<td>左移且赋值运算符</td>
+<td>C &lt;&lt;&#x3D; 2 等同于 C &#x3D; C &lt;&lt; 2</td>
+</tr>
+<tr>
+<td>&gt;&gt;&#x3D;</td>
+<td>右移且赋值运算符</td>
+<td>C &gt;&gt;&#x3D; 2 等同于 C &#x3D; C &gt;&gt; 2</td>
+</tr>
+<tr>
+<td>&amp;&#x3D;</td>
+<td>按位与且赋值运算符</td>
+<td>C &amp;&#x3D; 2 等同于 C &#x3D; C &amp; 2</td>
+</tr>
+<tr>
+<td>^&#x3D;</td>
+<td>按位异或且赋值运算符</td>
+<td>C ^&#x3D; 2 等同于 C &#x3D; C ^ 2</td>
+</tr>
+<tr>
+<td>\</td>
+<td>&#x3D;</td>
+<td>按位或且赋值运算符</td>
+</tr>
+</tbody></table>
+<p><strong>课程内容：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Func1();</span><br><span class="line">    Func2();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func1</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// + - * /</span></span><br><span class="line">    <span class="comment">// %</span></span><br><span class="line">    <span class="built_in">int</span> c = a % b; <span class="comment">// a/b 得到的余数部分</span></span><br><span class="line">    Debug.Log(c);</span><br><span class="line">    Debug.Log(<span class="number">9</span> % <span class="number">8</span>); <span class="comment">// 等于1</span></span><br><span class="line">    <span class="comment">// （1，2，3，4，5，6，7，8，9，10）</span></span><br><span class="line">    <span class="comment">// A % 2 = 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ++ -- </span></span><br><span class="line">    a++; <span class="comment">// a = a+1 即 5+1 = 6</span></span><br><span class="line">    b--; <span class="comment">// b = b-1 即 5-1 = 4</span></span><br><span class="line">    Debug.Log(a);</span><br><span class="line">    Debug.Log(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func2</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    a += b; <span class="comment">// a = a+b 即 5+5 = 10</span></span><br><span class="line">    Debug.Log(a);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &lt;&lt;  - 乘 2 的 N 次方</span></span><br><span class="line">    a = a &lt;&lt; <span class="number">2</span>; <span class="comment">// a * 2*2 即 10 * 2*2 = 40 &lt;&lt; 就是乘以2的2次方</span></span><br><span class="line">    b = b &lt;&lt; <span class="number">2</span>; <span class="comment">// b * 2*2 即  5 * 2*2 = 20 &lt;&lt; 就是乘以2的2次方</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// &gt;&gt; - 除以 2 的 N 次方</span></span><br><span class="line">    <span class="comment">// a = a &gt;&gt; 2; // a/2*2 = 10/4 = 2.5 这是个小数3</span></span><br><span class="line"></span><br><span class="line">    Debug.Log(<span class="string">&quot;a:&quot;</span> + a);</span><br><span class="line">    Debug.Log(<span class="string">&quot;b:&quot;</span> + b);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 小数和整数区别</span></span><br><span class="line">    <span class="built_in">float</span> aa = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">int</span> bb = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">float</span> c = aa / <span class="number">3</span>; <span class="comment">// 3.333...</span></span><br><span class="line">    bb = bb / <span class="number">3</span>; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">    Debug.Log(<span class="string">&quot;bb:&quot;</span> + bb);</span><br><span class="line">    Debug.Log(<span class="string">&quot;c:&quot;</span> + c);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &lt;&lt;= 、&gt;&gt;=</span></span><br><span class="line">    <span class="built_in">int</span> c2 = <span class="number">3</span>;</span><br><span class="line">    c2 &lt;&lt;= <span class="number">2</span>; <span class="comment">// c2 = c2 &lt;&lt; 2 = 3 * 2*2 =12</span></span><br><span class="line">    Debug.Log(<span class="string">&quot;c2:&quot;</span> + c2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 尝试一下</span></span><br><span class="line">    <span class="built_in">int</span> d = <span class="number">5</span>;</span><br><span class="line">    d = d &lt;&lt; <span class="number">5</span>;  <span class="comment">// 5 * 2*5次 = 160 乘以2的5次方</span></span><br><span class="line">    Debug.Log(<span class="string">&quot;d:&quot;</span> + d);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<center>下次再见~</center>
+<center>Morikiiii.</center>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" data-id="cl7kl1dyt0003zodxfttx0g17" data-title="C#学习开始 - 基础语法专题（1）" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          C-学习开始-基础语法专题（2）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-Class%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/">C-学习开始-Class专题（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-Class%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/">C-学习开始-Class专题（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/">C-学习开始-基础语法专题（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/C-%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%A7%8B-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/">C#学习开始 - 基础语法专题（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Morikiiii<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
