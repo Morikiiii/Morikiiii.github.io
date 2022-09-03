@@ -25,6 +25,12 @@
 
   <!-- 代码高亮 -->
   
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
 
 
@@ -150,8 +156,20 @@
 </li>
 </ul>
 <hr>
-<h2 id="第一个C-小示例"><a href="#第一个C-小示例" class="headerlink" title="第一个C#小示例"></a>第一个C#小示例</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">        Debug.LogWarning(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">        Debug.LogError(<span class="string">&quot;HelloWorld&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第一个C-小示例"><a href="#第一个C-小示例" class="headerlink" title="第一个C#小示例"></a>第一个C#小示例</h2><pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
+public class HelloWorld : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Debug.Log(&quot;HelloWorld&quot;);
+        Debug.LogWarning(&quot;HelloWorld&quot;);
+        Debug.LogError(&quot;HelloWorld&quot;);
+    &#125;
+&#125;
+</code></pre>
 <h4 id="一些知识点"><a href="#一些知识点" class="headerlink" title="| 一些知识点:"></a>| 一些知识点:</h4><ul>
 <li><p>“ : “代表继承</p>
 </li>
@@ -311,7 +329,38 @@
 <li><p>推荐的变量命名规则</p>
 </li>
 <li><p>示范常用的数据类型</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 变量的声明</span></span><br><span class="line">    <span class="built_in">int</span> a;</span><br><span class="line">    <span class="comment">// 变量的赋值（当变量第一次赋值的时候，称之为 初始化）</span></span><br><span class="line">    a = <span class="number">10</span>;</span><br><span class="line">    <span class="comment">// 变量的声明 + 赋值</span></span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">20</span>;</span><br><span class="line">    <span class="comment">// 单行赋值多个相同数据类型的变量</span></span><br><span class="line">    <span class="built_in">int</span> c = <span class="number">30</span>, d = <span class="number">40</span>;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 匈牙利命名法（驼峰式）</span></span><br><span class="line">   </span><br><span class="line">    <span class="built_in">int</span> hpValue = <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">int</span> iHpValue = <span class="number">2000</span>;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// string str</span></span><br><span class="line">    <span class="built_in">string</span> strMonsterName = <span class="string">&quot;treeman&quot;</span>;</span><br><span class="line">    <span class="comment">//char ch</span></span><br><span class="line">    <span class="built_in">char</span> chUnicode = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">    <span class="comment">//short sh</span></span><br><span class="line">    <span class="built_in">short</span> shID = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">//long l</span></span><br><span class="line">    <span class="built_in">long</span> lID = <span class="number">1000</span>;</span><br><span class="line">    <span class="comment">//bool true or false   b is(常用)</span></span><br><span class="line">    <span class="built_in">bool</span> isOpen = <span class="literal">true</span>;</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;a:&quot;</span> + a + <span class="string">&quot;,b:&quot;</span> + b + <span class="string">&quot;,c:&quot;</span> + c + <span class="string">&quot;,d:&quot;</span> + d);</span><br><span class="line">    Debug.Log(<span class="string">&quot;hpValue:&quot;</span> + hpValue + <span class="string">&quot;,iHpValue:&quot;</span> + iHpValue + <span class="string">&quot;,strMonsterName:&quot;</span> + strMonsterName + <span class="string">&quot;,chUnicode:&quot;</span> + chUnicode + <span class="string">&quot;,shID:&quot;</span> + shID + <span class="string">&quot;,lID:&quot;</span> + lID + <span class="string">&quot;,isOpen:&quot;</span> + isOpen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="csharp"> void Start()
+ &#123;
+     // 变量的声明
+     int a;
+     // 变量的赋值（当变量第一次赋值的时候，称之为 初始化）
+     a = 10;
+     // 变量的声明 + 赋值
+     int b = 20;
+     // 单行赋值多个相同数据类型的变量
+     int c = 30, d = 40;
+
+     // 匈牙利命名法（驼峰式）
+
+     int hpValue = 1000;
+     int iHpValue = 2000;
+
+     // string str
+     string strMonsterName = &quot;treeman&quot;;
+     //char ch
+     char chUnicode = &#39;a&#39;;
+     //short sh
+     short shID = 100;
+     //long l
+     long lID = 1000;
+     //bool true or false   b is(常用)
+     bool isOpen = true;
+
+     Debug.Log(&quot;a:&quot; + a + &quot;,b:&quot; + b + &quot;,c:&quot; + c + &quot;,d:&quot; + d);
+     Debug.Log(&quot;hpValue:&quot; + hpValue + &quot;,iHpValue:&quot; + iHpValue + &quot;,strMonsterName:&quot; + strMonsterName + &quot;,chUnicode:&quot; + chUnicode + &quot;,shID:&quot; + shID + &quot;,lID:&quot; + lID + &quot;,isOpen:&quot; + isOpen);
+ &#125;
+</code></pre>
+</li>
 </ol>
 <h3 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h3><p>存储一个怪物信息：</p>
 <ul>
@@ -322,7 +371,18 @@
 <li><p>等级</p>
 </li>
 <li><p>经验值</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> strName = <span class="string">&quot;MonsterA&quot;</span>;</span><br><span class="line">    <span class="built_in">int</span> iHpValue = <span class="number">1000</span>;</span><br><span class="line">    <span class="built_in">int</span> iLevel = <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">long</span> lExp = <span class="number">100000000000</span>;</span><br><span class="line">  </span><br><span class="line">    Debug.Log(<span class="string">&quot;名字：&quot;</span> + strName + <span class="string">&quot;，血量：&quot;</span> + iHpValue + <span class="string">&quot;，等级：&quot;</span> + iLevel + <span class="string">&quot;，经验值：&quot;</span> + lExp);</span><br><span class="line">    Debug.LogFormat(<span class="string">&quot;名字:&#123;0&#125;，血量:&#123;1&#125;，等级:&#123;2&#125;，经验值:&#123;3&#125;&quot;</span>, strName, iHpValue, iLevel, lExp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="csharp">  void Start()
+  &#123;
+      string strName = &quot;MonsterA&quot;;
+      int iHpValue = 1000;
+      int iLevel = 100;
+      long lExp = 100000000000;
+
+      Debug.Log(&quot;名字：&quot; + strName + &quot;，血量：&quot; + iHpValue + &quot;，等级：&quot; + iLevel + &quot;，经验值：&quot; + lExp);
+      Debug.LogFormat(&quot;名字:&#123;0&#125;，血量:&#123;1&#125;，等级:&#123;2&#125;，经验值:&#123;3&#125;&quot;, strName, iHpValue, iLevel, lExp);
+  &#125;
+</code></pre>
+</li>
 </ul>
 <hr>
 <h2 id="数组（Array）"><a href="#数组（Array）" class="headerlink" title="数组（Array）"></a>数组（Array）</h2><p><strong>数组的概念：</strong></p>
@@ -346,7 +406,81 @@
 <li><p>示范二维数组</p>
 </li>
 <li><p>（循环）访问数组</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="built_in">int</span>[] array;                <span class="comment">// 数组的声明 并没有分配内存</span></span><br><span class="line">    <span class="built_in">int</span>[] array2 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>];  <span class="comment">// 数组的声明和内存分配</span></span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 第一种 数组初始化</span></span><br><span class="line">    <span class="built_in">int</span>[] array3 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>];</span><br><span class="line">    array3[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">    array3[<span class="number">1</span>] = <span class="number">20</span>;</span><br><span class="line">    array3[<span class="number">2</span>] = <span class="number">30</span>;</span><br><span class="line">    array3[<span class="number">3</span>] = <span class="number">40</span>;</span><br><span class="line">    array3[<span class="number">4</span>] = <span class="number">50</span>;</span><br><span class="line">    <span class="comment">// array3[5] = 60;             不可以，运行时数组越界</span></span><br><span class="line">    Debug.Log(<span class="string">&quot;[原始数据]访问第4个元素（第3个下标）代表的数据：&quot;</span> + array3[<span class="number">3</span>]);</span><br><span class="line">    array3[<span class="number">3</span>] = <span class="number">400</span>;</span><br><span class="line">    Debug.Log(<span class="string">&quot;[修正数据]访问第4个元素（第3个下标）代表的数据：&quot;</span> + array3[<span class="number">3</span>]);</span><br><span class="line">    <span class="comment">// 第二种 数组初始化</span></span><br><span class="line">    <span class="built_in">int</span>[] array4 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>] &#123; <span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">500</span> &#125;;  <span class="comment">// 容量显示声明</span></span><br><span class="line">    <span class="built_in">int</span>[] array5 = <span class="keyword">new</span> <span class="built_in">int</span>[] &#123; <span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">500</span> &#125;;   <span class="comment">// 容量隐式分配</span></span><br><span class="line">    <span class="comment">// 第三种 数组初始化</span></span><br><span class="line">    <span class="built_in">int</span>[] array6 = &#123; <span class="number">1000</span>, <span class="number">2000</span>, <span class="number">3000</span>, <span class="number">4000</span>, <span class="number">5000</span> &#125;;        <span class="comment">// 有几个打印出来的就是几个</span></span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;获取 array6 的数组长度（容量）=&quot;</span> + array6.Length);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line">    <span class="built_in">int</span>[,] array7 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>, <span class="number">2</span>];  <span class="comment">// 2行2列的数组</span></span><br><span class="line">    array7[<span class="number">0</span>, <span class="number">0</span>] = <span class="number">100</span>;             <span class="comment">// 1行1列</span></span><br><span class="line">    array7[<span class="number">0</span>, <span class="number">1</span>] = <span class="number">200</span>;             <span class="comment">// 1行2列</span></span><br><span class="line">    array7[<span class="number">1</span>, <span class="number">0</span>] = <span class="number">300</span>;             <span class="comment">// 2行1列</span></span><br><span class="line">    array7[<span class="number">1</span>, <span class="number">1</span>] = <span class="number">400</span>;             <span class="comment">// 2行2列</span></span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;[原始数据]打印第二行第一列的数据：&quot;</span> + array7[<span class="number">1</span>, <span class="number">0</span>]);</span><br><span class="line">    array7[<span class="number">1</span>, <span class="number">0</span>] = <span class="number">3000</span>;</span><br><span class="line">    Debug.Log(<span class="string">&quot;[修正数据]打印第二行第一列的数据：&quot;</span> + array7[<span class="number">1</span>, <span class="number">0</span>]);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// 常用写法 1</span></span><br><span class="line">    <span class="built_in">int</span>[,] array8 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>, <span class="number">2</span>]</span><br><span class="line">    &#123;</span><br><span class="line">        &#123;<span class="number">1000</span>,<span class="number">2000</span> &#125;,</span><br><span class="line">        &#123;<span class="number">3000</span>,<span class="number">4000</span> &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 常用写法 2</span></span><br><span class="line">    <span class="built_in">int</span>[,] array9;</span><br><span class="line">    array9 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">    &#123;</span><br><span class="line">        &#123;<span class="number">1000</span>,<span class="number">2000</span>,<span class="number">9</span> &#125;,</span><br><span class="line">        &#123;<span class="number">3000</span>,<span class="number">4000</span>,<span class="number">8</span> &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 总长度（容量）：&quot;</span>+array9.Length);</span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 行数：&quot;</span> + array9.GetLength(<span class="number">0</span>));</span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 列数：&quot;</span> + array9.GetLength(<span class="number">1</span>));</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">//x,y,z 作业如下：存储数据，并读取数据</span></span><br><span class="line">    <span class="built_in">int</span>[,,] array10 = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>];</span><br><span class="line">    array10[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>] = <span class="number">100</span>;</span><br><span class="line">    array10[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>] = <span class="number">200</span>;</span><br><span class="line">    array10[<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>] = <span class="number">300</span>;</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;array10 总长度（容量）：&quot;</span> + array10.Length);</span><br><span class="line">    Debug.Log(<span class="string">&quot;array10 行数：&quot;</span> + array10.GetLength(<span class="number">0</span>));</span><br><span class="line">    Debug.Log(<span class="string">&quot;array9 列数：&quot;</span> + array10.GetLength(<span class="number">1</span>));</span><br><span class="line">   </span><br><span class="line">    Debug.Log(<span class="string">&quot;[未存储数据]打印 array10 数据：&quot;</span> + array10[<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>]);</span><br><span class="line">    Debug.Log(<span class="string">&quot;[存储数据]打印 array10 数据：&quot;</span> + array10[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// ------------------------------------------------------------------------</span></span><br><span class="line">    <span class="comment">// 数组访问两种方式</span></span><br><span class="line">    <span class="comment">// 1.下标的方式</span></span><br><span class="line">    <span class="comment">// 2.循环遍历的方式（研究）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="csharp"> void Start()
+ &#123;
+
+     int[] array;                // 数组的声明 并没有分配内存
+     int[] array2 = new int[5];  // 数组的声明和内存分配
+
+     // 第一种 数组初始化
+     int[] array3 = new int[5];
+     array3[0] = 10;
+     array3[1] = 20;
+     array3[2] = 30;
+     array3[3] = 40;
+     array3[4] = 50;
+     // array3[5] = 60;             不可以，运行时数组越界
+     Debug.Log(&quot;[原始数据]访问第4个元素（第3个下标）代表的数据：&quot; + array3[3]);
+     array3[3] = 400;
+     Debug.Log(&quot;[修正数据]访问第4个元素（第3个下标）代表的数据：&quot; + array3[3]);
+     // 第二种 数组初始化
+     int[] array4 = new int[5] &#123; 100, 200, 300, 400, 500 &#125;;  // 容量显示声明
+     int[] array5 = new int[] &#123; 100, 200, 300, 400, 500 &#125;;   // 容量隐式分配
+     // 第三种 数组初始化
+     int[] array6 = &#123; 1000, 2000, 3000, 4000, 5000 &#125;;        // 有几个打印出来的就是几个
+
+     Debug.Log(&quot;获取 array6 的数组长度（容量）=&quot; + array6.Length);
+
+     // ------------------------------------------------------------------------
+     int[,] array7 = new int[2, 2];  // 2行2列的数组
+     array7[0, 0] = 100;             // 1行1列
+     array7[0, 1] = 200;             // 1行2列
+     array7[1, 0] = 300;             // 2行1列
+     array7[1, 1] = 400;             // 2行2列
+
+     Debug.Log(&quot;[原始数据]打印第二行第一列的数据：&quot; + array7[1, 0]);
+     array7[1, 0] = 3000;
+     Debug.Log(&quot;[修正数据]打印第二行第一列的数据：&quot; + array7[1, 0]);
+
+     // 常用写法 1
+     int[,] array8 = new int[2, 2]
+     &#123;
+         &#123;1000,2000 &#125;,
+         &#123;3000,4000 &#125;,
+     &#125;;
+     // 常用写法 2
+     int[,] array9;
+     array9 = new int[2, 3]
+     &#123;
+         &#123;1000,2000,9 &#125;,
+         &#123;3000,4000,8 &#125;,
+     &#125;;
+
+     Debug.Log(&quot;array9 总长度（容量）：&quot;+array9.Length);
+     Debug.Log(&quot;array9 行数：&quot; + array9.GetLength(0));
+     Debug.Log(&quot;array9 列数：&quot; + array9.GetLength(1));
+
+     // ------------------------------------------------------------------------
+     //x,y,z 作业如下：存储数据，并读取数据
+     int[,,] array10 = new int[3, 3, 3];
+     array10[0, 0, 0] = 100;
+     array10[1, 1, 1] = 200;
+     array10[2, 2, 2] = 300;
+
+     Debug.Log(&quot;array10 总长度（容量）：&quot; + array10.Length);
+     Debug.Log(&quot;array10 行数：&quot; + array10.GetLength(0));
+     Debug.Log(&quot;array9 列数：&quot; + array10.GetLength(1));
+
+     Debug.Log(&quot;[未存储数据]打印 array10 数据：&quot; + array10[1, 0, 1]);
+     Debug.Log(&quot;[存储数据]打印 array10 数据：&quot; + array10[1, 1, 1]);
+
+     // ------------------------------------------------------------------------
+     // 数组访问两种方式
+     // 1.下标的方式
+     // 2.循环遍历的方式（研究）
+ &#125;
+</code></pre>
+</li>
 </ol>
 <hr>
 <h2 id="函数（Function）"><a href="#函数（Function）" class="headerlink" title="函数（Function）"></a>函数（Function）</h2><p><strong>注意点：</strong></p>
@@ -360,7 +494,39 @@
 <li><p>扩展内容 - 如何调试程序：选中某一行 F9 → 附加到Unity，同时启动Unity → F11进入函数体内，F10单步执行 → F5退出当前的断点</p>
 </li>
 <li><p>小作业：调试函数，更改数组某个下标值，通过跟踪调试，看下设置的值有没有生效</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    ShowContxt();</span><br><span class="line">    ShowName(<span class="string">&quot;森木清树&quot;</span>);</span><br><span class="line">    ShowName2(<span class="string">&quot;森木清树&quot;</span>,<span class="number">22</span>);</span><br><span class="line">    <span class="comment">// ShowName2(22,&quot;森木清树&quot;);  错误</span></span><br><span class="line">   </span><br><span class="line">    <span class="built_in">int</span> result = GetSum(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    Debug.Log(<span class="string">&quot;和：&quot;</span> + result);</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowContxt</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;ShowContxt 被调用&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowName</span>(<span class="params"><span class="built_in">string</span> strName</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;ShowName 输出参数：&quot;</span> + strName);</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowName2</span>(<span class="params"><span class="built_in">string</span> strName, <span class="built_in">int</span> iAge</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;ShowName 输出参数：&quot;</span> + strName + <span class="string">&quot;,年龄：&quot;</span> + iAge);</span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="built_in">int</span> <span class="title">GetSum</span>(<span class="params"><span class="built_in">int</span> a,<span class="built_in">int</span> b</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> sum = a + b;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="csharp"> void Start()
+ &#123;
+     ShowContxt();
+     ShowName(&quot;森木清树&quot;);
+     ShowName2(&quot;森木清树&quot;,22);
+     // ShowName2(22,&quot;森木清树&quot;);  错误
+
+     int result = GetSum(1, 2);
+     Debug.Log(&quot;和：&quot; + result);
+ &#125;
+
+ void ShowContxt()
+ &#123;
+     Debug.Log(&quot;ShowContxt 被调用&quot;);
+ &#125;
+ void ShowName(string strName)
+ &#123;
+     Debug.Log(&quot;ShowName 输出参数：&quot; + strName);
+
+ &#125;
+ void ShowName2(string strName, int iAge)
+ &#123;
+     Debug.Log(&quot;ShowName 输出参数：&quot; + strName + &quot;,年龄：&quot; + iAge);
+
+ &#125;
+
+ int GetSum(int a,int b)
+ &#123;
+     int sum = a + b;
+     return sum;
+ &#125;
+</code></pre>
+</li>
 </ol>
 <hr>
 <h2 id="运算符-相关内容-1："><a href="#运算符-相关内容-1：" class="headerlink" title="运算符 相关内容 1："></a>运算符 相关内容 1：</h2><h4 id="算术运算符："><a href="#算术运算符：" class="headerlink" title="|算术运算符："></a>|算术运算符：</h4><p>下表显示了 C# 支持的所有算术运算符。假设变量 <strong>A</strong> 的值为 10，变量 <strong>B</strong> 的值为 20，则：</p>
@@ -474,8 +640,74 @@
 </tr>
 </tbody></table>
 <p><strong>课程内容：</strong></p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Func1();</span><br><span class="line">    Func2();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func1</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// + - * /</span></span><br><span class="line">    <span class="comment">// %</span></span><br><span class="line">    <span class="built_in">int</span> c = a % b; <span class="comment">// a/b 得到的余数部分</span></span><br><span class="line">    Debug.Log(c);</span><br><span class="line">    Debug.Log(<span class="number">9</span> % <span class="number">8</span>); <span class="comment">// 等于1</span></span><br><span class="line">    <span class="comment">// （1，2，3，4，5，6，7，8，9，10）</span></span><br><span class="line">    <span class="comment">// A % 2 = 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ++ -- </span></span><br><span class="line">    a++; <span class="comment">// a = a+1 即 5+1 = 6</span></span><br><span class="line">    b--; <span class="comment">// b = b-1 即 5-1 = 4</span></span><br><span class="line">    Debug.Log(a);</span><br><span class="line">    Debug.Log(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func2</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> a = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">int</span> b = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    a += b; <span class="comment">// a = a+b 即 5+5 = 10</span></span><br><span class="line">    Debug.Log(a);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &lt;&lt;  - 乘 2 的 N 次方</span></span><br><span class="line">    a = a &lt;&lt; <span class="number">2</span>; <span class="comment">// a * 2*2 即 10 * 2*2 = 40 &lt;&lt; 就是乘以2的2次方</span></span><br><span class="line">    b = b &lt;&lt; <span class="number">2</span>; <span class="comment">// b * 2*2 即  5 * 2*2 = 20 &lt;&lt; 就是乘以2的2次方</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// &gt;&gt; - 除以 2 的 N 次方</span></span><br><span class="line">    <span class="comment">// a = a &gt;&gt; 2; // a/2*2 = 10/4 = 2.5 这是个小数3</span></span><br><span class="line"></span><br><span class="line">    Debug.Log(<span class="string">&quot;a:&quot;</span> + a);</span><br><span class="line">    Debug.Log(<span class="string">&quot;b:&quot;</span> + b);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 小数和整数区别</span></span><br><span class="line">    <span class="built_in">float</span> aa = <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">int</span> bb = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">float</span> c = aa / <span class="number">3</span>; <span class="comment">// 3.333...</span></span><br><span class="line">    bb = bb / <span class="number">3</span>; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">    Debug.Log(<span class="string">&quot;bb:&quot;</span> + bb);</span><br><span class="line">    Debug.Log(<span class="string">&quot;c:&quot;</span> + c);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// &lt;&lt;= 、&gt;&gt;=</span></span><br><span class="line">    <span class="built_in">int</span> c2 = <span class="number">3</span>;</span><br><span class="line">    c2 &lt;&lt;= <span class="number">2</span>; <span class="comment">// c2 = c2 &lt;&lt; 2 = 3 * 2*2 =12</span></span><br><span class="line">    Debug.Log(<span class="string">&quot;c2:&quot;</span> + c2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 尝试一下</span></span><br><span class="line">    <span class="built_in">int</span> d = <span class="number">5</span>;</span><br><span class="line">    d = d &lt;&lt; <span class="number">5</span>;  <span class="comment">// 5 * 2*5次 = 160 乘以2的5次方</span></span><br><span class="line">    Debug.Log(<span class="string">&quot;d:&quot;</span> + d);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="csharp">    void Start()
+    &#123;
+        Func1();
+        Func2();
 
+    &#125;
+
+    void Func1()
+    &#123;
+        int a = 5;
+        int b = 5;
+
+        // + - * /
+        // %
+        int c = a % b; // a/b 得到的余数部分
+        Debug.Log(c);
+        Debug.Log(9 % 8); // 等于1
+        // （1，2，3，4，5，6，7，8，9，10）
+        // A % 2 = 0
+
+        // ++ -- 
+        a++; // a = a+1 即 5+1 = 6
+        b--; // b = b-1 即 5-1 = 4
+        Debug.Log(a);
+        Debug.Log(b);
+    &#125;
+
+    void Func2()
+    &#123;
+        int a = 5;
+        int b = 5;
+
+        a += b; // a = a+b 即 5+5 = 10
+        Debug.Log(a);
+
+        // &lt;&lt;  - 乘 2 的 N 次方
+        a = a &lt;&lt; 2; // a * 2*2 即 10 * 2*2 = 40 &lt;&lt; 就是乘以2的2次方
+        b = b &lt;&lt; 2; // b * 2*2 即  5 * 2*2 = 20 &lt;&lt; 就是乘以2的2次方
+
+        // &gt;&gt; - 除以 2 的 N 次方
+        // a = a &gt;&gt; 2; // a/2*2 = 10/4 = 2.5 这是个小数3
+
+        Debug.Log(&quot;a:&quot; + a);
+        Debug.Log(&quot;b:&quot; + b);
+
+
+        // 小数和整数区别
+        float aa = 10;
+        int bb = 10;
+
+        float c = aa / 3; // 3.333...
+        bb = bb / 3; // 3
+
+        Debug.Log(&quot;bb:&quot; + bb);
+        Debug.Log(&quot;c:&quot; + c);
+
+        // &lt;&lt;= 、&gt;&gt;=
+        int c2 = 3;
+        c2 &lt;&lt;= 2; // c2 = c2 &lt;&lt; 2 = 3 * 2*2 =12
+        Debug.Log(&quot;c2:&quot; + c2);
+
+        // 尝试一下
+        int d = 5;
+        d = d &lt;&lt; 5;  // 5 * 2*5次 = 160 乘以2的5次方
+        Debug.Log(&quot;d:&quot; + d);
+
+    &#125;
+</code></pre>
 <hr>
 <center>下次再见~</center>
 <center>Morikiiii.</center>
@@ -536,6 +768,13 @@
 <script src="/js/white.js"></script>
 
 
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
 
 </body>
 </html>
