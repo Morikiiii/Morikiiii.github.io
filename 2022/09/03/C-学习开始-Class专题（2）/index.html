@@ -121,11 +121,91 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        
+        <h2 id="结构体-Struct"><a href="#结构体-Struct" class="headerlink" title="结构体 Struct"></a>结构体 <code>Struct</code></h2><ul>
+<li><p>小概念：<code>struct + name&#123;...&#125;</code> ，便声明了一个结构体。</p>
+</li>
+<li><p>结构体是 值类型数据结构。它使得一个单一变量可以存储各种数据类型的相关数据。</p>
+</li>
+<li><p><code>struct</code> &amp; <code>class</code> 的异同</p>
+<ul>
+<li><p>相同点：</p>
+<ul>
+<li><p>（1）静态构造函数</p>
+<ul>
+<li>都支持</li>
+</ul>
+</li>
+<li><p>（2）自定义函数</p>
+<ul>
+<li>都支持</li>
+</ul>
+</li>
+<li><p>（3）<code>const</code> 修饰的变量</p>
+<ul>
+<li>结构体 和 类 对于 <code>const</code> 修饰的变量的使用方式是一样的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>不同点：</p>
+<ul>
+<li><p>（1）构造函数：</p>
+<ul>
+<li>结构体 不允许定义无参构造函数，只允许定义有参构造函数；但是 类 是都可以的</li>
+</ul>
+</li>
+<li><p>（2）析构函数</p>
+<ul>
+<li>结构体 不允许定义析构函数；但是 类 是可以的</li>
+</ul>
+</li>
+<li><p>（3）函数的修饰符</p>
+<ul>
+<li>结构体 不允许声明为 virtual 虚函数；但是 类 是可以的</li>
+</ul>
+</li>
+<li><p>（4）类型修饰符</p>
+<ul>
+<li>结构体 不允许声明为 abstract；但是 类 是可以的</li>
+</ul>
+</li>
+<li><p>（5）关于变量</p>
+<ul>
+<li><p>（a）普通变量</p>
+<ul>
+<li>结构体 声明的全局普通变量（不带修饰符的），不能在 声明式 直接赋值，只能在 构造函数 里边赋值；类 哪里都可以</li>
+</ul>
+</li>
+<li><p>（b）<code>readonly</code></p>
+<ul>
+<li>结构体声明的 全局<code>readonly</code> 变量，只能在构造函数里边赋值；类 都可以</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>（6）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">
+</code></pre>
+<hr>
+<h2 id="is-amp-as-显式-x2F-隐式转换"><a href="#is-amp-as-显式-x2F-隐式转换" class="headerlink" title="is &amp; as 显式 &#x2F; 隐式转换"></a><code>is</code> &amp; <code>as</code> 显式 &#x2F; 隐式转换</h2><hr>
+<h2 id="什么是装箱-amp-拆箱"><a href="#什么是装箱-amp-拆箱" class="headerlink" title="什么是装箱 &amp; 拆箱"></a>什么是装箱 &amp; 拆箱</h2><hr>
+<h2 id="值类型与引用类型的内存模型"><a href="#值类型与引用类型的内存模型" class="headerlink" title="值类型与引用类型的内存模型"></a>值类型与引用类型的内存模型</h2><hr>
+
         <!-- 分类文章 -->
         
       </div>
       <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93-Struct"><span class="space-toc-text">结构体 Struct</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#is-amp-as-%E6%98%BE%E5%BC%8F-x2F-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="space-toc-text">is &amp; as 显式 &#x2F; 隐式转换</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A3%85%E7%AE%B1-amp-%E6%8B%86%E7%AE%B1"><span class="space-toc-text">什么是装箱 &amp; 拆箱</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="space-toc-text">值类型与引用类型的内存模型</span></a></li></ol>
+           </div>
         
       </div>
    </div>
