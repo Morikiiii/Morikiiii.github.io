@@ -800,7 +800,7 @@ public class Abstract : MonoBehaviour
 <h4 id="4-泛型类-amp-泛型方法"><a href="#4-泛型类-amp-泛型方法" class="headerlink" title="4.泛型类 &amp; 泛型方法"></a>4.泛型类 &amp; 泛型方法</h4><ul>
 <li><p>小概念：类名后可以添加 <code>&lt;T1.T2.T3...&gt;</code> 这将变成一个泛型类。泛型类 T1.T2.T3 可以通过 <code>where</code> 关键字 来限定类型。</p>
 </li>
-<li><p>约束规则：</p>
+<li><p>泛型约束 注意点：</p>
 <ul>
 <li><p>.NET 含有以下五种泛型约束：</p>
 <ul>
@@ -820,9 +820,398 @@ public class Abstract : MonoBehaviour
 </li>
 </ul>
 <p><strong>演示：</strong></p>
-<pre><code class="csharp">
+<pre><code class="csharp">// 需求：
+//      在类里边定义一个数组，让这个类具备 设置数据 和 访问数据 的能力
+
+public class BaseParent &lt;T,X&gt;
+&#123;
+
+&#125;
+
+/*
+public class Son &lt;T,X&gt; : BaseParent &lt;T,X&gt;
+&#123;
+
+&#125;
+
+public class Son : BaseParent&lt;int, string&gt;
+&#123;
+
+&#125;
+
+public class Son&lt;T, X,Y,A&gt; : BaseParent&lt;T, X&gt;
+&#123;
+
+&#125;
+*/
+
+public class Son : BaseParent&lt;int, string&gt;
+&#123;
+    public void Show&lt;X&gt;(X A)
+    &#123;
+        Debug.Log(&quot;A = &quot; + A);
+    &#125;
+&#125;
+
+/*
+public class MyClassType
+&#123;
+    public int a;
+
+    public MyClassType(int value)
+    &#123;
+        this.a = value;
+    &#125;
+&#125;
+
+public class MyClass15 &lt;T&gt; where T:MyClassType
+&#123;
+    private T[] m_array;
+
+    public MyClass15(int size)
+    &#123;
+        m_array = new T[size];
+    &#125;
+
+    public void Set(int index,T value)
+    &#123;
+        m_array[index] = value;
+
+    &#125;
+
+    public int Get(int index)
+    &#123;
+        return m_array[index].a;
+    &#125;
+&#125;
+
+public class MyClass16&lt;T&gt; where T : string // error
+&#123;
+    private T[] m_array;
+
+    public MyClass16(int size)
+    &#123;
+        m_array = new T[size];
+    &#125;
+
+    public void Set(int index, T value)
+    &#123;
+        m_array[index] = value;
+
+    &#125;
+
+    public int Get(int index)
+    &#123;
+        return m_array[index].a;
+    &#125;
+&#125;
+*/
+
+public class TClass : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        /*
+        MyClass15 myclass = new MyClass15(5);
+        myclass.Set(0, 1);
+        myclass.Set(1, 2);
+        int a = myclass.Get(0);
+        int b = myclass.Get(1);
+        */
+
+        /*
+        MyClass15&lt;string&gt; myclass = new MyClass15&lt;string&gt;(5);
+        myclass.Set(0, &quot;极客&quot;);
+        myclass.Set(1, &quot;教育&quot;);
+        string a = myclass.Get(0);
+        string b = myclass.Get(1);
+        */
+
+        /*
+        MyClass15&lt;MyClassType&gt; myclass = new MyClass15&lt;MyClassType&gt;(5);
+        myclass.Set(0, new MyClassType(1));
+        myclass.Set(1, new MyClassType(2));
+        // MyClassType a = myclass.Get(0);
+        // MyClassType b = myclass.Get(1);
+
+        int a = myclass.Get(0);
+        int b = myclass.Get(1);
+
+        Debug.LogFormat(&quot;第&#123;0&#125;号位，值：&#123;1&#125;&quot;, 0, a);
+        Debug.LogFormat(&quot;第&#123;0&#125;号位，值：&#123;1&#125;&quot;, 1, b);
+        */
+
+        Son son = new Son();
+        son.Show&lt;string&gt;(&quot;str.....&quot;);
+    &#125;
+&#125;
 </code></pre>
-<h4 id="5-接口"><a href="#5-接口" class="headerlink" title="5.接口"></a>5.接口</h4><h4 id="6-接口、类、抽象类的区别"><a href="#6-接口、类、抽象类的区别" class="headerlink" title="6.接口、类、抽象类的区别"></a>6.接口、类、抽象类的区别</h4>
+<h4 id="5-接口"><a href="#5-接口" class="headerlink" title="5.接口"></a>5.接口</h4><ul>
+<li><p>小概念：<code>interface + name</code> ，这将变成一个接口。</p>
+</li>
+<li><p>特点见演示</p>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public interface BaseInterface1
+&#123;
+    void ShowWindow();
+    void HideWindow();
+
+    /*
+    void Show1()  
+    &#123;
+        错误的，不能包含函数的实现
+    &#125;
+    */
+
+    // private void Show3(); 错误的，不能将函数的声明 改为 私有的
+
+&#125;
+
+public interface BaseInterface2
+&#123;
+    void PlaySound();
+    void CloseSound();
+&#125;
+
+public interface MyInterface : BaseInterface1,BaseInterface2  // 接口 允许单一继承，也允许多重继承
+&#123;
+
+&#125;
+
+public class MyClass16 : MyInterface
+&#123;
+    // 方法一（常见）
+    public void CloseSound()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+    public void HideWindow()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+    public void PlaySound()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+    public void ShowWindow()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+    // 方法二（使用修补程序得出的）
+    /*
+    void BaseInterface2.CloseSound()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+
+    void BaseInterface1.HideWindow()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+
+    void BaseInterface2.PlaySound()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+
+    void BaseInterface1.ShowWindow()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+    */
+&#125;
+
+public class BaseClass1
+&#123;
+
+&#125;
+
+public class BaseClass2
+&#123;
+
+&#125;
+
+/*
+public class Son1 :BaseClass1,BaseClass2
+&#123;
+    错误的 单个类不能继承多个类
+&#125;
+*/
+
+
+// 类只允许继承单个类，但可以同时继承多个接口
+public class Son1 : BaseClass1,BaseInterface1, BaseInterface2
+&#123;
+    void BaseInterface2.CloseSound()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+
+    void BaseInterface1.HideWindow()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+
+    void BaseInterface2.PlaySound()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+
+    void BaseInterface1.ShowWindow()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+&#125;
+
+public class TInterface : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        // BaseInterface1 inter = new BaseInterface1(); 错误的，接口不可被实例化
+    &#125;
+&#125;
+</code></pre>
+<h4 id="6-接口-amp-抽象类"><a href="#6-接口-amp-抽象类" class="headerlink" title="6.接口 &amp; 抽象类"></a>6.接口 &amp; 抽象类</h4><ul>
+<li><p>相同点：</p>
+<ul>
+<li><p>（1）关于实例化</p>
+<ul>
+<li>两者都不允许实例化</li>
+</ul>
+</li>
+<li><p>（2）都支持只声明函数，不包含实现</p>
+</li>
+<li><p>（3）关于派生类</p>
+<ul>
+<li>都必须去实现 接口或抽象类的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>不同点</p>
+<ul>
+<li><p>（1）变量</p>
+<ul>
+<li>接口 不允许声明变量；而抽象类是可以的</li>
+</ul>
+</li>
+<li><p>（2）构造函数</p>
+<ul>
+<li>接口 不允许构造函数（包括普通构造函数和静态构造函数）；而 抽象类 是可以的</li>
+</ul>
+</li>
+<li><p>（3）函数实现</p>
+<ul>
+<li>接口 不允许函数实现；而抽象类是可以的</li>
+</ul>
+</li>
+<li><p>（4）访问修饰符</p>
+<ul>
+<li><p>（1）默认 public;  不允许改变为 private</p>
+</li>
+<li><p>（2）默认 private; 函数前面若是 abstract，那访问修饰符也不能是 private; 但是 非 abstract声明的函数 是允许 private protected</p>
+</li>
+</ul>
+</li>
+<li><p>（5）是否多重继承</p>
+<ul>
+<li>接口 允许多重继承多个接口；而抽象类是不允许多重继承多个类的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public interface BaseInteface_1
+&#123;
+
+&#125;
+
+
+public interface BaseInteface_2
+&#123;
+
+&#125;
+
+public interface MyInterface : BaseInteface_1, BaseInteface_2
+&#123;
+    // public int a;
+
+    //MyInterface();
+    //static MyInterface();
+
+    //void Show() &#123; &#125;
+
+    //internal void Show();
+
+    void ShowInterface();
+&#125;
+
+public abstract class BaseAbstract_1
+&#123;
+
+&#125;
+public abstract class BaseAbstract_2
+&#123;
+
+&#125;
+
+
+public abstract class MyAbstruct //: BaseAbstract_1, BaseAbstract_2
+&#123;
+    // public int a;
+
+    //MyAbstruct() &#123; &#125;
+    //static MyAbstruct() &#123; &#125;
+
+    //void Show() &#123; &#125;
+
+    //internal abstract void Show();
+
+    public abstract void ShowAbstruct();
+&#125;
+
+public class MyClass18 : MyInterface
+&#123;
+    public void ShowInterface()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+&#125;
+
+public class MyClass19 : MyAbstruct
+&#123;
+    public override void ShowAbstruct()
+    &#123;
+        throw new System.NotImplementedException();
+    &#125;
+&#125;
+
+public class CompareInterfaceAbstract : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //MyInterface interfaceTest = new MyInterface();
+        //MyAbstruct abstructTest = new MyAbstruct();
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<center>下节再见~</center>
+<center>森木清树.</center>
+
         <!-- 分类文章 -->
         
       </div>
