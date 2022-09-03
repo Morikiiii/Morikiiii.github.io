@@ -161,7 +161,8 @@
 </li>
 <li><p>（3）函数的修饰符</p>
 <ul>
-<li>结构体 不允许声明为 virtual 虚函数；但是 类 是可以的</li>
+<li>结构体 不允许声明为 <code>virtual</code> 虚函数；但是 类 是可以的</li>
+<li>结构体 不允许声明为 <code>protected</code> 受保护的函数；但是 类 可以</li>
 </ul>
 </li>
 <li><p>（4）类型修饰符</p>
@@ -183,7 +184,33 @@
 </li>
 </ul>
 </li>
-<li><p>（6）</p>
+<li><p>（6）关于继承</p>
+<ul>
+<li>结构体 之间不可以互相继承；但是类与类之间是可以继承的（sealed密封类除外）。</li>
+</ul>
+</li>
+<li><p>（7）使用上</p>
+<ul>
+<li><p>（a）访问变量</p>
+<ul>
+<li>结构体 访问成员变量，给变量显示赋值，就可直接访问；而 类 必须实例化对象才可以访问</li>
+<li>结构体 如果不通过 <code>new</code> 初始化，是不可以直接访问其内部变量的（ <code>const</code> 除外）</li>
+</ul>
+</li>
+<li><p>（b）访问函数</p>
+<ul>
+<li>结构体变量 和 类对象 必须进行初始化，才可以访问</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>（8）<code>new</code></p>
+<ul>
+<li><p>（a）结构体属于 值类型，结构体的 <code>new</code> ，并不会在堆上分配内存，仅仅是调用结构体的构造函数初始化而已。</p>
+</li>
+<li><p>（b）类属于 引用类型，类的 <code>new</code> ，会在堆上分配内存，而且也会调用类的构造函数进行初始化。</p>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -191,12 +218,242 @@
 </li>
 </ul>
 <p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+struct BaseStruct
+&#123;
+
+&#125;
+/*abstract*/ struct MyStruct //: BaseStruct
+&#123;
+    public int a;
+    //public const string str;// = &quot;20&quot;;
+    public readonly string str2 ;
+
+    public MyStruct(int value) 
+    &#123; 
+        a = value;
+        //str = &quot;20&quot;;
+        str2 = &quot;20&quot;;
+    &#125;
+    //~MyStruct() &#123; &#125;
+    static MyStruct() &#123; &#125;
+
+    public  void Show() &#123; &#125;
+
+    // public virtual void Show2() &#123; &#125;
+    // protected void Show3() &#123; &#125;
+&#125;
+
+class BaseClassT
+&#123;
+
+&#125;
+/*abstract*/ class MyClass20 : BaseClassT
+&#123;
+    public int a = 2000;
+    //public const string str;// = &quot;20&quot;;
+    public readonly string str2 /*= &quot;20&quot;*/;
+
+    public MyClass20( /* int value */ ) 
+    &#123;
+        //str = &quot;20&quot;; 
+        str2 = &quot;300&quot;;
+    &#125;
+    ~MyClass20() &#123; &#125;
+    static MyClass20() &#123; &#125;
+
+    public void Show() &#123; &#125;
+
+    public virtual void Show2() &#123; &#125;
+
+    protected void Show3() &#123; &#125;
+&#125;
+
+public class TStruct : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        MyClass20 myClass20 = new MyClass20();
+        // int a = myClass20.a;
+        myClass20.Show();
+
+        MyStruct myStruct = new MyStruct();
+        //myStruct.a = 20000;
+        //int b = myStruct.a;
+        myStruct.Show();
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="is-amp-as-显式-x2F-隐式转换（数据类型转换）"><a href="#is-amp-as-显式-x2F-隐式转换（数据类型转换）" class="headerlink" title="is &amp; as 显式 &#x2F; 隐式转换（数据类型转换）"></a><code>is</code> &amp; <code>as</code> 显式 &#x2F; 隐式转换（数据类型转换）</h2><ul>
+<li><p>小概念：</p>
+<ul>
+<li><p><code>is</code> ：检查对象类型的兼容性，并返回结果 true（false）</p>
+</li>
+<li><p><code>as</code> ：检查对象类型的兼容性，并返回转换结果，如果不兼容则返回 null</p>
+</li>
+</ul>
+</li>
+<li><p><strong>前置知识：</strong></p>
+<ul>
+<li><p>引用类型（堆上）： <code>string</code> 、 <code>int[]</code> 、<code>class</code> 、 <code>interface</code></p>
+</li>
+<li><p>值类型（栈上）： <code>byte</code> 、 <code>(u)short</code> 、 <code>(u)int</code> 、 <code>(u)long</code> 、 <code>bool</code> 、 <code> enum</code> 、 <code>struct</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/*
+ * 前置知识2：
+ *          short       -32,768 ~ 32,767
+ *          int         -2,147,483,648 ~ 2,147,483,647
+ *          float       7 位小数
+ *          double      15 ~ 16 位小数
+ * 
+ * 
+ * is
+ *      可检测 值类型 和 引用类型，成功返回 true；否则返回 false
+ * as
+ *      as 首先会判断 源数据类型 是否是 目标数据类型，不是的话，编译器直接报错
+ *      as 转换成功 返回源数据类型存储的数据，否则，返回 null
+ *      
+ *      
+ * 强制类型转换（显式类型转换）
+ *    高精度 --》 低精度  需要强制类型转换
+ *    注意：
+ *        高精度数据类型 转换为 低精度数据类型时，若要转换成功需要 高精度数据类型的 位数 &lt;= 低精度的数据类型
+ * 
+ * 自动类型转换（隐式类型转换）
+ *    低精度 --》 高精度 系统自动转换
+ */
+
+public class BaseTemp
+&#123;
+
+&#125;
+
+public class SonTemp : BaseTemp
+&#123;
+
+&#125; 
+
+public class TypeChange : MonoBehaviour
+&#123;
+    // Start is called before the first frame update
+    void Start()
+    &#123;
+        /*
+        int a = 1234567;
+        short b = (short)a;
+        Debug.Log(b);
+        */
+
+        /*
+        short a = 1234;
+        int b = a;
+        short c = 32768;
+        */
+
+        /*
+        string a = &quot;abc&quot;;
+        int b = 123;
+
+        bool c =  a is int; // a is string
+        if (c)
+        &#123;
+            Debug.Log(&quot;a 是 string 类型的&quot;);
+        &#125;
+        else
+        &#123;
+            Debug.Log(&quot;a 不是 string 类型的&quot;);
+        &#125;
+        */
+
+        /*
+        string a = &quot;abc&quot;;
+        int b = 123;
+
+        string c = a as string;
+        Debug.Log(c);
+
+
+        string c = a as int;
+        Debug.Log(c);
+
+
+        int[] c = a as int[];
+        Debug.Log(c);
+
+
+        int[] d = &#123; 1, 2, 3 &#125;;
+        int[] c = d as int[];
+
+        if (c != null)
+        &#123;
+            Debug.Log(c.Length);
+        &#125;
+        */
+
+        /*
+        SonTemp son = new SonTemp();
+        if (son as SonTemp != null)
+        &#123;
+            Debug.Log(&quot;son as SonTemp&quot;);
+        &#125;
+        if (son as BaseTemp != null)
+        &#123;
+            Debug.Log(&quot;son as BaseTemp&quot;);
+        &#125;
+        */
+    &#125;
+
+    // Update is called once per frame
+    void Update()
+    &#123;
+
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="什么是装箱-amp-拆箱"><a href="#什么是装箱-amp-拆箱" class="headerlink" title="什么是装箱 &amp; 拆箱"></a>什么是装箱 &amp; 拆箱</h2><ul>
+<li><p>小概念：</p>
+<ul>
+<li><p><strong>装箱：</strong> 值类型 –》 引用类型</p>
+</li>
+<li><p><strong>拆箱：</strong> 引用类型 –》 值类型</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://img-blog.csdnimg.cn/2020060808112935.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MDM0Mzg0,size_16,color_FFFFFF,t_70#pic_left" >
+        </sapn>
+      </p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">        int a = 20;
+        object b = (object)a; // 装箱，发生GC 内存分配
+        object d = a;
+
+        int c = (int)b; // 拆箱
+</code></pre>
+<hr>
+<h2 id="值类型与引用类型的内存模型"><a href="#值类型与引用类型的内存模型" class="headerlink" title="值类型与引用类型的内存模型"></a>值类型与引用类型的内存模型</h2><p>推荐阅读博客：<a target="_blank" rel="noopener" href="https://luckylifes.blog.csdn.net/article/details/106611384">深入理解C#中的堆（heap）与栈（Stack），一次性全部掌握</a></p>
+<p><strong>演示：</strong></p>
 <pre><code class="csharp">
 </code></pre>
 <hr>
-<h2 id="is-amp-as-显式-x2F-隐式转换"><a href="#is-amp-as-显式-x2F-隐式转换" class="headerlink" title="is &amp; as 显式 &#x2F; 隐式转换"></a><code>is</code> &amp; <code>as</code> 显式 &#x2F; 隐式转换</h2><hr>
-<h2 id="什么是装箱-amp-拆箱"><a href="#什么是装箱-amp-拆箱" class="headerlink" title="什么是装箱 &amp; 拆箱"></a>什么是装箱 &amp; 拆箱</h2><hr>
-<h2 id="值类型与引用类型的内存模型"><a href="#值类型与引用类型的内存模型" class="headerlink" title="值类型与引用类型的内存模型"></a>值类型与引用类型的内存模型</h2><hr>
+<center>森木清树.</center>
 
         <!-- 分类文章 -->
         
@@ -204,7 +461,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93-Struct"><span class="space-toc-text">结构体 Struct</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#is-amp-as-%E6%98%BE%E5%BC%8F-x2F-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="space-toc-text">is &amp; as 显式 &#x2F; 隐式转换</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A3%85%E7%AE%B1-amp-%E6%8B%86%E7%AE%B1"><span class="space-toc-text">什么是装箱 &amp; 拆箱</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="space-toc-text">值类型与引用类型的内存模型</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93-Struct"><span class="space-toc-text">结构体 Struct</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#is-amp-as-%E6%98%BE%E5%BC%8F-x2F-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%89"><span class="space-toc-text">is &amp; as 显式 &#x2F; 隐式转换（数据类型转换）</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A3%85%E7%AE%B1-amp-%E6%8B%86%E7%AE%B1"><span class="space-toc-text">什么是装箱 &amp; 拆箱</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="space-toc-text">值类型与引用类型的内存模型</span></a></li></ol>
            </div>
         
       </div>
