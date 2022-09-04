@@ -456,7 +456,57 @@ public class TypeChange : MonoBehaviour
 <hr>
 <h2 id="值类型与引用类型的内存模型"><a href="#值类型与引用类型的内存模型" class="headerlink" title="值类型与引用类型的内存模型"></a>值类型与引用类型的内存模型</h2><p>推荐阅读博客：<a target="_blank" rel="noopener" href="https://luckylifes.blog.csdn.net/article/details/106611384">深入理解C#中的堆（heap）与栈（Stack），一次性全部掌握</a></p>
 <p><strong>演示：</strong></p>
-<pre><code class="csharp">
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Monster
+&#123;
+    public string name = &quot;骷髅兵&quot;;
+    public int hp = 100;
+&#125;
+
+public class HeapStack : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //Example1();
+        //Example2();
+        //Example3();
+        Example4();
+    &#125;
+
+    void Example1()
+    &#123;
+        int a = 10;
+        int b = 20;
+        short c = 30;
+    &#125;
+
+    void Example2()
+    &#123;
+        int a = 20;
+        string b = &quot;Vip&quot;;
+        string c = &quot;Skill&quot;;
+        b = c;
+        Debug.Log(b);
+    &#125;
+
+    void Example3()
+    &#123;
+        Monster monster = new Monster();
+    &#125;
+
+    void Example4()
+    &#123;
+        Monster[] monsters = &#123; new Monster(), new Monster(), new Monster() &#125;;
+        Monster monster1 = monsters[0];
+        monster1.name = &quot;石头人&quot;;
+        Monster monster2 = monsters[0];
+        monster2.name = &quot;嗜血蝙蝠&quot;;
+        Debug.Log(monster1.name);
+    &#125;
+&#125;
 </code></pre>
 <hr>
 <center>森木清树.</center>
