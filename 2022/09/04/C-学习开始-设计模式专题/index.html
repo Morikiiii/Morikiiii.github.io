@@ -619,8 +619,147 @@ public class Visit : MonoBehaviour
 </li>
 <li><p><em>简单工厂模式推荐阅读：</em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11236213.html">C#设计模式（1）——简单工厂模式 - Frank_520 - 博客园</a></p>
 </li>
+<li><p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/09.png" >
+        </sapn>
+      </p>
+</li>
 </ul>
 </li>
+</ul>
+<p><strong>SampleFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace Factor
+&#123;
+    public class SampleFactor
+    &#123;
+        public AbstructMouse CreateMouse(MouseType emMouseType)
+        &#123;
+            AbstructMouse mouse = null;
+
+            switch (emMouseType)
+            &#123;
+                case MouseType.HpMouse:
+                    mouse = new HpMouse();
+                    break;
+                case MouseType.DellMouse:
+                    mouse = new DellMouse();
+                    break;
+
+                default:
+                    break;
+            &#125;
+            return mouse;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>HpMouse：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace Factor
+&#123;
+    public class HpMouse : AbstructMouse
+    &#123;
+        public override void Print()
+        &#123;
+            Debug.Log(&quot;生产了一个Hp鼠标&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>DellMouse：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+//using Factor;
+
+namespace Factor
+&#123;
+    public class DellMouse : /*Factor.*/ AbstructMouse
+    &#123;
+        public override void Print()
+        &#123;
+            Debug.Log(&quot;生产了一个Dell鼠标&quot;);
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>AbstructMouse：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Factor
+&#123;
+    public abstract class AbstructMouse
+    &#123;
+        public abstract void Print();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>FactorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public enum MouseType
+&#123;
+    None,
+    DellMouse,
+    HpMouse,
+&#125;
+
+public class FactorMain : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //RunNormal();
+        RunSampleFactor();
+    &#125;
+
+    void RunNormal()
+    &#123;
+        DellMouse dellMouse = new DellMouse();
+        dellMouse.Print();
+
+        HpMouse hpMouse = new HpMouse();
+        hpMouse.Print();
+
+    &#125;
+    void RunSampleFactor()
+    &#123;
+        SampleFactor factor = new SampleFactor();
+        AbstructMouse dellMouse = factor.CreateMouse(MouseType.DellMouse);
+        dellMouse.Print();
+
+        AbstructMouse hpMouse = factor.CreateMouse(MouseType.HpMouse);
+        hpMouse.Print();
+
+    &#125;
+    void RunFactor()
+    &#123;
+
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+&#125;
+</code></pre>
+<ul>
 <li><p>工厂模式</p>
 <ul>
 <li><p>避免简单工厂模式种，新增产品品牌（类型）时，直接修改工厂类。为了解决这个问题出现了 工厂模式。</p>
@@ -629,8 +768,102 @@ public class Visit : MonoBehaviour
 </li>
 <li><p><em>工厂模式推荐阅读：</em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11241920.html">C#设计模式（2）——工厂模式 - Frank_520 - 博客园</a></p>
 </li>
+<li><p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/08.png" >
+        </sapn>
+      </p>
+</li>
 </ul>
 </li>
+</ul>
+<p><strong>FactorBase：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Factor
+&#123;
+    public abstract class FactorBase
+    &#123;
+        public abstract AbstructMouse CreateMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>DellFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class DellFactor : FactorBase
+&#123;
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new DellMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>HpFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class HpFactor : FactorBase
+&#123;
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new HpMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AppleFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class AppleFactor : FactorBase
+&#123;
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new AppleMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>FactorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class FactorMain : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //RunNormal();
+        //RunSampleFactor();
+        RunFactor();
+    &#125;
+    void RunFactor()
+    &#123;
+        DellFactor dellFactor = new DellFactor();
+        AbstructMouse dellMouse = dellFactor.CreateMouse();
+        dellMouse.Print();
+
+        HpFactor hpFactor = new HpFactor();
+        AbstructMouse hpMouse = hpFactor.CreateMouse();
+        hpMouse.Print();
+
+        AppleFactor appleFactor = new AppleFactor();
+        AbstructMouse appleMouse = appleFactor.CreateMouse();
+        appleMouse.Print();
+    &#125;
+&#125;
+</code></pre>
+<ul>
 <li><p>抽象工厂模式</p>
 <ul>
 <li><p>为了解决系列产品的问题，就有了抽象工厂模式。</p>
@@ -639,13 +872,222 @@ public class Visit : MonoBehaviour
 </li>
 <li><p><em>抽象工厂模式推荐阅读：</em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11241926.html">C#设计模式（3）——抽象工厂模式 - Frank_520 - 博客园</a></p>
 </li>
+<li><p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/10.png" >
+        </sapn>
+      </p>
+</li>
 </ul>
 </li>
 </ul>
-<p><strong>演示：</strong></p>
-<pre><code class="csharp">
+<p><strong>AbstructKeyBoard：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public abstract class AbstructKeyBoard 
+&#123;
+    public abstract void Print();
+&#125;
 </code></pre>
-<h4 id="适配模式"><a href="#适配模式" class="headerlink" title="| 适配模式"></a>| 适配模式</h4><hr>
+<p><strong>AppleKeyboard &#x2F; DellKeyboard &#x2F; HpKeyboard ：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class AppleKeyboard : AbstructKeyBoard // 其他两个同理
+&#123;
+    public override void Print()
+    &#123;
+        Debug.Log(&quot;Apple键盘&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AbstructFactor_Base：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+
+public abstract class AbstructFactor_Base 
+&#123;
+    public abstract AbstructMouse CreateMouse();
+    public abstract AbstructKeyBoard CreateKeyBoard();
+&#125;
+</code></pre>
+<p><strong>AbstructFactor_Apple &#x2F; AbstructFactor_Dell &#x2F; AbstructFactor_Hp：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class AbstructFactor_Apple : AbstructFactor_Base // 其他两个同理
+&#123;
+    public override AbstructKeyBoard CreateKeyBoard()
+    &#123;
+        return new AppleKeyboard();
+    &#125;
+
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new AppleMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>FactorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class FactorMain : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //RunNormal();
+        //RunSampleFactor();
+        //RunFactor();
+
+        RunAbstructFactor();
+    &#125;
+
+    void RunAbstructFactor()
+    &#123;
+        AbstructFactor_Apple apple = new AbstructFactor_Apple();
+        AbstructMouse appleMouse = apple.CreateMouse();
+        appleMouse.Print();
+        AbstructKeyBoard appleKeyBoard = apple.CreateKeyBoard();
+        appleKeyBoard.Print();
+
+        Debug.Log(&quot;------------------------------------------&quot;);
+
+        AbstructFactor_Dell dell = new AbstructFactor_Dell();
+        AbstructMouse dellMouse = dell.CreateMouse();
+        dellMouse.Print();
+        AbstructKeyBoard dellKeyBoard = dell.CreateKeyBoard();
+        dellKeyBoard.Print();
+
+        Debug.Log(&quot;------------------------------------------&quot;);
+
+        AbstructFactor_Hp hp = new AbstructFactor_Hp();
+        AbstructMouse hpMouse = hp.CreateMouse();
+        hpMouse.Print();
+        AbstructKeyBoard hpKeyBoard = hp.CreateKeyBoard();
+        hpKeyBoard.Print();
+    &#125;
+&#125;
+</code></pre>
+<h4 id="适配模式"><a href="#适配模式" class="headerlink" title="| 适配模式"></a>| 适配模式</h4><blockquote>
+<p>问题：Android &#x2F; iOS 充电线标准不一样，只有一根线时，如何完成不同型号手机充电？</p>
+<p>解决：适配器模式</p>
+</blockquote>
+<p><em>适配模式推荐阅读：</em> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11280195.html">C#设计模式（7）——适配器模式 - Frank_520 - 博客园</a></p>
+<p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/11.png" >
+        </sapn>
+      </p>
+<p><strong>Adaptor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Adaptor
+&#123;
+    public enum AdaptorType
+    &#123;
+        None,
+        Android,
+        iOS,
+    &#125;
+
+    public interface IAdaptor
+    &#123;
+        /// &lt;summary&gt;
+        /// 统一调用接口，大一统
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;adaptorType&quot;&gt;&lt;/param&gt;
+
+        void Charge(AdaptorType adaptorType);
+    &#125;
+
+    public class Adaptor : IAdaptor
+    &#123;
+        // 之前已经写了非常多的代码，但是 现在需要增加一个转换器的接口
+        // 接口 用于拓展原始类不足的功能
+
+        AndroidLine androidLine = new AndroidLine();
+        IosLine iosLine = new IosLine();
+
+        public void Charge(AdaptorType adaptorType)
+        &#123;
+            if (adaptorType == AdaptorType.Android)
+                androidLine.AndroidCharge();
+            else if (adaptorType == AdaptorType.iOS)
+                iosLine.IOSCharge();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>IosLine：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Adaptor
+&#123;
+    public class IosLine
+    &#123;
+        public void IOSCharge()
+        &#123;
+            Debug.Log(&quot;借助iOS充电线充电中...&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AndroidLine：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Adaptor
+&#123;
+    public class AndroidLine
+    &#123;
+        public void AndroidCharge()
+        &#123;
+            Debug.Log(&quot;借助Android充电线充电中...&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AdaptorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace Adaptor
+&#123;
+    public class AdaptorMain : MonoBehaviour
+    &#123;
+        void Start()
+        &#123;
+            IAdaptor adaptor = new Adaptor();
+            adaptor.Charge(AdaptorType.Android);
+            adaptor.Charge(AdaptorType.iOS);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<center>森木清树.</center>
 
         <!-- 分类文章 -->
         
