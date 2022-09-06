@@ -265,11 +265,222 @@ public class StringBuilderTest : MonoBehaviour
 &#125;
 </code></pre>
 <hr>
-<h2 id="String-和-StringBuilder-的区别"><a href="#String-和-StringBuilder-的区别" class="headerlink" title="String 和 StringBuilder 的区别"></a><code>String</code> 和 <code>StringBuilder</code> 的区别</h2><hr>
-<h2 id="FileStream-读写文件"><a href="#FileStream-读写文件" class="headerlink" title="FileStream 读写文件"></a><code>FileStream</code> 读写文件</h2><hr>
-<h2 id="String-Writer-读写文件"><a href="#String-Writer-读写文件" class="headerlink" title="String / Writer 读写文件"></a><code>String / Writer</code> 读写文件</h2><hr>
-<h2 id="Directory-DirectoryInfo-操作文件夹"><a href="#Directory-DirectoryInfo-操作文件夹" class="headerlink" title="Directory / DirectoryInfo 操作文件夹"></a><code>Directory / DirectoryInfo</code> 操作文件夹</h2><hr>
-<h2 id="Unity-读写文件"><a href="#Unity-读写文件" class="headerlink" title="Unity 读写文件"></a>Unity 读写文件</h2><hr>
+<h2 id="String-和-StringBuilder-的区别"><a href="#String-和-StringBuilder-的区别" class="headerlink" title="String 和 StringBuilder 的区别"></a><code>String</code> 和 <code>StringBuilder</code> 的区别</h2><p><strong>图解：</strong> 
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/12.jpg" >
+        </sapn>
+      </p>
+<hr>
+<h2 id="FileStream-文件读写"><a href="#FileStream-文件读写" class="headerlink" title="FileStream 文件读写"></a><code>FileStream</code> 文件读写</h2><p><em>推荐网址：</em> <a target="_blank" rel="noopener" href="http://c.biancheng.net/csharp/file-io.html">C#文件读写</a></p>
+<p><strong>图解：</strong>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/13.jpg" >
+        </sapn>
+      </p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using UnityEngine;
+
+public class FileStreamTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        CreateFile();
+        ReadFile();
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+
+    void CreateFile()
+    &#123;
+        // 定义文件路径
+        string path = @&quot;D:\some\c#\study\P1 Study\Assets\Resources\student.txt&quot;;
+        // 创建 File Stream 类的实例
+        FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+        // 定义学号
+        string msg = &quot;1710026&quot;;
+        // 将 字符串 转换为 字节数组
+        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+        // 向文件中写入字节数组
+        fileStream.Write(bytes, 0, bytes.Length);
+        // 刷新缓冲区
+        fileStream.Flush();
+        // 关闭流
+        fileStream.Close();
+    &#125;
+
+    void ReadFile()
+    &#123;
+        // 定义文件路径
+        string path = @&quot;D:\some\c#\study\P1 Study\Assets\Resources\student.txt&quot;;
+        // 判断是否含有指定文件
+        if (File.Exists(path))
+        &#123;
+            FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+            // 定义存放文件信息的字节数组
+            byte[] bytes = new byte[fileStream.Length];
+            // 读取文件信息
+            fileStream.Read(bytes, 0, bytes.Length);
+            // 将得到的字节型数组重写编码为 字符型数组
+            string c = Encoding.UTF8.GetString(bytes);
+            Debug.Log(&quot;学生的学号为：&quot;);
+            // 输出学生的学号
+            Debug.Log(c);
+            // 关闭流
+            fileStream.Close();
+        &#125;
+        else
+        &#123;
+            Debug.Log(&quot;您查看的文件不存在！&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="StreamReader-Writer-文件读写"><a href="#StreamReader-Writer-文件读写" class="headerlink" title="StreamReader / Writer 文件读写"></a><code>StreamReader / Writer</code> 文件读写</h2><p><strong>图解：</strong> 
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/15.png" >
+        </sapn>
+      </p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+public class StreamTest : MonoBehaviour
+&#123;
+    // Start is called before the first frame update
+    void Start()
+    &#123;
+        //CreateFile();
+        ReadFile();
+    &#125;
+
+    // Update is called once per frame
+    void Update()
+    &#123;
+
+    &#125;
+
+    void CreateFile()
+    &#123;
+        // 定义文件路径
+        string path = @&quot;D:\some\c#\study\P1 Study\Assets\Resources\student2.txt&quot;;
+
+        // 创建 StreamWriter 类的实例
+        StreamWriter streamWriter = new StreamWriter(path);
+        // 向文件中写入姓名
+        streamWriter.WriteLine(&quot;小张&quot;);
+        // 向文件中写入手机号
+        streamWriter.WriteLine(&quot;13112345678&quot;);
+        // 刷新缓存
+        streamWriter.Flush();
+        // 关闭流
+        streamWriter.Close();
+    &#125;
+
+    void ReadFile()
+    &#123;
+        // 定义文件路径
+        string path = @&quot;D:\some\c#\study\P1 Study\Assets\Resources\student2.txt&quot;;
+
+        // 创建 StreamReader 类的实例
+        StreamReader streamReader = new StreamReader(path);
+        // 判断文件中是否有字符
+        while(streamReader.Peek() != -1)
+        &#123;
+            // 读取文件中的一行字符
+            string str = streamReader.ReadLine();
+            Debug.Log(str);
+        &#125;
+        streamReader.Close();
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="Directory-DirectoryInfo-操作文件夹"><a href="#Directory-DirectoryInfo-操作文件夹" class="headerlink" title="Directory / DirectoryInfo 操作文件夹"></a><code>Directory / DirectoryInfo</code> 操作文件夹</h2><p><strong>图解：</strong> 
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/16.jpg" >
+        </sapn>
+      </p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
+
+public class DirectoryTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        TestDirectory();
+        TestDirectoryInfo();
+    &#125;
+
+    void TestDirectory()
+    &#123;
+        string strDir = @&quot;D:\some\c#\study\P1 Study\Assets\Resources\DirTest&quot;;
+
+        // 创建文件夹
+        //Directory.CreateDirectory(strDir);
+
+        // 判断某路径的文件夹是否存在
+        //Directory.Exists(strDir);
+
+        // 删除指定的文件夹
+        //Directory.Delete(strDir);
+
+        //if (Directory.Exists(strDir))
+        //&#123;
+        //    Directory.Delete(strDir);
+        //&#125;
+        //else
+        //&#123;
+        //    Directory.CreateDirectory(strDir);
+        //&#125;
+
+        //Directory.Move(strDir, @&quot;D:\some\c#\study\P1 Study\Assets\DirTest&quot;);
+
+        // 注意：若待删除的文件夹下面存在子文件夹。则需要传递 true，这样的话，将递归删除该文件夹下的子文件夹，同时删除自己
+        //      若待删除的文件夹下面不存在子文件夹，则默认进行直接删除即可
+        //Directory.Delete(@&quot;D:\some\c#\study\P1 Study\Assets\DirTest&quot;,true);
+        //Directory.Delete(@&quot;D:\some\c#\study\P1 Study\Assets\DirTest&quot;);
+    &#125;
+
+    void TestDirectoryInfo()
+    &#123;
+        string strDir = @&quot;D:\some\c#\study\P1 Study\Assets\Resources\DirTest&quot;;
+
+        DirectoryInfo directoryInfo = new DirectoryInfo(strDir);
+        directoryInfo.Create();
+        // 生成子文件夹
+        directoryInfo.CreateSubdirectory(&quot;code-1&quot;);
+        directoryInfo.CreateSubdirectory(&quot;code-2&quot;);
+
+        //directoryInfo.Delete();
+        //directoryInfo.Delete(true);
+
+        IEnumerable&lt;DirectoryInfo&gt; dir = directoryInfo.EnumerateDirectories();
+        foreach(var v in dir)
+        &#123;
+            Debug.Log(v.Name);
+        &#125;
+
+        directoryInfo.MoveTo(@&quot;D:\some\c#\study\P1 Study\Assets\DirTest&quot;);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<center>森木清树.</center>
 
         <!-- 分类文章 -->
         
@@ -277,7 +488,7 @@ public class StringBuilderTest : MonoBehaviour
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#String-%E5%B8%B8%E7%94%A8-API"><span class="space-toc-text">String 常用 API</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#StringBuilder-%E5%B8%B8%E7%94%A8API"><span class="space-toc-text">StringBuilder 常用API</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#String-%E5%92%8C-StringBuilder-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="space-toc-text">String 和 StringBuilder 的区别</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#FileStream-%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="space-toc-text">FileStream 读写文件</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#String-Writer-%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="space-toc-text">String &#x2F; Writer 读写文件</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Directory-DirectoryInfo-%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="space-toc-text">Directory &#x2F; DirectoryInfo 操作文件夹</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity-%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6"><span class="space-toc-text">Unity 读写文件</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#String-%E5%B8%B8%E7%94%A8-API"><span class="space-toc-text">String 常用 API</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#StringBuilder-%E5%B8%B8%E7%94%A8API"><span class="space-toc-text">StringBuilder 常用API</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#String-%E5%92%8C-StringBuilder-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="space-toc-text">String 和 StringBuilder 的区别</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#FileStream-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="space-toc-text">FileStream 文件读写</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#StreamReader-Writer-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99"><span class="space-toc-text">StreamReader &#x2F; Writer 文件读写</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Directory-DirectoryInfo-%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="space-toc-text">Directory &#x2F; DirectoryInfo 操作文件夹</span></a></li></ol>
            </div>
         
       </div>
