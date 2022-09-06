@@ -121,11 +121,486 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        
+        <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">public class 数组 : MonoBehaviour
+&#123;
+    // 数组是用来存储数据的集合
+    // 1.元素类型相同
+    // 2.固定长度
+    // 3.顺序集合
+
+    int[] array1;
+    int[] array2 = new int[3] &#123; 1,2,3 &#125;;
+    int[] array3 = &#123; 1,2,3,4,5 &#125;;
+
+
+    private void Start()
+    &#123;
+        array1 = new int[3];
+        Debug.Log( array1[0]);
+        array1[0] = 5;
+        Debug.Log(array1[0]);
+
+        Debug.Log(&quot;-----------------------------------------&quot;);
+
+        Debug.Log(array1.Length);
+
+        Debug.Log(&quot;-----------------------------------------&quot;);
+
+        for (int i = 0; i &lt; array3.Length; i++)
+        &#123;
+            Debug.Log(array3[i]);
+        &#125;
+
+        Debug.Log(&quot;-----------------------------------------&quot;);
+
+        foreach (var v in array2)
+        &#123;
+            Debug.Log(v);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="Arraylist"><a href="#Arraylist" class="headerlink" title="Arraylist"></a>Arraylist</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">public class ArrayList1 : MonoBehaviour
+&#123;
+
+    // 动态数组（ ArrayList ） 对象的有序集合
+    // 动态数组会自动重新调整它的大小
+    // 可以使用索引在指定的位置添加和移除项目，它也允许在列表中进行动态内存分配
+
+    ArrayList arraylist1 = new ArrayList();
+    int[] array1 = new int[4] &#123; 1, 2, 3, 4 &#125;;
+
+    void Start()
+    &#123;
+        arraylist1.Add(45);
+        arraylist1.Add(25);
+        arraylist1.Add(12);
+        //Debug.Log(arraylist1[0]);
+        //Debug.Log(arraylist1[1]);
+        //Debug.Log(arraylist1[2]);
+
+        // AddRange
+        arraylist1.AddRange(array1);
+
+        foreach (var v in arraylist1)
+        &#123;
+            Debug.Log(v);
+        &#125;
+
+        // Clear &amp; Contains
+        if (arraylist1.Contains(12))
+        &#123;
+            Debug.Log(&quot;包含元素&quot; + 12);
+        &#125;
+
+        //arraylist1.Clear();
+
+        if (arraylist1.Contains(12))
+        &#123;
+            Debug.Log(&quot;包含元素&quot; + 12);
+        &#125;
+
+        // IndexOf
+        // 1,3,4,12,5,6,12 返回第一个12
+        arraylist1[0] = 1;
+        arraylist1[1] = 3;
+        arraylist1[2] = 4;
+        arraylist1[3] = 12;
+        arraylist1[4] = 5;
+        arraylist1[5] = 6;
+        arraylist1[6] = 12;
+
+        Debug.Log( arraylist1.IndexOf(12)); // 没有找到元素的话返回 -1
+
+        // Insert
+        Debug.Log(&quot;Insert 之前-----&quot;);
+        foreach (var v in arraylist1)
+        &#123;
+            Debug.Log(v);
+        &#125;
+
+        arraylist1.Insert(3, 66);
+
+        Debug.Log(&quot;Insert 之后-----&quot;);
+        foreach (var v in arraylist1)
+        &#123;
+            Debug.Log(v);
+        &#125;
+
+        // Remove
+        arraylist1.Remove(12);
+
+        Debug.Log(&quot;Remove 12 之后-----&quot;);
+        foreach (var v in arraylist1)
+        &#123;
+            Debug.Log(v);
+        &#125;
+
+        // Reverse
+        arraylist1.Reverse();
+
+        Debug.Log(&quot;Reverse 之后-----&quot;);
+        foreach (var v in arraylist1)
+        &#123;
+            Debug.Log(v);
+        &#125;
+
+        // Sort
+        arraylist1.Sort();
+
+        Debug.Log(&quot;Sort 之后-----&quot;);
+        foreach (var v in arraylist1)
+        &#123;
+            Debug.Log(v);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class List1 : MonoBehaviour
+&#123;
+    // 泛型类集合 List&lt;&gt;
+    // 作用与功能近似 arraylist
+    // 无需装箱拆箱，类型转换
+    // 类型安全
+
+    List&lt;int&gt; list1 = new List&lt;int&gt;();
+
+    void Start()
+    &#123;
+        list1.Add(1);
+        list1.Add(2);
+        list1.Add(3);
+
+        //list1.Count;
+
+        //list1.
+    &#125;
+&#125;
+</code></pre>
+<h2 id="哈希Table"><a href="#哈希Table" class="headerlink" title="哈希Table"></a>哈希Table</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class 哈希table : MonoBehaviour
+&#123;
+    // Hashtable 类代表了 基于键的哈希代码组织起来的 键/值对 集合
+    // 它使用键来访问集合中的元素
+
+    Hashtable ht1 = new Hashtable();
+
+    void Start()
+    &#123;
+        ht1.Add(&quot;1&quot;,100);
+        ht1.Add(1,99);
+        //ht1.Clear();
+        if(ht1.ContainsKey(&quot;1&quot;))
+        &#123;
+            Debug.Log(&quot;包含 key 为&quot; + &quot;1&quot; + &quot;的数据&quot;);
+        &#125;
+        ht1.Remove(&quot;1&quot;);
+        Debug.Log(ht1[&quot;1&quot;]);
+        Debug.Log(ht1[1]);
+
+        ht1[1] = 999;
+
+        ICollection key = ht1.Keys;
+        foreach(var k in key)
+        &#123;
+            Debug.Log(ht1[k]);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class 字典Dictionary : MonoBehaviour
+&#123;
+
+    // 字典 泛型容器，存储 键值对数据 的集合
+
+    Dictionary&lt;string, string&gt; dic1 = new Dictionary&lt;string, string&gt;();
+
+    void Start()
+    &#123;
+        dic1.Add(&quot;1&quot;, &quot;100&quot;);
+        dic1.Add(&quot;2&quot;, &quot;200&quot;);
+        dic1.Add(&quot;3&quot;, &quot;300&quot;);
+        if(dic1.ContainsKey(&quot;1&quot;))
+        &#123;
+            Debug.Log(&quot;键存在&quot;);
+        &#125;
+
+        dic1[&quot;1&quot;] = &quot;1000&quot;;
+        foreach (KeyValuePair&lt;string,string&gt; kvp in dic1 )
+        &#123;
+            Debug.Log(kvp.Key + &quot;&quot; + kvp.Value);
+        &#125;
+
+        dic1.Remove(&quot;2&quot;);
+        dic1.Clear();
+    &#125;
+&#125;
+</code></pre>
+<h2 id="Hashset"><a href="#Hashset" class="headerlink" title="Hashset"></a>Hashset</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HashSet1 : MonoBehaviour
+&#123;
+
+    // 包含不重复项的无序列表
+
+    HashSet&lt;int&gt; hs1 = new HashSet&lt;int&gt;();
+    HashSet&lt;int&gt; hs2 = new HashSet&lt;int&gt;();
+
+    void Start()
+    &#123;
+        hs1.Add(1);
+        hs1.Add(2);
+        hs1.Add(2);
+        Debug.Log(hs1.Count);
+
+        hs2.Add(2);
+        hs2.Add(3);
+
+        //hs1.IntersectWith(hs2);  // 交集
+        //hs1.UnionWith(hs2);      // 并集
+        //hs1.ExceptWith(hs2);       // 差集
+        hs1.SymmetricExceptWith(hs2); // 对称差集
+        foreach (var v in hs1)
+        &#123;
+            Debug.Log(v);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class 链表 : MonoBehaviour
+&#123;
+
+    // 双向链表
+    LinkedList&lt;int&gt; linList = new LinkedList&lt;int&gt;();
+    LinkedListNode&lt;int&gt; node;
+
+    private void Start()
+    &#123;
+        node = linList.AddFirst(1);
+        linList.AddAfter(node, 2);
+        node = linList.AddBefore(node, 0);
+
+        Debug.Log(linList.Count);
+
+        Debug.Log(linList.First.Value);
+        Debug.Log(linList.Last.Value);
+
+        if(node.Previous != null)
+        &#123;
+            Debug.Log(node.Previous.Value);
+        &#125;
+
+        if (node.Next != null)
+        &#123;
+            Debug.Log(node.Next.Value);
+        &#125;
+    &#125;
+    // 链表 list 数组
+    // 删除插入效率高于其他，查找速度不如其他
+&#125;
+</code></pre>
+<hr>
+<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class 堆栈 : MonoBehaviour
+&#123;
+    // Stack 先进后出的对象集合
+    Stack st1 = new Stack();
+    void Start()
+    &#123;
+        st1.Push(&quot;a&quot;);
+        st1.Push(&quot;b&quot;);
+        st1.Push(&quot;c&quot;);
+        st1.Push(&quot;d&quot;);
+        Debug.Log(st1.Count);
+        string v = (string)st1.Pop(); // 弹出一个
+        Debug.Log(v);
+        Debug.Log(st1.Count);
+
+        v = (string)st1.Peek(); // 栈顶数据
+        Debug.Log(v);
+        Debug.Log(st1.Count);
+
+        foreach(var v1 in st1)
+        &#123;
+            Debug.Log(v1);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class 队列 : MonoBehaviour
+&#123;
+    // 先进后出
+    Queue queue1 = new Queue();
+    Queue&lt;int&gt; queue2 = new Queue&lt;int&gt;();
+
+    void Start()
+    &#123;
+        queue1.Enqueue(&quot;1&quot;);
+        queue2.Enqueue(1);
+        queue2.Enqueue(2);
+        queue2.Enqueue(3);
+
+        int v = queue2.Dequeue();
+        Debug.Log(v);
+        queue2.Enqueue(4);
+
+        foreach (var v1 in queue2)
+        &#123;
+            Debug.Log(v1);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="实现堆栈"><a href="#实现堆栈" class="headerlink" title="实现堆栈"></a>实现堆栈</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class 实现栈 : MonoBehaviour
+&#123;
+
+    class MyStack
+    &#123;
+        class StackData
+        &#123;
+            public StackData nextItem;
+            public object topData;
+            public StackData(StackData next,object data)
+            &#123;
+                this.nextItem = next;
+                this.topData = data;
+            &#125;
+        &#125;
+        StackData top;
+        public void Push(object data)
+        &#123;
+            top = new StackData(top,data);
+        &#125;
+        public object Pop()
+        &#123;
+            object rsl = top.topData;
+            top = top.nextItem;
+            return rsl;
+        &#125;
+    &#125;
+
+    private void Start()
+    &#123;
+        MyStack ms = new MyStack();
+        ms.Push(1);
+        ms.Push(2);
+        ms.Push(3);
+
+        Debug.Log(ms.Pop());
+        Debug.Log(ms.Pop());
+        Debug.Log(ms.Pop());
+    &#125;
+&#125;
+</code></pre>
+<h2 id="实现队列"><a href="#实现队列" class="headerlink" title="实现队列"></a>实现队列</h2><p><strong>课程内容：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class 实现队列 : MonoBehaviour
+&#123;
+
+    class MyQuene
+    &#123;
+        class QueneData
+        &#123;
+            public QueneData nextItem;
+            public object topData;
+            public QueneData(QueneData last, object data)
+            &#123;
+                last.nextItem = this;
+                this.topData = data;
+            &#125;
+            public QueneData(object data)
+            &#123;
+                this.topData = data;
+            &#125;
+        &#125;
+        QueneData top;
+        QueneData LastData;
+        public void Enqueue(object data)
+        &#123;
+            if (top == null)
+            &#123;
+                top = new QueneData(data);
+                LastData = top;
+            &#125;
+            else
+            &#123;
+                LastData = new QueneData(LastData, data);
+            &#125;
+        &#125;
+        public object Dequeue()
+        &#123;
+            object rsl = top.topData;
+            top = top.nextItem;
+            return rsl;
+        &#125;
+    &#125;
+
+    private void Start()
+    &#123;
+        MyQuene mq1 = new MyQuene();
+        mq1.Enqueue(1);
+        mq1.Enqueue(2);
+        mq1.Enqueue(3);
+        mq1.Enqueue(4);
+        Debug.Log(mq1.Dequeue());
+        Debug.Log(mq1.Dequeue());
+        Debug.Log(mq1.Dequeue());
+        Debug.Log(mq1.Dequeue());
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<center>森木清树.</center>
+
         <!-- 分类文章 -->
         
       </div>
       <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%95%B0%E7%BB%84"><span class="space-toc-text">数组</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Arraylist"><span class="space-toc-text">Arraylist</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#List"><span class="space-toc-text">List</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%93%88%E5%B8%8CTable"><span class="space-toc-text">哈希Table</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AD%97%E5%85%B8"><span class="space-toc-text">字典</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Hashset"><span class="space-toc-text">Hashset</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="space-toc-text">链表</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A0%86%E6%A0%88"><span class="space-toc-text">堆栈</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%98%9F%E5%88%97"><span class="space-toc-text">队列</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%A0%86%E6%A0%88"><span class="space-toc-text">实现堆栈</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="space-toc-text">实现队列</span></a></li></ol>
+           </div>
         
       </div>
    </div>
