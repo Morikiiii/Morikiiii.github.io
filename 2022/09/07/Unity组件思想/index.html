@@ -146,11 +146,84 @@
 <p>快速复制：Ctrl + D</p>
 <p>快速定位：F</p>
 <hr>
-<h2 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h2><hr>
-<h2 id="Transform组件"><a href="#Transform组件" class="headerlink" title="Transform组件"></a>Transform组件</h2><hr>
-<h2 id="GameObject"><a href="#GameObject" class="headerlink" title="GameObject"></a>GameObject</h2><hr>
-<h2 id="预制体"><a href="#预制体" class="headerlink" title="预制体"></a>预制体</h2><hr>
-<h2 id="Unity生命周期函数"><a href="#Unity生命周期函数" class="headerlink" title="Unity生命周期函数"></a>Unity生命周期函数</h2><hr>
+<h2 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h2><h4 id="为什么要自定义组件"><a href="#为什么要自定义组件" class="headerlink" title="| 为什么要自定义组件"></a>| 为什么要自定义组件</h4><p>我们写的组件大多和游戏逻辑有关,比如玩家控制脚本。</p>
+<h4 id="如何自定义组件"><a href="#如何自定义组件" class="headerlink" title="| 如何自定义组件"></a>| 如何自定义组件</h4><p>项目面板右键 -&gt; 创建 -&gt; C#脚本 -&gt;拖拽</p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="| 注意事项"></a>| 注意事项</h4><ul>
+<li><p>继承 MonoBehaviour 的类都是组件</p>
+</li>
+<li><p>只有组件可以挂载到游戏物体身上</p>
+</li>
+<li><p>Inspector面板 和 C# 一同使用</p>
+</li>
+</ul>
+<hr>
+<h2 id="Transform组件"><a href="#Transform组件" class="headerlink" title="Transform组件"></a>Transform组件</h2><h4 id="组件介绍-1"><a href="#组件介绍-1" class="headerlink" title="| 组件介绍"></a>| 组件介绍</h4><p>三个主要数值:</p>
+<ul>
+<li><p>Position：位置</p>
+</li>
+<li><p>Rotation：旋转</p>
+</li>
+<li><p>Scale：缩放</p>
+</li>
+</ul>
+<h4 id="组件常用属性和方法"><a href="#组件常用属性和方法" class="headerlink" title="| 组件常用属性和方法"></a>| 组件常用属性和方法</h4><p><strong>属性:</strong> </p>
+<p><code>childCount</code> ：子物体的数量</p>
+<p><code>parent</code> ：父物体的 Transform 组件</p>
+<p><code>root</code> ：最高级别父物体</p>
+<p><code>postion</code> 、<code>eulerAngles</code> 、<code>localScale</code> </p>
+<p><strong>方法:</strong> </p>
+<p><code>Find(string)</code> ：查找子物体</p>
+<p><code>Translate(Vector3)</code> ：朝着一个坐标移动</p>
+<p><code>Rotate(Vector3)</code> ：旋转一个角度</p>
+<p><code>LookAt(Transform)</code> ：看向目标</p>
+<h4 id="组件的特殊性"><a href="#组件的特殊性" class="headerlink" title="| 组件的特殊性"></a>| 组件的特殊性</h4><p>可以直接访问 Transform 组件</p>
+<hr>
+<h2 id="GameObject"><a href="#GameObject" class="headerlink" title="GameObject"></a>GameObject</h2><h4 id="GameObject-是什么"><a href="#GameObject-是什么" class="headerlink" title="| GameObject 是什么"></a>| GameObject 是什么</h4><p>在 层级面板 中的都是游戏对象或者说游戏物体。</p>
+<h4 id="组件中的-gameobject"><a href="#组件中的-gameobject" class="headerlink" title="| 组件中的 gameobject"></a>| 组件中的 gameobject</h4><p>组件中可以使用来自基类继承 gameObject 属性 直接访问脚本所在的游戏物体,类似 transform。</p>
+<ol>
+<li><p>gameObject：组件所在游戏物体</p>
+</li>
+<li><p>transform：组件所在游戏物体的transform组件</p>
+</li>
+</ol>
+<h4 id="GameObject-常用属性和方法"><a href="#GameObject-常用属性和方法" class="headerlink" title="| GameObject 常用属性和方法"></a>| GameObject 常用属性和方法</h4><p><strong>属性：</strong></p>
+<p><code>name</code> ：游戏物体名称,和层级面板中等同</p>
+<p><code>tag</code> ：游戏物体的标签</p>
+<p><code>activeInHierarchy</code> ：显示状态</p>
+<p><code>transform</code> ：这个游戏物体的变换组件</p>
+<p><strong>方法：</strong></p>
+<p><code>static GameObject Find(string path)</code> ：一个静态方法,查找游戏物体</p>
+<p><code>GetComponent&lt;T&gt;()</code> ：获取游戏物体身上的组件，T代表要查找的类型，类似方法有很多</p>
+<p><code>SetActive（bool）</code> ：修改显示状态</p>
+<hr>
+<h2 id="预制体"><a href="#预制体" class="headerlink" title="预制体"></a>预制体</h2><h4 id="概念"><a href="#概念" class="headerlink" title="| 概念"></a>| 概念</h4><p>预先制作好的游戏物体。</p>
+<p>如：lol小兵，远程近战，什么时候放，固定ai逻辑。</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="| 创建"></a>| 创建</h4><p>将游戏物体放在Assets面板。</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="| 使用"></a>| 使用</h4><p>将预制体从项目面板拖拽到层级面板来达到复用效果。</p>
+<ol>
+<li><p>接近“引用关系”</p>
+</li>
+<li><p>预制体被删除，不影响游戏物体（但会变成红色）。右键里可以选择取消引用关系</p>
+</li>
+<li><p>双击资源文件夹里的预制体或点击预制体小箭头，进入“异世界”进行编辑</p>
+</li>
+</ol>
+<h4 id="修改"><a href="#修改" class="headerlink" title="| 修改"></a>| 修改</h4><p>预制体可以套娃，也就是预制体套预制体。</p>
+<p><strong>变体：</strong></p>
+<p>如果游戏物体已经是预制体，Unity会弹窗提醒我们选择创建模式</p>
+<p>原始预制体：一个完全独立的预制体</p>
+<p>预制体变体：旧的预制体变化，变体也会发生变化，但是变体保留和旧预制体不同的部分</p>
+<hr>
+<h2 id="Unity生命周期函数"><a href="#Unity生命周期函数" class="headerlink" title="Unity生命周期函数"></a>Unity生命周期函数</h2><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="| 概念"></a>| 概念</h4><p>指一个组件从激活到销毁的整个过程。</p>
+<h4 id="常用生命周期函数"><a href="#常用生命周期函数" class="headerlink" title="| 常用生命周期函数"></a>| 常用生命周期函数</h4><p><code>Awake()</code> ：唤醒事件，一开始就执行，只执行一次。</p>
+<p><code>OnEnable()</code> ：启用事件，每次启用都执行一次。当脚本组件被启用的时候执行一次</p>
+<p><code>Start()</code> ：开始事件，执行一次</p>
+<p><code>FixedUpdate()</code> ：固定更新事件，执行N次，每0.02s 执行一次。所有物理相关的更新都在这个事件中处理</p>
+<p><code>Update()</code> ：更新事件，执行N次，每帧执行一次</p>
+<p><code>LateUpdate()</code> ：稍后更新事件，执行 N 次，在 <code>Update()</code> 事件执行完毕后再执行</p>
+<p><code>OnDisable()</code> ：禁用事件，每次禁用都执行一次。在 <code>OnDestroy()</code> 事件也会执行</p>
+<p><code>OnDestroy()</code> ：销毁事件，执行一次。当组件被销毁时执行</p>
+<hr>
 <h2 id="Invoke"><a href="#Invoke" class="headerlink" title="Invoke"></a>Invoke</h2><hr>
 <h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><hr>
 <h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><hr>
@@ -224,7 +297,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">组件介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 组件概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 游戏组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E5%86%85%E7%BD%AE%E7%AE%80%E6%98%93%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9D%90%E8%B4%A8"><span class="space-toc-text">Unity内置简易模型和材质</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 模型介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%9D%90%E8%B4%A8%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 材质介绍</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Scene-%E7%95%8C%E9%9D%A2%E6%B8%B8%E6%88%8F%E7%89%A9%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="space-toc-text">Scene 界面游戏物体操作</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="space-toc-text">| 工具栏</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BA%A6%E6%9D%9F%E4%B8%8E%E5%90%B8%E9%99%84"><span class="space-toc-text">| 约束与吸附</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">自定义组件</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Transform%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Transform组件</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#GameObject"><span class="space-toc-text">GameObject</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A2%84%E5%88%B6%E4%BD%93"><span class="space-toc-text">预制体</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="space-toc-text">Unity生命周期函数</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Invoke"><span class="space-toc-text">Invoke</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="space-toc-text">协程</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="space-toc-text">常用工具类</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">组件介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 组件概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 游戏组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E5%86%85%E7%BD%AE%E7%AE%80%E6%98%93%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9D%90%E8%B4%A8"><span class="space-toc-text">Unity内置简易模型和材质</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 模型介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%9D%90%E8%B4%A8%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 材质介绍</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Scene-%E7%95%8C%E9%9D%A2%E6%B8%B8%E6%88%8F%E7%89%A9%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="space-toc-text">Scene 界面游戏物体操作</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="space-toc-text">| 工具栏</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BA%A6%E6%9D%9F%E4%B8%8E%E5%90%B8%E9%99%84"><span class="space-toc-text">| 约束与吸附</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">自定义组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 为什么要自定义组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 如何自定义组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="space-toc-text">| 注意事项</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Transform%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Transform组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D-1"><span class="space-toc-text">| 组件介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="space-toc-text">| 组件常用属性和方法</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7"><span class="space-toc-text">| 组件的特殊性</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#GameObject"><span class="space-toc-text">GameObject</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#GameObject-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="space-toc-text">| GameObject 是什么</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84-gameobject"><span class="space-toc-text">| 组件中的 gameobject</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#GameObject-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="space-toc-text">| GameObject 常用属性和方法</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A2%84%E5%88%B6%E4%BD%93"><span class="space-toc-text">预制体</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="space-toc-text">| 创建</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="space-toc-text">| 修改</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="space-toc-text">Unity生命周期函数</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="space-toc-text">| 常用生命周期函数</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Invoke"><span class="space-toc-text">Invoke</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="space-toc-text">协程</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="space-toc-text">常用工具类</span></a></li></ol>
            </div>
         
       </div>
