@@ -156,6 +156,22 @@
 <li><p>Inspector面板 和 C# 一同使用</p>
 </li>
 </ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L2_4Demo : MonoBehaviour
+&#123;
+    public string Name;
+    public int ID;
+
+    void Start()
+    &#123;
+        Debug.Log(666);
+    &#125;
+&#125;
+</code></pre>
 <hr>
 <h2 id="Transform组件"><a href="#Transform组件" class="headerlink" title="Transform组件"></a>Transform组件</h2><h4 id="组件介绍-1"><a href="#组件介绍-1" class="headerlink" title="| 组件介绍"></a>| 组件介绍</h4><p>三个主要数值:</p>
 <ul>
@@ -177,6 +193,42 @@
 <p><code>Rotate(Vector3)</code> ：旋转一个角度</p>
 <p><code>LookAt(Transform)</code> ：看向目标</p>
 <h4 id="组件的特殊性"><a href="#组件的特殊性" class="headerlink" title="| 组件的特殊性"></a>| 组件的特殊性</h4><p>可以直接访问 Transform 组件</p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L2_5TransformDemo : MonoBehaviour
+&#123;
+
+    private float num = 0;
+
+    void Start()
+    &#123;
+        #region 属性
+        //print(transform.childCount);
+        //print(transform.parent);
+        //print(transform.root);
+        //print(transform.eulerAngles); // 旋转
+
+        //print(&quot;当前坐标：&quot;+transform.position);
+        //print(&quot;当前旋转：&quot; + transform.rotation);
+        //print(&quot;当前缩放：&quot; + transform.localScale);
+
+        //transform.position = new Vector3(num, 10, 10);
+        //transform.rotation = new 
+        //num += 0.01f;
+        #endregion
+
+        #region 方法
+        //print(transform.Find(&quot;C&quot;));
+        //transform.Translate(new Vector3(-0.01f, 0, 0));
+        //transform.Rotate(new Vector3(3, 0, 0));
+        //transform.LookAt(transform.parent);
+        #endregion
+    &#125;
+&#125;
+</code></pre>
 <hr>
 <h2 id="GameObject"><a href="#GameObject" class="headerlink" title="GameObject"></a>GameObject</h2><h4 id="GameObject-是什么"><a href="#GameObject-是什么" class="headerlink" title="| GameObject 是什么"></a>| GameObject 是什么</h4><p>在 层级面板 中的都是游戏对象或者说游戏物体。</p>
 <h4 id="组件中的-gameobject"><a href="#组件中的-gameobject" class="headerlink" title="| 组件中的 gameobject"></a>| 组件中的 gameobject</h4><p>组件中可以使用来自基类继承 gameObject 属性 直接访问脚本所在的游戏物体,类似 transform。</p>
@@ -195,6 +247,51 @@
 <p><code>static GameObject Find(string path)</code> ：一个静态方法,查找游戏物体</p>
 <p><code>GetComponent&lt;T&gt;()</code> ：获取游戏物体身上的组件，T代表要查找的类型，类似方法有很多</p>
 <p><code>SetActive（bool）</code> ：修改显示状态</p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L2_6Demo : MonoBehaviour
+&#123;
+    private GameObject gO;
+    public Transform ts;
+
+    void Start()
+    &#123;
+        // 获取当前组件所在的游戏物体
+        //print(gameObject);
+        //print(gameObject.transform.position);
+        //print(gO.transform.position);
+
+        //print(ts);
+        //print(ts.position);
+        //print(ts.gameObject);
+
+
+        //print(gameObject.name);
+        //print(gameObject.tag);
+
+        //print(gameObject.activeInHierarchy);
+        //print(gO.activeInHierarchy);
+
+        //gO = GameObject.Find(&quot;C/D&quot;);
+        //print(gO.transform.localPosition);
+
+
+        //GameObject go = gameObject.GetComponent&lt;GameObject&gt;(); //error
+        //print(go.name);
+
+        Transform temptransform = gameObject.GetComponent&lt;Transform&gt;();
+        BoxCollider boxCollider = gameObject.GetComponent&lt;BoxCollider&gt;();
+        print(temptransform.position);
+        print(boxCollider.isTrigger);
+
+
+        gameObject.SetActive(false);
+    &#125;
+&#125;
+</code></pre>
 <hr>
 <h2 id="预制体"><a href="#预制体" class="headerlink" title="预制体"></a>预制体</h2><h4 id="概念"><a href="#概念" class="headerlink" title="| 概念"></a>| 概念</h4><p>预先制作好的游戏物体。</p>
 <p>如：lol小兵，远程近战，什么时候放，固定ai逻辑。</p>
@@ -223,10 +320,333 @@
 <p><code>LateUpdate()</code> ：稍后更新事件，执行 N 次，在 <code>Update()</code> 事件执行完毕后再执行</p>
 <p><code>OnDisable()</code> ：禁用事件，每次禁用都执行一次。在 <code>OnDestroy()</code> 事件也会执行</p>
 <p><code>OnDestroy()</code> ：销毁事件，执行一次。当组件被销毁时执行</p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L2_8Demo : MonoBehaviour
+&#123;
+    private void Awake()
+    &#123;
+        // 初始化一次
+        print(&quot;Awake&quot;);
+    &#125;
+
+    private void OnEnable()
+    &#123;
+        // 如 背包
+        print(&quot;OnEnable&quot;);
+
+    &#125;
+
+    void Start()
+    &#123;
+        print(&quot;Start&quot;);
+
+    &#125;
+
+    void Update()
+    &#123;
+        // 每帧执行一次
+        print(&quot;Update&quot;);
+        // 我渲染上一帧的时间
+        //print(Time.deltaTime);
+
+    &#125;
+
+    private void LateUpdate()
+    &#123;
+        print(&quot;LateUpdate&quot;);
+
+    &#125;
+
+    private void FixedUpdate()
+    &#123;
+        print(&quot;FixedUpdate&quot;);
+    &#125;
+
+    private void OnDisable()
+    &#123;
+        print(&quot;OnDisable&quot;);
+
+    &#125;
+
+    private void OnDestroy()
+    &#123;
+        print(&quot;OnDestroy&quot;);
+
+    &#125;
+&#125;
+</code></pre>
 <hr>
-<h2 id="Invoke"><a href="#Invoke" class="headerlink" title="Invoke"></a>Invoke</h2><hr>
-<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><hr>
-<h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><hr>
+<h2 id="Invoke"><a href="#Invoke" class="headerlink" title="Invoke"></a>Invoke</h2><h4 id="函数使用"><a href="#函数使用" class="headerlink" title="| 函数使用"></a>| 函数使用</h4><ul>
+<li><p><code>Invoke</code> 是调用、执行的意思</p>
+</li>
+<li><p><code>Invoke(string methodName, float time)</code> ：输入一个方法名称，过个几秒 来执行一次</p>
+<ul>
+<li><p>methodName：方法名称</p>
+</li>
+<li><p>time：几秒后执行</p>
+</li>
+</ul>
+</li>
+<li><p><code>InvokeRepeating(string methodName, float time, float repeatRate)</code> ：重复调用</p>
+<ul>
+<li><p>methodName：方法名称</p>
+</li>
+<li><p>time：几秒后执行</p>
+</li>
+<li><p>repeatRate：重复间隔时间</p>
+</li>
+</ul>
+</li>
+<li><p><code>CancelInvoke(string methodName)</code> ：取消调用，使用无参重载就是取消全部</p>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L2_9Demo : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        // 3s 后执行一个方法/行为
+        //Invoke(&quot;Demo&quot;, 3);
+
+        // 2s 后，每间隔1s执行一次
+        InvokeRepeating(&quot;Demo&quot;, 2, 1);
+
+        // 5s 后执行取消Demo
+        Invoke(&quot;CancelDemo&quot;, 5);
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+
+    private void CancelDemo()
+    &#123;
+        CancelInvoke(&quot;Demo&quot;);
+    &#125;
+
+    public void Demo()
+    &#123;
+        print(&quot;Demo&quot;);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><h4 id="概念-2"><a href="#概念-2" class="headerlink" title="| 概念"></a>| 概念</h4><p>协同程序，并不是多线程</p>
+<p>要有一个主程序，这个主程序就是生命周期函数</p>
+<h4 id="函数的定义"><a href="#函数的定义" class="headerlink" title="| 函数的定义"></a>| 函数的定义</h4><p><strong>小演示：</strong></p>
+<pre><code class="csharp">    // 常规函数
+    public int GetNum()
+    &#123;
+        return 0;
+    &#125;
+    // 协程函数
+    public IEnumerable Demo()
+    &#123;
+        print(&quot;先执行的&quot;);
+
+        // 等待 1s
+        yield return new WaitForSeconds(1.0f);
+        print(&quot;后执行的&quot;);
+
+        // 下一帧继续执行
+        yield return null;
+        print(&quot;最后执行的&quot;);
+    &#125;
+</code></pre>
+<h4 id="函数的使用"><a href="#函数的使用" class="headerlink" title="| 函数的使用"></a>| 函数的使用</h4><ul>
+<li><p><code>Coroutine StartCoroutine(Demo(&quot;这是参数&quot;))</code> ：执行一个协程，参数直接调用协程方法即可。可以用一个变量接受返回值用于后续停止该协程。</p>
+</li>
+<li><p>我们在生命周期函数中调用协程，但是协程的运行顺序和主程序无关，可以理解成开了一个分支专门运行这个协程，如果我们打开了多个协程，这些协程之间也无关。</p>
+</li>
+</ul>
+<h4 id="函数的停止"><a href="#函数的停止" class="headerlink" title="| 函数的停止"></a>| 函数的停止</h4><ul>
+<li><p><code>StopAllCoroutines()</code> ：结束全部协程</p>
+</li>
+<li><p><code>StopCoroutine</code> ：结束某个协程程序</p>
+</li>
+<li><p><code>StopCoroutine(IEnumerator routine)</code> 和调用协程一样使用，但是如果协程有参数不要使用这个</p>
+</li>
+<li><p><code>StopCoroutine(Coroutine routine)</code> ：参数填写协程变量</p>
+</li>
+<li><p><code>StopCoroutine(string methodName)</code> ：参数填写协程方法的名</p>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L2_10Demo : MonoBehaviour
+&#123;
+
+    void Start()
+    &#123;
+        //StartCoroutine(&quot;Demo&quot;);
+
+        //Coroutine cor = StartCoroutine(Demo(10));
+        //StopCoroutine(cor);
+
+        //StartCoroutine(Demo2());
+        StartCoroutine(Demo3());
+        StartCoroutine(Demo4());
+
+    &#125;
+
+    // 常规函数
+    public int GetNum()
+    &#123;
+        return 0;
+    &#125;
+
+    // 协程函数
+    public IEnumerator Demo(int num)
+    &#123;
+        print(num);
+        print(&quot;先执行的&quot;);
+
+        // 等待 1s
+        yield return new WaitForSeconds(3f);
+        print(&quot;后执行的&quot;);
+
+        // 下一帧继续执行
+        yield return null;
+        print(&quot;最后执行的&quot;);
+    &#125;
+
+    // 协程函数
+    public IEnumerator Demo2()
+    &#123;
+        while (true)
+        &#123;
+            // 暂停 0.1s
+            yield return new WaitForSeconds(0.01f);
+            transform.Rotate(new Vector3(5, 0, 0));
+        &#125;
+    &#125;
+
+    // 协程函数
+    public IEnumerator Demo3()
+    &#123;
+        transform.position = new Vector3(10, 10, 10);
+        yield return Demo2();
+    &#125;
+
+    // 协程函数
+    public IEnumerator Demo4()
+    &#123;
+        // 5s 之后取消协程
+        yield return new WaitForSeconds(5);
+        // 取消全部
+        StopAllCoroutines();
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="常用工具类"><a href="#常用工具类" class="headerlink" title="常用工具类"></a>常用工具类</h2><h4 id="数学工具类"><a href="#数学工具类" class="headerlink" title="| 数学工具类"></a>| 数学工具类</h4><ul>
+<li><p><code>Mathf.Abs(int num)</code> ：返回绝对值</p>
+</li>
+<li><p><code>Mathf.Max(int a,int b)</code> ：返回更大的值</p>
+</li>
+<li><p><code>Mathf.Min(int a,int b)</code> ：返回最小的值</p>
+</li>
+<li><p><code>Mathf.Round(2.5f)</code> ：四舍六入，五取偶数</p>
+</li>
+<li><p><code>Mathf.Ceil(2.5f)</code> ：返回向上取整的值</p>
+</li>
+<li><p><code>Mathf.Floor(2.5f)</code> ：返回向下取整的值</p>
+</li>
+<li><p><code>Random.Range(0.5)</code> ：返回随机值</p>
+<ul>
+<li><p>（1）如果是int 重载：返回0-4的随机值，包含0；不包含5</p>
+</li>
+<li><p>（2）如果是float重载：返回0-5的随机值，包含0并且包含5</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="时间工具类"><a href="#时间工具类" class="headerlink" title="| 时间工具类"></a>| 时间工具类</h4><p><em>只读：</em></p>
+<ul>
+<li><p><code>Time.time</code> ：表示从游戏运行到现在的时间，会随着游戏的暂停而停止计算</p>
+</li>
+<li><p><code>Time.deltaTime</code> ：表示从上一帧到当前帧的时间，以 秒 为单位</p>
+</li>
+<li><p><code>Time.realtimeSinceStartup</code> ：表示自游戏开始后的总时间，即使暂停也会增加，也就是现实时间</p>
+</li>
+</ul>
+<p><em>读写：</em></p>
+<ul>
+<li><code>Time.timeScale</code> ：时间缩放，默认值为 1，若设置 &lt;1，表示时间减慢，若设置 &gt;1，表示时间加快，0 意味着游戏暂停</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L2_11Demo : MonoBehaviour
+&#123;
+
+    void Start()
+    &#123;
+        #region math
+        //int num1 = Mathf.Abs(-6);
+        //int num2 = Mathf.Max(3,4,5,10,20);
+        //int num3 = Mathf.Min(3,4,5,10,20);
+        //float num4 = Mathf.Round(2.5f);
+        //float num5 = Mathf.Ceil(2.4f);
+        //float num6 = Mathf.Floor(2.4f);
+
+        //print(num1);
+        //print(num2);
+        //print(num3);
+        //print(num4);
+        //print(num5);
+        //print(num6);
+
+        // 0~4 因为包含左边，不包含右边
+        //int num1 = Random.Range(0, 5);
+        //print(num1);
+
+        //float num2 = Random.Range(0, 5.0f);
+        //print(num2);
+        #endregion
+
+        #region time
+        Time.timeScale = 3;
+        #endregion
+
+    &#125;
+    private void Update()
+    &#123;
+
+        #region time
+        //print(Time.time);
+
+        // 每帧上升 1m
+        //transform.Translate(new Vector3(0, 1f, 0));
+
+        // 每 秒 上升 1m ; 方向 * 速度 * 一帧花费的时间
+        //transform.Translate(new Vector3(0, 1f, 0) * 1 * Time.deltaTime);
+
+        //print(Time.deltaTime); 
+
+        print(&quot;游戏时间：&quot;+Time.time);
+        print(&quot;帧时间：&quot;+Time.deltaTime);
+        print(&quot;现实时间：&quot;+Time.realtimeSinceStartup);
+        #endregion
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<center>森木清树.</center>
 
         <!-- 分类文章 -->
         
@@ -288,6 +708,17 @@
               
             
             
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/08/Unity-2D%E9%83%A8%E5%88%86/" class="post-categoris-bottom-link">
+                  Unity 2D部分
+                </a>
+                </li>
+              
+              
+            
+            
             </ul>
 
           </div>
@@ -297,7 +728,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">组件介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 组件概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 游戏组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E5%86%85%E7%BD%AE%E7%AE%80%E6%98%93%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9D%90%E8%B4%A8"><span class="space-toc-text">Unity内置简易模型和材质</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 模型介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%9D%90%E8%B4%A8%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 材质介绍</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Scene-%E7%95%8C%E9%9D%A2%E6%B8%B8%E6%88%8F%E7%89%A9%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="space-toc-text">Scene 界面游戏物体操作</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="space-toc-text">| 工具栏</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BA%A6%E6%9D%9F%E4%B8%8E%E5%90%B8%E9%99%84"><span class="space-toc-text">| 约束与吸附</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">自定义组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 为什么要自定义组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 如何自定义组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="space-toc-text">| 注意事项</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Transform%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Transform组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D-1"><span class="space-toc-text">| 组件介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="space-toc-text">| 组件常用属性和方法</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7"><span class="space-toc-text">| 组件的特殊性</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#GameObject"><span class="space-toc-text">GameObject</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#GameObject-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="space-toc-text">| GameObject 是什么</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84-gameobject"><span class="space-toc-text">| 组件中的 gameobject</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#GameObject-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="space-toc-text">| GameObject 常用属性和方法</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A2%84%E5%88%B6%E4%BD%93"><span class="space-toc-text">预制体</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="space-toc-text">| 创建</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="space-toc-text">| 修改</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="space-toc-text">Unity生命周期函数</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="space-toc-text">| 常用生命周期函数</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Invoke"><span class="space-toc-text">Invoke</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="space-toc-text">协程</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="space-toc-text">常用工具类</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">组件介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 组件概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 游戏组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E5%86%85%E7%BD%AE%E7%AE%80%E6%98%93%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9D%90%E8%B4%A8"><span class="space-toc-text">Unity内置简易模型和材质</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 模型介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%9D%90%E8%B4%A8%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 材质介绍</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Scene-%E7%95%8C%E9%9D%A2%E6%B8%B8%E6%88%8F%E7%89%A9%E4%BD%93%E6%93%8D%E4%BD%9C"><span class="space-toc-text">Scene 界面游戏物体操作</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="space-toc-text">| 工具栏</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BA%A6%E6%9D%9F%E4%B8%8E%E5%90%B8%E9%99%84"><span class="space-toc-text">| 约束与吸附</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">自定义组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 为什么要自定义组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 如何自定义组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="space-toc-text">| 注意事项</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Transform%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Transform组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D-1"><span class="space-toc-text">| 组件介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="space-toc-text">| 组件常用属性和方法</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E7%89%B9%E6%AE%8A%E6%80%A7"><span class="space-toc-text">| 组件的特殊性</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#GameObject"><span class="space-toc-text">GameObject</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#GameObject-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="space-toc-text">| GameObject 是什么</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84-gameobject"><span class="space-toc-text">| 组件中的 gameobject</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#GameObject-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="space-toc-text">| GameObject 常用属性和方法</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A2%84%E5%88%B6%E4%BD%93"><span class="space-toc-text">预制体</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%9B%E5%BB%BA"><span class="space-toc-text">| 创建</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="space-toc-text">| 修改</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="space-toc-text">Unity生命周期函数</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="space-toc-text">| 常用生命周期函数</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Invoke"><span class="space-toc-text">Invoke</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 函数使用</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%8D%8F%E7%A8%8B"><span class="space-toc-text">协程</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5-2"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="space-toc-text">| 函数的定义</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 函数的使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%81%9C%E6%AD%A2"><span class="space-toc-text">| 函数的停止</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="space-toc-text">常用工具类</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E5%AD%A6%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="space-toc-text">| 数学工具类</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="space-toc-text">| 时间工具类</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
