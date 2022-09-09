@@ -153,6 +153,21 @@
 <li><p><code>OrderinLayer</code> ：排序值</p>
 </li>
 </ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">public class L3_2Demo : MonoBehaviour
+&#123;
+    private SpriteRenderer SpriteRenderer;
+    public Sprite Sprite;
+
+    void Start()
+    &#123;
+        SpriteRenderer = GetComponent&lt;SpriteRenderer&gt;();
+        SpriteRenderer.sprite = Sprite;
+        SpriteRenderer.color = Color.black;
+        SpriteRenderer.flipX = true;
+    &#125;
+&#125;
+</code></pre>
 <hr>
 <h2 id="2D物理系统：刚体"><a href="#2D物理系统：刚体" class="headerlink" title="2D物理系统：刚体"></a>2D物理系统：刚体</h2><h4 id="物理系统"><a href="#物理系统" class="headerlink" title="| 物理系统"></a>| 物理系统</h4><p>物理现象模拟，如重力</p>
 <p>常用组件主要由 刚体 和 碰撞体 组成</p>
@@ -162,9 +177,125 @@
            data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/25.png" >
         </sapn>
       </p>
-<h4 id="物理材质"><a href="#物理材质" class="headerlink" title="| 物理材质"></a>| 物理材质</h4><hr>
-<h2 id="2D物理系统：碰撞体"><a href="#2D物理系统：碰撞体" class="headerlink" title="2D物理系统：碰撞体"></a>2D物理系统：碰撞体</h2><hr>
-<h2 id="2D物理系统：触发"><a href="#2D物理系统：触发" class="headerlink" title="2D物理系统：触发"></a>2D物理系统：触发</h2><hr>
+<h4 id="物理材质"><a href="#物理材质" class="headerlink" title="| 物理材质"></a>| 物理材质</h4><p>Frictionn：摩擦力</p>
+<p>Bounciness：弹性</p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">public class L3_3Demo : MonoBehaviour
+&#123;
+    private Rigidbody2D rigidbody_2D;
+
+    void Start()
+    &#123;
+        rigidbody_2D = GetComponent&lt;Rigidbody2D&gt;();
+        //rigidbody_2D.mass = 3;
+        rigidbody_2D.gravityScale = 0.5f;
+    &#125;
+
+    void Update()
+    &#123;
+        // 坐标
+        //rigidbody_2D.MovePosition(transform.position + new Vector3(0, 1, 0)*Time.deltaTime);
+
+        // 改变力 - 赛车刹车
+        //rigidbody_2D.velocity = new Vector2(0, 1);
+
+        // 施加力
+        //rigidbody_2D.AddForce(Vector2.up*10);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="2D物理系统：碰撞体"><a href="#2D物理系统：碰撞体" class="headerlink" title="2D物理系统：碰撞体"></a>2D物理系统：碰撞体</h2><h4 id="概念"><a href="#概念" class="headerlink" title="| 概念"></a>| 概念</h4><p>游戏中一个游戏物体物理边缘，用来防止穿模、检测碰撞</p>
+<h4 id="组件"><a href="#组件" class="headerlink" title="| 组件"></a>| 组件</h4><p>点击Edit Collider，可以在scene 面板中编辑碰撞体尺寸</p>
+<p>Offset：偏移量</p>
+<p>Size：碰撞体尺寸</p>
+<p>Material：物理材质</p>
+<h4 id="碰撞事件"><a href="#碰撞事件" class="headerlink" title="| 碰撞事件"></a>| 碰撞事件</h4><p>很多时候，我们需要知道两个游戏物体发生碰撞，比如子弹碰到了玩家角色，玩家需要扣除相应的 HP</p>
+<p><code>OnCollisionEnter2D</code> ：碰撞进入</p>
+<p><code>OnCollisionExit2D</code> ：碰撞退出</p>
+<p><code>OnCollisionStay2D</code> ：碰撞过程中</p>
+<p><code>Collision2D</code> ：碰撞信息</p>
+<p><code>gameObject</code> ：对方的游戏物体</p>
+<pre><code class="csharp">public class L3_4Demo : MonoBehaviour
+&#123;
+    // -------重要知识-------
+    // 1.双方都没有碰撞体和刚体，是绝对不可能触发碰撞事件（函数）（×）
+    // 2.双方都有碰撞体和刚体 （√）
+    // 3.一方有刚体和碰撞体，另外一方只有碰撞体【无论是哪一方，双方都可以进入碰撞事件】 （√）
+    // 4.双方都没有刚体，无法进入 （×）
+    // --------------------
+
+    // 碰撞进入
+    private void OnCollisionEnter2D(Collision2D collision)
+    &#123;
+        //print(&quot;碰撞进入&quot;+&quot;我碰到的是&quot;+collision.gameObject.name);
+        if(collision.gameObject.tag == &quot;Bullet&quot;)
+        &#123;
+            print(&quot;我掉血了，我被击中了&quot;);
+            GameObject.Destroy(collision.gameObject);
+        &#125;
+    &#125;
+
+    // 碰撞退出
+    private void OnCollisionExit2D(Collision2D collision)
+    &#123;
+        print(&quot;碰撞退出&quot;);
+    &#125;
+
+    // 碰撞中
+    private void OnCollisionStay2D(Collision2D collision)
+    &#123;
+        print(&quot;碰撞中&quot;);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="2D物理系统：触发"><a href="#2D物理系统：触发" class="headerlink" title="2D物理系统：触发"></a>2D物理系统：触发</h2><h4 id="触发概念"><a href="#触发概念" class="headerlink" title="| 触发概念"></a>| 触发概念</h4><p>如赛车到达终点，用来作为胜利或计时的依据；或者传送门，进入后可以传送，但并不需要真的和玩家发生碰撞</p>
+<h4 id="设置触发"><a href="#设置触发" class="headerlink" title="| 设置触发"></a>| 设置触发</h4><p>在碰撞体上勾选 <code>IsTrigger</code> 即可</p>
+<p>设置后这个游戏物体并不具备”物理边缘“，任何游戏物体都可以穿过</p>
+<h4 id="触发事件"><a href="#触发事件" class="headerlink" title="| 触发事件"></a>| 触发事件</h4><p><code>OnTriggerEnter2D</code> ：触发进入</p>
+<p><code>OnTriggerExit2D</code> ：触发退出</p>
+<p><code>OnTriggerStay2D</code> ：触发过程中</p>
+<p><code>Collision2D</code> ：对方碰撞体</p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">public class L3_5Demo : MonoBehaviour
+&#123;
+    // -------重要知识-------
+    // 类似碰撞
+    // 1.双方都没有碰撞体和刚体，是绝对不可能触发触发事件（函数）（×）
+    // 2.双方都有碰撞体和刚体 （√）
+    // 3.一方有刚体和碰撞体，另外一方只有碰撞体【无论是哪一方，双方都可以进入触发事件】 （√）
+    // 4.双方都没有刚体，无法进入 （×）
+    // --------------------
+
+    // 触发进入
+    private void OnTriggerEnter2D(Collider2D collision)
+    &#123;
+        print(&quot;触发进入&quot;);
+        if(collision.gameObject.name == &quot;Player&quot;)
+        &#123;
+            print(&quot;我被击中了，我掉血了&quot;);
+            //GameObject.Destroy(collision.gameObject);
+        &#125;
+    &#125;
+    // 触发退出
+    private void OnTriggerExit2D(Collider2D collision)
+    &#123;
+        print(&quot;触发退出&quot;);
+    &#125;
+    // 触发中
+    private void OnTriggerStay2D(Collider2D collision)
+    &#123;
+        print(&quot;触发中&quot;);
+        if (collision.gameObject.name == &quot;火圈&quot;)
+        &#123;
+            print(&quot;我一直在火圈里面&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<center>森木清树.</center>
 
         <!-- 分类文章 -->
         
@@ -241,6 +372,17 @@
               
             
             
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/09/Unity-%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F/" class="post-categoris-bottom-link">
+                  Unity 输入系统
+                </a>
+                </li>
+              
+              
+            
+            
             </ul>
 
           </div>
@@ -250,7 +392,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">2D介绍</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Sprite-amp-SpriteRenderer"><span class="space-toc-text">Sprite &amp; SpriteRenderer</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#2D-%E6%B8%B8%E6%88%8F%E7%9B%B8%E6%9C%BA"><span class="space-toc-text">| 2D 游戏相机</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#Sprite-amp-SpriteSheet"><span class="space-toc-text">| Sprite &amp; SpriteSheet</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#SpriteRenderer"><span class="space-toc-text">| SpriteRenderer</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%88%9A%E4%BD%93"><span class="space-toc-text">2D物理系统：刚体</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">| 物理系统</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#2D-%E5%88%9A%E4%BD%93"><span class="space-toc-text">| 2D 刚体</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%89%A9%E7%90%86%E6%9D%90%E8%B4%A8"><span class="space-toc-text">| 物理材质</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9A%E7%A2%B0%E6%92%9E%E4%BD%93"><span class="space-toc-text">2D物理系统：碰撞体</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9A%E8%A7%A6%E5%8F%91"><span class="space-toc-text">2D物理系统：触发</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">2D介绍</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Sprite-amp-SpriteRenderer"><span class="space-toc-text">Sprite &amp; SpriteRenderer</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#2D-%E6%B8%B8%E6%88%8F%E7%9B%B8%E6%9C%BA"><span class="space-toc-text">| 2D 游戏相机</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#Sprite-amp-SpriteSheet"><span class="space-toc-text">| Sprite &amp; SpriteSheet</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#SpriteRenderer"><span class="space-toc-text">| SpriteRenderer</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9A%E5%88%9A%E4%BD%93"><span class="space-toc-text">2D物理系统：刚体</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">| 物理系统</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#2D-%E5%88%9A%E4%BD%93"><span class="space-toc-text">| 2D 刚体</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%89%A9%E7%90%86%E6%9D%90%E8%B4%A8"><span class="space-toc-text">| 物理材质</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9A%E7%A2%B0%E6%92%9E%E4%BD%93"><span class="space-toc-text">2D物理系统：碰撞体</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%A2%B0%E6%92%9E%E4%BA%8B%E4%BB%B6"><span class="space-toc-text">| 碰撞事件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%9A%E8%A7%A6%E5%8F%91"><span class="space-toc-text">2D物理系统：触发</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%A7%A6%E5%8F%91%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 触发概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%A7%A6%E5%8F%91"><span class="space-toc-text">| 设置触发</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6"><span class="space-toc-text">| 触发事件</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
