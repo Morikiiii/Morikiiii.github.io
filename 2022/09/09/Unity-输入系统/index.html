@@ -284,7 +284,87 @@
 &#125;
 </code></pre>
 <hr>
-<h2 id="案例：小球跳跃"><a href="#案例：小球跳跃" class="headerlink" title="案例：小球跳跃"></a>案例：小球跳跃</h2><hr>
+<h2 id="案例：小球跳跃"><a href="#案例：小球跳跃" class="headerlink" title="案例：小球跳跃"></a>案例：小球跳跃</h2><h4 id="介绍-2"><a href="#介绍-2" class="headerlink" title="| 介绍"></a>| 介绍</h4><p>按 <em>空格</em> 小球会跳起来</p>
+<p>落地后会出现一定 <em>回弹</em></p>
+<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="| 实现"></a>| 实现</h4><p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L4_5Demo : MonoBehaviour
+&#123;
+    // 刚体
+    //private Rigidbody2D rigidbody_2D;     改名
+    private new Rigidbody2D rigidbody2D; // 加new
+
+    // 是否在地面上
+    private bool isOnGround = true;
+
+    // 每秒移动多少米 - 常规情况下
+    public float Speed = 1;
+    public float JumpPower = 10;
+
+    private void Start()
+    &#123;
+        rigidbody2D = GetComponent&lt;Rigidbody2D&gt;();
+    &#125;
+
+    void Update()
+    &#123;
+        // 移动
+        Move();
+        // 跳跃
+        Jump();
+    &#125;
+
+    /// &lt;summary&gt;
+    /// 移动
+    /// &lt;/summary&gt;
+    void Move()
+    &#123;
+        // 获取玩家的输入状况
+        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);
+        //float vertical = Input.GetAxis(&quot;Vertical&quot;);
+        // 根据输入得到一个移动方向
+        Vector3 dir = new Vector3(horizontal, 0, 0);
+        // 位移 你的帧率越快 需要单帧移动速度越慢
+        transform.Translate(dir * Time.deltaTime * Speed);
+        //rigidbody2D.MovePosition((dir * Time.deltaTime * Speed) + transform.position); 也可以这种方法
+    &#125;
+    /// &lt;summary&gt;
+    /// 跳跃
+    /// &lt;/summary&gt;
+    void Jump()
+    &#123;
+        // 如果 玩家 按了空格 并且在地面上，则跳跃
+        if (Input.GetKeyDown(KeyCode.Space) &amp;&amp; isOnGround)
+        &#123;
+            rigidbody2D.AddForce(Vector2.up * JumpPower);
+        &#125;
+    &#125;
+
+    // 碰撞进入
+    private void OnCollisionEnter2D(Collision2D collision)
+    &#123;
+        // 判断一下 是不是接触了地面
+        if(collision.gameObject.tag == &quot;Ground&quot;)
+        &#123;
+            isOnGround = true;
+        &#125;
+    &#125;
+
+    // 碰撞退出
+    private void OnCollisionExit2D(Collision2D collision)
+    &#123;
+        // 判断一下 是不是离开了地面
+        if (collision.gameObject.tag == &quot;Ground&quot;)
+        &#123;
+            isOnGround = false;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
 <center>森木清树.</center>
 
         <!-- 分类文章 -->
@@ -373,6 +453,17 @@
               
             
             
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/10/Unity-UI%E7%B3%BB%E7%BB%9F/" class="post-categoris-bottom-link">
+                  Unity UI系统
+                </a>
+                </li>
+              
+              
+            
+            
             </ul>
 
           </div>
@@ -382,7 +473,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E8%BE%93%E5%85%A5%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">游戏输入介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF"><span class="space-toc-text">| 常见场景</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5"><span class="space-toc-text">键盘输入</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E6%A3%80%E6%B5%8B"><span class="space-toc-text">| 键盘输入检测</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%BC%A0%E6%A0%87%E8%BE%93%E5%85%A5"><span class="space-toc-text">鼠标输入</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%BC%A0%E6%A0%87%E8%BE%93%E5%85%A5%E6%A3%80%E6%B5%8B"><span class="space-toc-text">| 鼠标输入检测</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#InputManager"><span class="space-toc-text">InputManager</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="space-toc-text">| 设置参数</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="space-toc-text">| 主要使用方法</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%B0%8F%E7%90%83%E7%A7%BB%E5%8A%A8"><span class="space-toc-text">案例：小球移动</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="space-toc-text">| 介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="space-toc-text">| 实现</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%B0%8F%E7%90%83%E8%B7%B3%E8%B7%83"><span class="space-toc-text">案例：小球跳跃</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E8%BE%93%E5%85%A5%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">游戏输入介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="space-toc-text">| 概念</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF"><span class="space-toc-text">| 常见场景</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5"><span class="space-toc-text">键盘输入</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E6%A3%80%E6%B5%8B"><span class="space-toc-text">| 键盘输入检测</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%BC%A0%E6%A0%87%E8%BE%93%E5%85%A5"><span class="space-toc-text">鼠标输入</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%BC%A0%E6%A0%87%E8%BE%93%E5%85%A5%E6%A3%80%E6%B5%8B"><span class="space-toc-text">| 鼠标输入检测</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#InputManager"><span class="space-toc-text">InputManager</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="space-toc-text">| 设置参数</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="space-toc-text">| 主要使用方法</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%B0%8F%E7%90%83%E7%A7%BB%E5%8A%A8"><span class="space-toc-text">案例：小球移动</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="space-toc-text">| 介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="space-toc-text">| 实现</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%B0%8F%E7%90%83%E8%B7%B3%E8%B7%83"><span class="space-toc-text">案例：小球跳跃</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="space-toc-text">| 介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AE%9E%E7%8E%B0-1"><span class="space-toc-text">| 实现</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
