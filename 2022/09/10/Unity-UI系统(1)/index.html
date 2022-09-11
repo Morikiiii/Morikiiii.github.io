@@ -323,9 +323,319 @@ public class L5_6Demo : MonoBehaviour
 </ul>
 </li>
 </ul>
-<h4 id="实现"><a href="#实现" class="headerlink" title="| 实现"></a>| 实现</h4><hr>
-<h2 id="Slider-组件"><a href="#Slider-组件" class="headerlink" title="Slider 组件"></a>Slider 组件</h2><hr>
-<h2 id="ScrollBar-组件"><a href="#ScrollBar-组件" class="headerlink" title="ScrollBar 组件"></a>ScrollBar 组件</h2><hr>
+<h4 id="实现"><a href="#实现" class="headerlink" title="| 实现"></a>| 实现</h4><p><strong>L5_7MainPanel：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class L5_7MainPanel : MonoBehaviour
+&#123;
+    public static L5_7MainPanel Instance;
+    private Button signUpButton;
+    private Button loginButton;
+
+    private void Awake()
+    &#123;
+        Instance = this;
+    &#125;
+    void Start()
+    &#123;
+        signUpButton = transform.Find(&quot;SignUpButton&quot;).GetComponent&lt;Button&gt;();
+        loginButton = transform.Find(&quot;LoginButton&quot;).GetComponent&lt;Button&gt;();
+
+        signUpButton.onClick.AddListener(SignUpButtonClick);
+        loginButton.onClick.AddListener(LoginButtonClick);
+    &#125;
+    private void SignUpButtonClick()
+    &#123;
+        // open sign up
+
+        L5_7SignUpPanel.Instance.Show();
+        gameObject.SetActive(false);
+    &#125;
+    private void LoginButtonClick()
+    &#123;
+        // open log in
+        L5_7LoginPanel.Instance.Show();
+        gameObject.SetActive(false);
+    &#125;
+    public void Show()
+    &#123;
+        gameObject.SetActive(true);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>L5_7FloatWindow：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class L5_7FloatWindow : MonoBehaviour
+&#123;
+    public static L5_7FloatWindow Instance;
+    private Text infoText;
+    private Button okButton;
+
+    private void Awake()
+    &#123;
+        Instance = this;
+        infoText = transform.Find(&quot;Info&quot;).GetComponent&lt;Text&gt;();
+        okButton = transform.Find(&quot;OKButton&quot;).GetComponent&lt;Button&gt;();
+        okButton.onClick.AddListener(OKButtonClick);
+        OKButtonClick();
+    &#125;
+
+    public void ShowInfo(string info)
+    &#123;
+        gameObject.SetActive(true);
+        infoText.text = info;
+    &#125;
+
+    private void OKButtonClick()
+    &#123;
+        gameObject.SetActive(false);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>L5_7SignUpPanel：</strong></p>
+<pre><code class="csharp">
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class L5_7SignUpPanel : MonoBehaviour
+&#123;
+    public static L5_7SignUpPanel Instance;
+    private InputField account;
+    private InputField password;
+    private InputField rePassword;
+    private Toggle isMan;
+
+    private Button returnButton;
+    private Button okButten;
+
+    private void Awake()
+    &#123;
+        Instance = this;
+        account = transform.Find(&quot;Account/InputField&quot;).GetComponent&lt;InputField&gt;();
+        password = transform.Find(&quot;Password/InputField&quot;).GetComponent&lt;InputField&gt;();
+        rePassword = transform.Find(&quot;RePassword/InputField&quot;).GetComponent&lt;InputField&gt;();
+        isMan = transform.Find(&quot;GenderGroup/Male&quot;).GetComponent&lt;Toggle&gt;();
+
+        returnButton = transform.Find(&quot;ReturnButton&quot;).GetComponent&lt;Button&gt;();
+        okButten = transform.Find(&quot;OKButten&quot;).GetComponent&lt;Button&gt;();
+
+        returnButton.onClick.AddListener(ReturnButtonClick);
+        okButten.onClick.AddListener(OKButtenClick);
+
+        gameObject.SetActive(false);
+    &#125;
+
+    private void ReturnButtonClick()
+    &#123;
+        // back Main
+        L5_7MainPanel.Instance.Show();
+        gameObject.SetActive(false);
+    &#125;
+
+    private void OKButtenClick()
+    &#123;
+        // login go
+        if (string.IsNullOrEmpty(account.text) || string.IsNullOrEmpty(password.text) || string.IsNullOrEmpty(rePassword.text))
+        &#123;
+            L5_7FloatWindow.Instance.ShowInfo(&quot;Please input account or password!&quot;);
+        &#125;
+        else if (password.text != rePassword.text)
+        &#123;
+            L5_7FloatWindow.Instance.ShowInfo(&quot;Password is not match!&quot;);
+        &#125;
+        else
+        &#123;
+            // The account does exist
+            if (L5_7GameManager.Instance.GetUserInfo(account.text) != null )
+            &#123;
+                L5_7FloatWindow.Instance.ShowInfo(&quot;Do not repeat sign up!&quot;);
+            &#125;
+            else
+            &#123;
+                L5_7UserInfo userInfo = new L5_7UserInfo(account.text, password.text, isMan.isOn);
+                // save account
+                L5_7GameManager.Instance.SaveUserInfo(userInfo);
+                L5_7FloatWindow.Instance.ShowInfo(&quot;Success! Please log in!&quot;);
+            &#125;
+        &#125;
+    &#125;
+
+    public void Show()
+    &#123;
+        gameObject.SetActive(true);
+        account.text = &quot;&quot;;
+        password.text = &quot;&quot;;
+        rePassword.text = &quot;&quot;;
+        isMan.isOn = true;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>L5_7LoginPanel：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class L5_7LoginPanel : MonoBehaviour
+&#123;
+    public static L5_7LoginPanel Instance;
+
+    private InputField account;
+    private InputField password;
+
+    private Button returnButton;
+    private Button okButten;
+
+    private void Awake()
+    &#123;
+        Instance = this;
+        account = transform.Find(&quot;Account/InputField&quot;).GetComponent&lt;InputField&gt;();
+        password = transform.Find(&quot;Password/InputField&quot;).GetComponent&lt;InputField&gt;();
+
+        returnButton = transform.Find(&quot;ReturnButton&quot;).GetComponent&lt;Button&gt;();
+        okButten = transform.Find(&quot;OKButten&quot;).GetComponent&lt;Button&gt;();
+
+        returnButton.onClick.AddListener(ReturnButtonClick);
+        okButten.onClick.AddListener(OKButtenClick);
+
+        gameObject.SetActive(false);
+    &#125;
+
+    private void ReturnButtonClick()
+    &#123;
+        // back Main
+        L5_7MainPanel.Instance.Show();
+        gameObject.SetActive(false);
+    &#125;
+
+    private void OKButtenClick()
+    &#123;
+        if (string.IsNullOrEmpty(account.text) || string.IsNullOrEmpty(password.text))
+        &#123;
+            L5_7FloatWindow.Instance.ShowInfo(&quot;Please input account or password!&quot;);
+        &#125;
+        else
+        &#123;
+            L5_7UserInfo userInfo = L5_7GameManager.Instance.GetUserInfo(account.text);
+            if (userInfo == null)
+            &#123;
+                L5_7FloatWindow.Instance.ShowInfo(&quot;The account does not exist!&quot;);
+            &#125;
+            else if(userInfo.password != password.text)
+            &#123;
+                L5_7FloatWindow.Instance.ShowInfo(&quot;account or password is wrong!&quot;);
+            &#125;
+            else if(userInfo.password == password.text)
+            &#123;
+                L5_7FloatWindow.Instance.ShowInfo(&quot;sign up Success!&quot;);
+            &#125;
+        &#125;
+    &#125;
+
+    public void Show()
+    &#123;
+        gameObject.SetActive(true);
+        account.text = &quot;&quot;;
+        password.text = &quot;&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>L5_7GameManager：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L5_7UserInfo
+&#123;
+    public string account;
+    public string password;
+    public bool isMan;
+
+    public L5_7UserInfo(string account, string password, bool isMan)
+    &#123;
+        this.account = account;
+        this.password = password;
+        this.isMan = isMan;
+    &#125;
+&#125;
+
+public class L5_7GameManager
+&#123;
+    private static L5_7GameManager instance;
+
+    // after sign up&#39;s account massage
+    public List&lt;L5_7UserInfo&gt; UserInfos = new List&lt;L5_7UserInfo&gt;();
+
+    public static L5_7GameManager Instance
+    &#123;
+        get
+        &#123;
+            if(instance == null) instance = new L5_7GameManager();
+            return instance;
+        &#125;
+    &#125;
+
+    public void SaveUserInfo(L5_7UserInfo userInfo)
+    &#123;
+        UserInfos.Add(userInfo);
+    &#125;
+
+    public L5_7UserInfo GetUserInfo(string userNamer)
+    &#123;
+        for (int i = 0; i &lt; UserInfos.Count; i++)
+        &#123;
+            if(userNamer == UserInfos[i].account)
+            &#123;
+                return UserInfos[i];
+            &#125;
+        &#125;
+        return null;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="Slider-组件"><a href="#Slider-组件" class="headerlink" title="Slider 组件"></a>Slider 组件</h2><h4 id="功能"><a href="#功能" class="headerlink" title="| 功能"></a>| 功能</h4><p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/33.png" >
+        </sapn>
+      </p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class L5_8Demo : MonoBehaviour
+&#123;
+    private Slider slider;
+    void Start()
+    &#123;
+        slider = GetComponent&lt;Slider&gt;();
+
+        slider.onValueChanged.AddListener(SliderOnValueChanged);
+    &#125;
+
+    void SliderOnValueChanged(float value)
+    &#123;
+        Debug.Log(value);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="ScrollBar-组件"><a href="#ScrollBar-组件" class="headerlink" title="ScrollBar 组件"></a>ScrollBar 组件</h2><h4 id="结构-1"><a href="#结构-1" class="headerlink" title="| 结构"></a>| 结构</h4><p>Scrollbar：Scrollbar 组件</p>
+<p>Sliding Area：拖拽区域</p>
+<p>Handle：Image组件（拖拽物体的实际显示）</p>
+<hr>
 <center>森木清树.</center>
 
         <!-- 分类文章 -->
@@ -445,7 +755,7 @@ public class L5_6Demo : MonoBehaviour
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">UI系统介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#Unity2D-%E5%92%8C-UI-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="space-toc-text">| Unity2D 和 UI 的区别</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#UI-%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| UI 系统组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Image-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Image 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 主要属性</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="space-toc-text">| 主要功能</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Text-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Text 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 组件介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 常用属性</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AF%B9%E9%BD%90%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 对齐属性</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Button-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Button 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%9E%84%E6%88%90"><span class="space-toc-text">| 构成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A0%B7%E5%BC%8F"><span class="space-toc-text">| 样式</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#Navigation"><span class="space-toc-text">| Navigation</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="space-toc-text">| 事件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#InputField-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">InputField 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 结构</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%BE%93%E5%85%A5%E7%B1%BB%E5%9E%8B"><span class="space-toc-text">| 输入类型</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BA%8B%E4%BB%B6-1"><span class="space-toc-text">| 事件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Toggle-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Toggle 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 基本使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#ToggleGroup"><span class="space-toc-text">| ToggleGroup</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%B3%A8%E5%86%8C%E4%B8%8E%E7%99%BB%E5%BD%95"><span class="space-toc-text">案例：注册与登录</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%86%E6%9E%90"><span class="space-toc-text">| 分析</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="space-toc-text">| 实现</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Slider-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Slider 组件</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#ScrollBar-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">ScrollBar 组件</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">UI系统介绍</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#Unity2D-%E5%92%8C-UI-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="space-toc-text">| Unity2D 和 UI 的区别</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#UI-%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| UI 系统组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Image-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Image 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 主要属性</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="space-toc-text">| 主要功能</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Text-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Text 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 组件介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 常用属性</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AF%B9%E9%BD%90%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 对齐属性</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Button-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Button 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%9E%84%E6%88%90"><span class="space-toc-text">| 构成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A0%B7%E5%BC%8F"><span class="space-toc-text">| 样式</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#Navigation"><span class="space-toc-text">| Navigation</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="space-toc-text">| 事件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#InputField-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">InputField 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 结构</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%BE%93%E5%85%A5%E7%B1%BB%E5%9E%8B"><span class="space-toc-text">| 输入类型</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BA%8B%E4%BB%B6-1"><span class="space-toc-text">| 事件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Toggle-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Toggle 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 基本使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#ToggleGroup"><span class="space-toc-text">| ToggleGroup</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%B3%A8%E5%86%8C%E4%B8%8E%E7%99%BB%E5%BD%95"><span class="space-toc-text">案例：注册与登录</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%86%E6%9E%90"><span class="space-toc-text">| 分析</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="space-toc-text">| 实现</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Slider-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Slider 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="space-toc-text">| 功能</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#ScrollBar-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">ScrollBar 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%93%E6%9E%84-1"><span class="space-toc-text">| 结构</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
