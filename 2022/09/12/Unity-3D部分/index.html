@@ -128,14 +128,212 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <h2 id="3D-坐标系"><a href="#3D-坐标系" class="headerlink" title="3D 坐标系"></a>3D 坐标系</h2><hr>
-<h2 id="3D物理系统：刚体"><a href="#3D物理系统：刚体" class="headerlink" title="3D物理系统：刚体"></a>3D物理系统：刚体</h2><hr>
-<h2 id="3D物理系统：碰撞体"><a href="#3D物理系统：碰撞体" class="headerlink" title="3D物理系统：碰撞体"></a>3D物理系统：碰撞体</h2><hr>
-<h2 id="3D物理系统：触发"><a href="#3D物理系统：触发" class="headerlink" title="3D物理系统：触发"></a>3D物理系统：触发</h2><hr>
-<h2 id="3D物理系统：物理材质"><a href="#3D物理系统：物理材质" class="headerlink" title="3D物理系统：物理材质"></a>3D物理系统：物理材质</h2><hr>
-<h2 id="物理射线"><a href="#物理射线" class="headerlink" title="物理射线"></a>物理射线</h2><hr>
-<h2 id="刚体移动"><a href="#刚体移动" class="headerlink" title="刚体移动"></a>刚体移动</h2><hr>
-<h2 id="案例：方块保卫战"><a href="#案例：方块保卫战" class="headerlink" title="案例：方块保卫战"></a>案例：方块保卫战</h2><h4 id="场景搭建"><a href="#场景搭建" class="headerlink" title="| 场景搭建"></a>| 场景搭建</h4><h4 id="核心逻辑"><a href="#核心逻辑" class="headerlink" title="| 核心逻辑"></a>| 核心逻辑</h4><h4 id="UI逻辑"><a href="#UI逻辑" class="headerlink" title="| UI逻辑"></a>| UI逻辑</h4><hr>
+        <h2 id="3D-坐标系"><a href="#3D-坐标系" class="headerlink" title="3D 坐标系"></a>3D 坐标系</h2><ul>
+<li><p>2D坐标</p>
+<ul>
+<li>只考虑 XY 坐标</li>
+</ul>
+</li>
+<li><p>屏幕坐标</p>
+<ul>
+<li>左下（0，0）类似一个象限</li>
+</ul>
+</li>
+<li><p>3D坐标（世界坐标）</p>
+<ul>
+<li>XYZ 坐标</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3D物理系统：刚体"><a href="#3D物理系统：刚体" class="headerlink" title="3D物理系统：刚体"></a>3D物理系统：刚体</h2><p>类似2D刚体</p>
+<hr>
+<h2 id="3D物理系统：碰撞体"><a href="#3D物理系统：碰撞体" class="headerlink" title="3D物理系统：碰撞体"></a>3D物理系统：碰撞体</h2><p>类似2D碰撞体</p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L6_3Demo : MonoBehaviour
+&#123;
+    // 碰撞进入
+    private void OnCollisionEnter(Collision collision)
+    &#123;
+        Debug.Log(collision.gameObject.name);
+    &#125;
+    // 碰撞中
+    private void OnCollisionStay(Collision collision)
+    &#123;
+        Debug.Log(collision.gameObject.name);
+    &#125;
+    // 碰撞退出
+    private void OnCollisionExit(Collision collision)
+    &#123;
+        Debug.Log(collision.gameObject.name);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="3D物理系统：触发"><a href="#3D物理系统：触发" class="headerlink" title="3D物理系统：触发"></a>3D物理系统：触发</h2><p>类似2D触发</p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L6_4Demo : MonoBehaviour
+&#123;
+    // Enter
+    private void OnTriggerEnter(Collider other)
+    &#123;
+        print(&quot;Enter: &quot; + other.gameObject.name);
+    &#125;
+    // Stay
+    private void OnTriggerStay(Collider other)
+    &#123;
+        print(&quot;Stay: &quot; + other.gameObject.name);
+    &#125;
+    // Exit
+    private void OnTriggerExit(Collider other)
+    &#123;
+        print(&quot;Exit: &quot; + other.gameObject.name);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="3D物理系统：物理材质"><a href="#3D物理系统：物理材质" class="headerlink" title="3D物理系统：物理材质"></a>3D物理系统：物理材质</h2><p>类似2D物理材质</p>
+<hr>
+<h2 id="物理射线"><a href="#物理射线" class="headerlink" title="物理射线"></a>物理射线</h2><p>用于判断射击是否命中、点击地面建造建筑物等功能</p>
+<ul>
+<li><p>Ray：射线类</p>
+</li>
+<li><p>Physics.Raycast：计算射线碰撞</p>
+</li>
+<li><p>RaycastHit：射线检测信息类</p>
+</li>
+<li><p>Debug.DrawLine：绘制线条（玩家看不到，仅编辑器测试）</p>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L6_6Demo : MonoBehaviour
+&#123;
+    void Update()
+    &#123;
+        // 射线, 向上, 从 0 0 0 到 0 1 0
+        //Ray ray = new Ray(Vector3.zero,new Vector3(0,1,0));
+
+        // 类似射击游戏的实现
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray,out RaycastHit hitinfo,1000))
+        &#123;
+            // hitinfo: 射线碰撞的相关信息
+            Debug.Log(string.Format(&quot;Rayline hit: &#123;0&#125;, Where: &#123;1&#125;&quot;, hitinfo.collider.gameObject.name,hitinfo.point));
+
+            Debug.DrawLine(ray.origin, hitinfo.point,Color.red);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="刚体移动"><a href="#刚体移动" class="headerlink" title="刚体移动"></a>刚体移动</h2><p><code>Rigidbody.MovePosition(Vector3 target)</code> ：target 是一个具体要到达的位置</p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L6_7Demo : MonoBehaviour
+&#123;
+    private Rigidbody rb;
+    void Start()
+    &#123;
+        rb = GetComponent&lt;Rigidbody&gt;();
+    &#125;
+
+    // 帧率更新
+    void Update()
+    &#123;
+        
+    &#125;
+
+    //固定更新
+    void FixedUpdate()
+    &#123;
+        Move();
+    &#125;
+
+    private void Move()
+    &#123;
+        // 获取输入
+        float h = Input.GetAxis(&quot;Horizontal&quot;);
+        float v = Input.GetAxis(&quot;Vertical&quot;);
+
+        Vector3 offset = new Vector3(h, 0, v) * Time.deltaTime * 1.5f;
+        rb.MovePosition(transform.position + offset);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="案例：方块保卫战"><a href="#案例：方块保卫战" class="headerlink" title="案例：方块保卫战"></a>案例：方块保卫战</h2><h4 id="场景搭建"><a href="#场景搭建" class="headerlink" title="| 场景搭建"></a>| 场景搭建</h4><ul>
+<li><p>介绍</p>
+<ul>
+<li><p>敌人向玩家走来</p>
+</li>
+<li><p>玩家点击屏幕可以发射子弹</p>
+</li>
+<li><p>子弹击中敌人两次则敌人死亡销毁</p>
+</li>
+<li><p>敌人如果到达指定位置，则玩家失败，进行重新游玩</p>
+</li>
+</ul>
+</li>
+<li><p>分析</p>
+<ul>
+<li><p>搭建基本场景和敌人外观</p>
+</li>
+<li><p>实现敌人自动移动</p>
+</li>
+<li><p>实现玩家发射子弹逻辑</p>
+<ul>
+<li>UI 显示当前得分</li>
+</ul>
+</li>
+<li><p>游戏结果，需要 UI 弹窗提醒结果</p>
+<ul>
+<li><p>击毙全部敌人胜利</p>
+</li>
+<li><p>敌人进入指定位置触发失败</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>搭建</p>
+</li>
+</ul>
+<h4 id="核心逻辑"><a href="#核心逻辑" class="headerlink" title="| 核心逻辑"></a>| 核心逻辑</h4><ul>
+<li><p>实现敌人自动移动</p>
+</li>
+<li><p>实现玩家攻击敌人</p>
+</li>
+<li><p>敌人死亡逻辑</p>
+</li>
+<li><p>游戏胜利逻辑</p>
+</li>
+<li><p>游戏失败逻辑</p>
+</li>
+</ul>
+<h4 id="UI逻辑"><a href="#UI逻辑" class="headerlink" title="| UI逻辑"></a>| UI逻辑</h4><ul>
+<li><p>UI 显示当前得分</p>
+</li>
+<li><p>游戏结果面板（胜利与失败）</p>
+</li>
+</ul>
+<p><strong>代码部分：</strong></p>
+<pre><code class="csharp">
+</code></pre>
+<hr>
 <center>森木清树.</center>
 
         <!-- 分类文章 -->
