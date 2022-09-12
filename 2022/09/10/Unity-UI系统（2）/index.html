@@ -183,9 +183,107 @@ public class L5_11Demo : MonoBehaviour
         </sapn>
       </p>
 <hr>
-<h2 id="UI-布局"><a href="#UI-布局" class="headerlink" title="UI 布局"></a>UI 布局</h2><h4 id="RectTransform-常用属性"><a href="#RectTransform-常用属性" class="headerlink" title="| RectTransform 常用属性"></a>| RectTransform 常用属性</h4><h4 id="锚点定位"><a href="#锚点定位" class="headerlink" title="| 锚点定位"></a>| 锚点定位</h4><hr>
-<h2 id="Canvas-画布"><a href="#Canvas-画布" class="headerlink" title="Canvas 画布"></a>Canvas 画布</h2><hr>
-<h2 id="UI-事件"><a href="#UI-事件" class="headerlink" title="UI 事件"></a>UI 事件</h2><hr>
+<h2 id="UI-布局"><a href="#UI-布局" class="headerlink" title="UI 布局"></a>UI 布局</h2><h4 id="RectTransform-常用属性"><a href="#RectTransform-常用属性" class="headerlink" title="| RectTransform 常用属性"></a>| RectTransform 常用属性</h4><p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/35.png" >
+        </sapn>
+      </p>
+<h4 id="锚点定位"><a href="#锚点定位" class="headerlink" title="| 锚点定位"></a>| 锚点定位</h4><p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/36.jpg" >
+        </sapn>
+      </p>
+<center>1.相对父物体什么位置进行定位</center>
+
+<center>2.相对父物体进行怎样的弹性拉伸</center>
+
+<hr>
+<h2 id="Canvas-画布"><a href="#Canvas-画布" class="headerlink" title="Canvas 画布"></a>Canvas 画布</h2><h4 id="画布"><a href="#画布" class="headerlink" title="| 画布"></a>| 画布</h4><p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/37.png" >
+        </sapn>
+      </p>
+<h4 id="相关组件"><a href="#相关组件" class="headerlink" title="| 相关组件"></a>| 相关组件</h4><p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/38.png" >
+        </sapn>
+      </p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/39.png" >
+        </sapn>
+      </p>
+<hr>
+<h2 id="UI-事件"><a href="#UI-事件" class="headerlink" title="UI 事件"></a>UI 事件</h2><h4 id="事件介绍"><a href="#事件介绍" class="headerlink" title="| 事件介绍"></a>| 事件介绍</h4><p>按钮点击就是事件，但不止点击这一种，比如鼠标悬浮、鼠标按下、鼠标弹起、鼠标拖拽等等。UI本身也并不是一个按钮，要通过给游戏物体创建脚本来实现</p>
+<h4 id="事件接口"><a href="#事件接口" class="headerlink" title="| 事件接口"></a>| 事件接口</h4><p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/40.png" >
+        </sapn>
+      </p>
+<p><strong>L5_15Demo：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class L5_15Demo : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler,IPointerEnterHandler,IPointerExitHandler
+&#123;
+    public void OnPointerClick(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnPointerClick&quot;);
+    &#125;
+
+    public void OnPointerDown(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnPointerDown&quot;);
+    &#125;
+    public void OnPointerUp(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnPointerUp&quot;);
+    &#125;
+
+    public void OnPointerEnter(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnPointerEnter&quot;);
+    &#125;
+
+    public void OnPointerExit(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnPointerExit&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>L5_15Demo2：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class L5_15Demo2 : MonoBehaviour,IBeginDragHandler, IDragHandler, IEndDragHandler
+&#123;
+    public void OnBeginDrag(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnBeginDrag&quot;);
+    &#125;
+
+    public void OnDrag(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnDrag&quot;);
+    &#125;
+
+    public void OnEndDrag(PointerEventData eventData)
+    &#123;
+        Debug.Log(&quot;OnEndDrag&quot;);
+    &#125;
+&#125;
+</code></pre>
+<hr>
 <center>森木清树.</center>
 
         <!-- 分类文章 -->
@@ -296,6 +394,17 @@ public class L5_11Demo : MonoBehaviour
               
             
             
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/12/Unity-3D%E9%83%A8%E5%88%86/" class="post-categoris-bottom-link">
+                  Unity 3D部分
+                </a>
+                </li>
+              
+              
+            
+            
             </ul>
 
           </div>
@@ -305,7 +414,7 @@ public class L5_11Demo : MonoBehaviour
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#DropDown-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">DropDown 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%8B%E6%8B%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 下拉组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Scroll-View-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Scroll View 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%AE%E7%BD%A9%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 遮罩组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 滚动视图组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%A1%A8%E6%A0%BC%E5%B8%83%E5%B1%80%E7%BB%84%E4%BB%B6"><span class="space-toc-text">表格布局组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 主要属性</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E5%B8%83%E5%B1%80"><span class="space-toc-text">UI 布局</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#RectTransform-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| RectTransform 常用属性</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%94%9A%E7%82%B9%E5%AE%9A%E4%BD%8D"><span class="space-toc-text">| 锚点定位</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Canvas-%E7%94%BB%E5%B8%83"><span class="space-toc-text">Canvas 画布</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E4%BA%8B%E4%BB%B6"><span class="space-toc-text">UI 事件</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#DropDown-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">DropDown 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%8B%E6%8B%89%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 下拉组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Scroll-View-%E7%BB%84%E4%BB%B6"><span class="space-toc-text">Scroll View 组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%AE%E7%BD%A9%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 遮罩组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 滚动视图组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%A1%A8%E6%A0%BC%E5%B8%83%E5%B1%80%E7%BB%84%E4%BB%B6"><span class="space-toc-text">表格布局组件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%BB%E8%A6%81%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| 主要属性</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E5%B8%83%E5%B1%80"><span class="space-toc-text">UI 布局</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#RectTransform-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="space-toc-text">| RectTransform 常用属性</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%94%9A%E7%82%B9%E5%AE%9A%E4%BD%8D"><span class="space-toc-text">| 锚点定位</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Canvas-%E7%94%BB%E5%B8%83"><span class="space-toc-text">Canvas 画布</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%94%BB%E5%B8%83"><span class="space-toc-text">| 画布</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%9B%B8%E5%85%B3%E7%BB%84%E4%BB%B6"><span class="space-toc-text">| 相关组件</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E4%BA%8B%E4%BB%B6"><span class="space-toc-text">UI 事件</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">| 事件介绍</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BA%8B%E4%BB%B6%E6%8E%A5%E5%8F%A3"><span class="space-toc-text">| 事件接口</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
