@@ -254,7 +254,7 @@ public class L6_7Demo : MonoBehaviour
     // 帧率更新
     void Update()
     &#123;
-        
+
     &#125;
 
     //固定更新
@@ -331,7 +331,168 @@ public class L6_7Demo : MonoBehaviour
 </li>
 </ul>
 <p><strong>代码部分：</strong></p>
-<pre><code class="csharp">
+<p><strong>L6_8_Enemy</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L6_8_Enemy : MonoBehaviour
+&#123;
+    private Rigidbody rb;
+    private float speed = 2;
+    private int hp = 100;
+
+    void Start()
+    &#123;
+        rb = GetComponent&lt;Rigidbody&gt;();
+    &#125;
+
+    private void FixedUpdate()
+    &#123;
+        Move();
+    &#125;
+
+    private void Move()
+    &#123;
+        Vector3 offset = transform.forward * Time.fixedDeltaTime * speed;
+        rb.MovePosition(transform.position + offset);
+    &#125;
+
+    public void Hurt(int demage)
+    &#123;
+        hp -= demage;
+        if (hp &lt;= 0)
+        &#123;
+            Dead();
+        &#125;
+    &#125;
+    private void Dead()
+    &#123;
+        // check 还有没有同类，如果没有，则游戏胜利
+        L6_8_Player.Instance.EnemyDead(this);
+
+        // die
+        Destroy(gameObject);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>L6_8_Player</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L6_8_Player : MonoBehaviour
+&#123;
+    public static L6_8_Player Instance;
+
+    private int AttackValue = 50;
+    public List&lt;L6_8_Enemy&gt; enemies;
+
+    private int score = 0;
+    private bool isOver = false;
+    private void Awake()
+    &#123;
+        Instance = this;
+
+    &#125;
+
+    void Update()
+    &#123;
+        Shoot();
+    &#125;
+
+    private void Shoot()
+    &#123;
+        if (Input.GetMouseButtonDown(0))
+        &#123;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitinfo, 1000))
+            &#123;
+                Debug.DrawLine(ray.origin, hitinfo.point, Color.red);
+
+                // 如果我射击到的是敌人，则附加伤害
+                if (hitinfo.collider.gameObject.tag == &quot;Enemy&quot;)
+                &#123;
+                    // 附加伤害
+                    L6_8_Enemy enemy = hitinfo.collider.gameObject.GetComponent&lt;L6_8_Enemy&gt;();
+                    enemy.Hurt(AttackValue);
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    public void EnemyDead(L6_8_Enemy enemy)
+    &#123;
+        score += 1;
+        L6_8_UIManager.Instance.UpdateScoreNumText(score);
+
+        enemies.Remove(enemy);
+        if(enemies.Count == 0)
+        &#123;
+            // victory
+            Win();
+        &#125;
+    &#125;
+
+    private void Win()
+    &#123;
+        L6_8_UIManager.Instance.GameResult(true);
+    &#125;
+
+    private void Over()
+    &#123;
+        isOver = true;
+        //Time.timeScale = 0;
+        L6_8_UIManager.Instance.GameResult(false);
+    &#125;
+
+    private void OnTriggerEnter(Collider other)
+    &#123;
+        if (other.gameObject.tag == &quot;Enemy&quot; &amp;&amp; isOver == false)
+        &#123;
+            Over();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>L6_8_UIManager</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class L6_8_UIManager : MonoBehaviour
+&#123;
+    public static L6_8_UIManager Instance;
+    public Text ScoreNumText;
+
+    public GameObject resultPanel;
+    public Text resultText;
+
+    private void Awake()
+    &#123;
+        Instance = this;
+    &#125;
+
+    public void UpdateScoreNumText(int num)
+    &#123;
+        ScoreNumText.text = num.ToString();
+    &#125;
+
+    public void GameResult(bool isWin)
+    &#123;
+        resultPanel.SetActive(true);
+        if (isWin)
+        &#123;
+            resultText.text = &quot;Victory&quot;;
+        &#125;
+        else
+        &#123;
+            resultText.text = &quot;Defeat&quot;;
+        &#125;
+    &#125;
+&#125;
 </code></pre>
 <hr>
 <center>森木清树.</center>
