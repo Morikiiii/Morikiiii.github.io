@@ -1,0 +1,923 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  基础语法专题（1） |    Morikiiii | &#39;ColdDog&#39; Space</title>
+  <meta name="description" content="Morikiiii Not Human">
+  <!-- 标签页图标 -->
+  
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/MorikiiiiLogo.png" type="image/x-icon">
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Morikiiii | &#39;ColdDog&#39; Space
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             SOME
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Study/">C# Study</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Novels/">Novels</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity-Study/">Unity Study</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Morikiiii | &#39;ColdDog&#39; Space
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">基础语法专题（1）</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">9月 02 2022</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h2 id="Unity-VS-安装"><a href="#Unity-VS-安装" class="headerlink" title="Unity + VS 安装"></a>Unity + VS 安装</h2><p>Unity 编辑器版本 ：<u>2019.4.15f1c1 LTS</u></p>
+<p>此乃准备工作</p>
+<p>下一步</p>
+<p>go –&gt;</p>
+<hr>
+<h2 id="C-与-Unity-的关系"><a href="#C-与-Unity-的关系" class="headerlink" title="C# 与 Unity 的关系"></a>C# 与 Unity 的关系</h2><h4 id="C-简介"><a href="#C-简介" class="headerlink" title="| C# 简介:"></a>| C# 简介:</h4><blockquote>
+<p>C# 是一个现代的、通用的、面向对象的编程语言，它是由微软（Microsoft）开发的，由 Ecma 和 ISO 核准认可的。由 Anders Hejlsberg 和他的团队在 .Net 框架开发期间开发的。专为公共语言基础结构（CLI）设计的。CLI 由可执行代码和运行时环境组成，允许在不同的计算机平台和体系结构上使用各种高级语言。</p>
+</blockquote>
+<h4 id="相关内容："><a href="#相关内容：" class="headerlink" title="| 相关内容："></a>| 相关内容：</h4><ul>
+<li><p>C# → 通过编辑器形成一个中间代码（IL）→ CLR虚拟机 → 二进制机器码 → 运行</p>
+</li>
+<li><p>下面列出了 C# 成为一种广泛应用的专业语言的原因：</p>
+<ul>
+<li><p>现代的、通用的编程语言。</p>
+</li>
+<li><p>面向对象。</p>
+</li>
+<li><p>面向组件。</p>
+</li>
+<li><p>容易学习。</p>
+</li>
+<li><p>结构化语言。</p>
+</li>
+<li><p>它产生高效率的程序。</p>
+</li>
+<li><p>它可以在多种计算机平台上编译。</p>
+</li>
+<li><p>.Net 框架的一部分。</p>
+</li>
+</ul>
+</li>
+<li><p>Unity跨平台解决方案 - 一个代码可以多平台运行</p>
+</li>
+</ul>
+<hr>
+<h2 id="第一个C-小示例"><a href="#第一个C-小示例" class="headerlink" title="第一个C#小示例"></a>第一个C#小示例</h2><pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HelloWorld : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Debug.Log(&quot;HelloWorld&quot;);
+        Debug.LogWarning(&quot;HelloWorld&quot;);
+        Debug.LogError(&quot;HelloWorld&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h4 id="一些知识点"><a href="#一些知识点" class="headerlink" title="| 一些知识点:"></a>| 一些知识点:</h4><ul>
+<li><p>“ : “代表继承</p>
+</li>
+<li><p>MonoBehaviour 是Unity提供给我们的父类，里面包含很多生命周期的方法，可以去覆盖</p>
+</li>
+<li><p>’ Start ‘ 代表函数</p>
+</li>
+<li><p>‘ Debug ‘是Unity提供的日志接口</p>
+</li>
+<li><p>C#脚本</p>
+</li>
+</ul>
+<hr>
+<h2 id="变量（Variable）"><a href="#变量（Variable）" class="headerlink" title="变量（Variable）"></a>变量（Variable）</h2><h4 id="变量赋值："><a href="#变量赋值：" class="headerlink" title="| 变量赋值："></a>| 变量赋值：</h4><p><code> &lt;data_type&gt; &lt;variable_name&gt; = value</code></p>
+<p><code> int a = 10</code></p>
+<p>&#x2F;&#x2F; data_type - 数据类型</p>
+<p>&#x2F;&#x2F; variable_name - 变量名字</p>
+<p>&#x2F;&#x2F; value - 数值 &#x2F; 存储的内容</p>
+<h4 id="数据类型取值范围："><a href="#数据类型取值范围：" class="headerlink" title="| 数据类型取值范围："></a>| 数据类型取值范围：</h4><p>&#x2F;&#x2F; 存放内容不同</p>
+<blockquote>
+<p>Q：为什么要有数据类型和取值范围？</p>
+<p>A：比如说文本 &#x3D;&#x3D;&#x3D;》 string    即 ‘ 文本 ’ 能存在 string 里123 &#x3D;&#x3D;&#x3D;》 int     即 ‘ 123 ’ 能存在 int 里</p>
+</blockquote>
+<h6 id="整数行："><a href="#整数行：" class="headerlink" title="整数行："></a>整数行：</h6><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>System命名空间中的名字</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sbyte</td>
+<td>System.Sbyte</td>
+<td>-128 ~ 127 之间的整数</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>System.Byte</td>
+<td>0 ~ 255 之间的整数</td>
+</tr>
+<tr>
+<td>short</td>
+<td>System.Int16</td>
+<td>-32768 ~ 32767 之间的整数</td>
+</tr>
+<tr>
+<td>ushort</td>
+<td>System.UInt16</td>
+<td>0 ~ 65535 之间的整数</td>
+</tr>
+<tr>
+<td>int</td>
+<td>System.Int32</td>
+<td>-2147483648 ~ 2147483647 之间的整数</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>System.UInt32</td>
+<td>0 ~ 4294967295 之间的整数</td>
+</tr>
+<tr>
+<td>long</td>
+<td>System.Int64</td>
+<td>-9223372036854775808 ~ 9223372036854775807 之间的整数</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>System.UInt64</td>
+<td>0 ~ 18446744073709551615 之间的整数</td>
+</tr>
+</tbody></table>
+<h6 id="小数点行："><a href="#小数点行：" class="headerlink" title="小数点行："></a>小数点行：</h6><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>System命名空间中的名字</th>
+<th>取值范围</th>
+<th>m的最小值</th>
+<th>m的最大值</th>
+<th>e的最小值</th>
+<th>e的最大值</th>
+<th>近似的最小值</th>
+<th>近似的最大值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>System.Single</td>
+<td>3.4E-38 ~ 3.4E+38</td>
+<td>0</td>
+<td>2<sup>24</sup></td>
+<td>-149</td>
+<td>104</td>
+<td>1.5x10<sup>-45</sup></td>
+<td>3.4x10<sup>38</sup></td>
+</tr>
+<tr>
+<td>double</td>
+<td>System.Double</td>
+<td>1.7E-308 ~ 1.7E+308</td>
+<td>0</td>
+<td>2<sup>53</sup></td>
+<td>-1075</td>
+<td>970</td>
+<td>5.0x10<sup>-324</sup></td>
+<td>1.7x10<sup>306</sup></td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>System.Decimal</td>
+<td>正负 1.0×10-28 ~ 7.9×1028之间</td>
+<td>0</td>
+<td>2<sup>96</sup></td>
+<td>-26</td>
+<td>0</td>
+<td>1.0x10<sup>-28</sup></td>
+<td>7.9x10<sup>28</sup></td>
+</tr>
+</tbody></table>
+<h6 id="a小数点非整数："><a href="#a小数点非整数：" class="headerlink" title="a小数点非整数："></a>a小数点非整数：</h6><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>System命名空间中的名字</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>System.Char</td>
+<td>一个Unicode字符，存储 0 ~ 65535 之间的整数</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>System.Boolean</td>
+<td>布尔值，true 或 false</td>
+</tr>
+<tr>
+<td>string</td>
+<td>System.String</td>
+<td>一组字符</td>
+</tr>
+</tbody></table>
+<h4 id="常用的数据类型："><a href="#常用的数据类型：" class="headerlink" title="| 常用的数据类型："></a>| 常用的数据类型：</h4><ul>
+<li><p>‘ char ’ 表示一个字符，字母 数字 @#￥%……&amp; * （）一个汉字</p>
+</li>
+<li><p>‘ string ’ 是一个 char 的数组（数组之后介绍）先认为是字符的集合</p>
+</li>
+</ul>
+<p><strong>注意点：</strong></p>
+<ol>
+<li><p>变量如何声明和赋值</p>
+</li>
+<li><p>声明变量的方式</p>
+</li>
+<li><p>推荐的变量命名规则</p>
+</li>
+<li><p>示范常用的数据类型</p>
+<pre><code class="csharp"> void Start()
+ &#123;
+     // 变量的声明
+     int a;
+     // 变量的赋值（当变量第一次赋值的时候，称之为 初始化）
+     a = 10;
+     // 变量的声明 + 赋值
+     int b = 20;
+     // 单行赋值多个相同数据类型的变量
+     int c = 30, d = 40;
+
+     // 匈牙利命名法（驼峰式）
+
+     int hpValue = 1000;
+     int iHpValue = 2000;
+
+     // string str
+     string strMonsterName = &quot;treeman&quot;;
+     //char ch
+     char chUnicode = &#39;a&#39;;
+     //short sh
+     short shID = 100;
+     //long l
+     long lID = 1000;
+     //bool true or false   b is(常用)
+     bool isOpen = true;
+
+     Debug.Log(&quot;a:&quot; + a + &quot;,b:&quot; + b + &quot;,c:&quot; + c + &quot;,d:&quot; + d);
+     Debug.Log(&quot;hpValue:&quot; + hpValue + &quot;,iHpValue:&quot; + iHpValue + &quot;,strMonsterName:&quot; + strMonsterName + &quot;,chUnicode:&quot; + chUnicode + &quot;,shID:&quot; + shID + &quot;,lID:&quot; + lID + &quot;,isOpen:&quot; + isOpen);
+ &#125;
+</code></pre>
+</li>
+</ol>
+<h4 id="案例："><a href="#案例：" class="headerlink" title="| 案例："></a>| 案例：</h4><p>存储一个怪物信息：</p>
+<ul>
+<li><p>名字</p>
+</li>
+<li><p>血量</p>
+</li>
+<li><p>等级</p>
+</li>
+<li><p>经验值</p>
+<pre><code class="csharp">  void Start()
+  &#123;
+      string strName = &quot;MonsterA&quot;;
+      int iHpValue = 1000;
+      int iLevel = 100;
+      long lExp = 100000000000;
+
+      Debug.Log(&quot;名字：&quot; + strName + &quot;，血量：&quot; + iHpValue + &quot;，等级：&quot; + iLevel + &quot;，经验值：&quot; + lExp);
+      Debug.LogFormat(&quot;名字:&#123;0&#125;，血量:&#123;1&#125;，等级:&#123;2&#125;，经验值:&#123;3&#125;&quot;, strName, iHpValue, iLevel, lExp);
+  &#125;
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="数组（Array）"><a href="#数组（Array）" class="headerlink" title="数组（Array）"></a>数组（Array）</h2><p><strong>数组的概念：</strong></p>
+<blockquote>
+<p>数组，是有序的相同数据类型元素组成的有限集合，内存是线性连续的。</p>
+</blockquote>
+<p><strong>声明方式：</strong></p>
+<p>一维数组：<code>&lt;data_type&gt;[] variable_name</code></p>
+<p>二维数组：在<code>[]</code>里加一个逗号</p>
+<p>三维数组：在<code>[]</code>里加两个逗号</p>
+<p>N维数组：（♯▼皿▼）</p>
+<p><strong>数据容量和下标的关系：</strong> 下标 &#x3D; 容量 - 1</p>
+<p><strong>注意点：</strong></p>
+<ol>
+<li><p>数组初始化的几种方式</p>
+</li>
+<li><p>访问数组 修改数据</p>
+</li>
+<li><p>如何获取数组的长度</p>
+</li>
+<li><p>示范二维数组</p>
+</li>
+<li><p>（循环）访问数组</p>
+<pre><code class="csharp"> void Start()
+ &#123;
+
+     int[] array;                // 数组的声明 并没有分配内存
+     int[] array2 = new int[5];  // 数组的声明和内存分配
+
+     // 第一种 数组初始化
+     int[] array3 = new int[5];
+     array3[0] = 10;
+     array3[1] = 20;
+     array3[2] = 30;
+     array3[3] = 40;
+     array3[4] = 50;
+     // array3[5] = 60;             不可以，运行时数组越界
+     Debug.Log(&quot;[原始数据]访问第4个元素（第3个下标）代表的数据：&quot; + array3[3]);
+     array3[3] = 400;
+     Debug.Log(&quot;[修正数据]访问第4个元素（第3个下标）代表的数据：&quot; + array3[3]);
+     // 第二种 数组初始化
+     int[] array4 = new int[5] &#123; 100, 200, 300, 400, 500 &#125;;  // 容量显示声明
+     int[] array5 = new int[] &#123; 100, 200, 300, 400, 500 &#125;;   // 容量隐式分配
+     // 第三种 数组初始化
+     int[] array6 = &#123; 1000, 2000, 3000, 4000, 5000 &#125;;        // 有几个打印出来的就是几个
+
+     Debug.Log(&quot;获取 array6 的数组长度（容量）=&quot; + array6.Length);
+
+     // ------------------------------------------------------------------------
+     int[,] array7 = new int[2, 2];  // 2行2列的数组
+     array7[0, 0] = 100;             // 1行1列
+     array7[0, 1] = 200;             // 1行2列
+     array7[1, 0] = 300;             // 2行1列
+     array7[1, 1] = 400;             // 2行2列
+
+     Debug.Log(&quot;[原始数据]打印第二行第一列的数据：&quot; + array7[1, 0]);
+     array7[1, 0] = 3000;
+     Debug.Log(&quot;[修正数据]打印第二行第一列的数据：&quot; + array7[1, 0]);
+
+     // 常用写法 1
+     int[,] array8 = new int[2, 2]
+     &#123;
+         &#123;1000,2000 &#125;,
+         &#123;3000,4000 &#125;,
+     &#125;;
+     // 常用写法 2
+     int[,] array9;
+     array9 = new int[2, 3]
+     &#123;
+         &#123;1000,2000,9 &#125;,
+         &#123;3000,4000,8 &#125;,
+     &#125;;
+
+     Debug.Log(&quot;array9 总长度（容量）：&quot;+array9.Length);
+     Debug.Log(&quot;array9 行数：&quot; + array9.GetLength(0));
+     Debug.Log(&quot;array9 列数：&quot; + array9.GetLength(1));
+
+     // ------------------------------------------------------------------------
+     //x,y,z 作业如下：存储数据，并读取数据
+     int[,,] array10 = new int[3, 3, 3];
+     array10[0, 0, 0] = 100;
+     array10[1, 1, 1] = 200;
+     array10[2, 2, 2] = 300;
+
+     Debug.Log(&quot;array10 总长度（容量）：&quot; + array10.Length);
+     Debug.Log(&quot;array10 行数：&quot; + array10.GetLength(0));
+     Debug.Log(&quot;array9 列数：&quot; + array10.GetLength(1));
+
+     Debug.Log(&quot;[未存储数据]打印 array10 数据：&quot; + array10[1, 0, 1]);
+     Debug.Log(&quot;[存储数据]打印 array10 数据：&quot; + array10[1, 1, 1]);
+
+     // ------------------------------------------------------------------------
+     // 数组访问两种方式
+     // 1.下标的方式
+     // 2.循环遍历的方式（研究）
+ &#125;
+</code></pre>
+</li>
+</ol>
+<hr>
+<h2 id="函数（Function）"><a href="#函数（Function）" class="headerlink" title="函数（Function）"></a>函数（Function）</h2><p><strong>注意点：</strong></p>
+<ol>
+<li><p>函数返回值的分类</p>
+<p>（1）无返回值：<code> void + FunctionName + (args) + &#123;&#125;</code></p>
+<p>（2）有返回值：<code> type + Function + (args) + &#123;return type;&#125;</code></p>
+</li>
+<li><p>函数调用：函数调用时，传入的参数的数据类型，必须和被调用的函数参数的数据类型，顺序保持一致。</p>
+</li>
+<li><p>扩展内容 - 如何调试程序：选中某一行 F9 → 附加到Unity，同时启动Unity → F11进入函数体内，F10单步执行 → F5退出当前的断点</p>
+</li>
+<li><p>小作业：调试函数，更改数组某个下标值，通过跟踪调试，看下设置的值有没有生效</p>
+<pre><code class="csharp"> void Start()
+ &#123;
+     ShowContxt();
+     ShowName(&quot;森木清树&quot;);
+     ShowName2(&quot;森木清树&quot;,22);
+     // ShowName2(22,&quot;森木清树&quot;);  错误
+
+     int result = GetSum(1, 2);
+     Debug.Log(&quot;和：&quot; + result);
+ &#125;
+
+ void ShowContxt()
+ &#123;
+     Debug.Log(&quot;ShowContxt 被调用&quot;);
+ &#125;
+ void ShowName(string strName)
+ &#123;
+     Debug.Log(&quot;ShowName 输出参数：&quot; + strName);
+
+ &#125;
+ void ShowName2(string strName, int iAge)
+ &#123;
+     Debug.Log(&quot;ShowName 输出参数：&quot; + strName + &quot;,年龄：&quot; + iAge);
+
+ &#125;
+
+ int GetSum(int a,int b)
+ &#123;
+     int sum = a + b;
+     return sum;
+ &#125;
+</code></pre>
+</li>
+</ol>
+<hr>
+<h2 id="运算符-相关内容-1："><a href="#运算符-相关内容-1：" class="headerlink" title="运算符 相关内容 1："></a>运算符 相关内容 1：</h2><h4 id="算术运算符："><a href="#算术运算符：" class="headerlink" title="|算术运算符："></a>|算术运算符：</h4><p>下表显示了 C# 支持的所有算术运算符。假设变量 <strong>A</strong> 的值为 10，变量 <strong>B</strong> 的值为 20，则：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>把两个操作数相加</td>
+<td>A + B 将得到 30</td>
+</tr>
+<tr>
+<td>-</td>
+<td>从第一个操作数中减去第二个操作数</td>
+<td>A - B 将得到 -10</td>
+</tr>
+<tr>
+<td>*</td>
+<td>把两个操作数相乘</td>
+<td>A * B 将得到 200</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>分子除以分母</td>
+<td>B &#x2F; A 将得到 2</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取模运算符，整除后的余数</td>
+<td>B % A 将得到 0</td>
+</tr>
+<tr>
+<td>++</td>
+<td>自增运算符，整数值增加 1</td>
+<td>A++ 将得到 11</td>
+</tr>
+<tr>
+<td>–</td>
+<td>自减运算符，整数值减少 1</td>
+<td>A– 将得到 9</td>
+</tr>
+</tbody></table>
+<h4 id="赋值运算符："><a href="#赋值运算符：" class="headerlink" title="| 赋值运算符："></a>| 赋值运算符：</h4><p>下表列出了 C# 支持的赋值运算符：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td>简单的赋值运算符，把右边操作数的值赋给左边操作数</td>
+<td>C &#x3D; A + B 将把 A + B 的值赋给 C</td>
+</tr>
+<tr>
+<td>+&#x3D;</td>
+<td>加且赋值运算符，把右边操作数加上左边操作数的结果赋值给左边操作数</td>
+<td>C +&#x3D; A 相当于 C &#x3D; C + A</td>
+</tr>
+<tr>
+<td>-&#x3D;</td>
+<td>减且赋值运算符，把左边操作数减去右边操作数的结果赋值给左边操作数</td>
+<td>C -&#x3D; A 相当于 C &#x3D; C - A</td>
+</tr>
+<tr>
+<td>*&#x3D;</td>
+<td>乘且赋值运算符，把右边操作数乘以左边操作数的结果赋值给左边操作数</td>
+<td>C *&#x3D; A 相当于 C &#x3D; C * A</td>
+</tr>
+<tr>
+<td>&#x2F;&#x3D;</td>
+<td>除且赋值运算符，把左边操作数除以右边操作数的结果赋值给左边操作数</td>
+<td>C &#x2F;&#x3D; A 相当于 C &#x3D; C &#x2F; A</td>
+</tr>
+<tr>
+<td>%&#x3D;</td>
+<td>求模且赋值运算符，求两个操作数的模赋值给左边操作数</td>
+<td>C %&#x3D; A 相当于 C &#x3D; C % A</td>
+</tr>
+<tr>
+<td>&lt;&lt;&#x3D;</td>
+<td>左移且赋值运算符</td>
+<td>C &lt;&lt;&#x3D; 2 等同于 C &#x3D; C &lt;&lt; 2</td>
+</tr>
+<tr>
+<td>&gt;&gt;&#x3D;</td>
+<td>右移且赋值运算符</td>
+<td>C &gt;&gt;&#x3D; 2 等同于 C &#x3D; C &gt;&gt; 2</td>
+</tr>
+<tr>
+<td>&amp;&#x3D;</td>
+<td>按位与且赋值运算符</td>
+<td>C &amp;&#x3D; 2 等同于 C &#x3D; C &amp; 2</td>
+</tr>
+<tr>
+<td>^&#x3D;</td>
+<td>按位异或且赋值运算符</td>
+<td>C ^&#x3D; 2 等同于 C &#x3D; C ^ 2</td>
+</tr>
+<tr>
+<td>\</td>
+<td>&#x3D;</td>
+<td>按位或且赋值运算符</td>
+</tr>
+</tbody></table>
+<p><strong>课程内容：</strong></p>
+<pre><code class="csharp">    void Start()
+    &#123;
+        Func1();
+        Func2();
+
+    &#125;
+
+    void Func1()
+    &#123;
+        int a = 5;
+        int b = 5;
+
+        // + - * /
+        // %
+        int c = a % b; // a/b 得到的余数部分
+        Debug.Log(c);
+        Debug.Log(9 % 8); // 等于1
+        // （1，2，3，4，5，6，7，8，9，10）
+        // A % 2 = 0
+
+        // ++ -- 
+        a++; // a = a+1 即 5+1 = 6
+        b--; // b = b-1 即 5-1 = 4
+        Debug.Log(a);
+        Debug.Log(b);
+    &#125;
+
+    void Func2()
+    &#123;
+        int a = 5;
+        int b = 5;
+
+        a += b; // a = a+b 即 5+5 = 10
+        Debug.Log(a);
+
+        // &lt;&lt;  - 乘 2 的 N 次方
+        a = a &lt;&lt; 2; // a * 2*2 即 10 * 2*2 = 40 &lt;&lt; 就是乘以2的2次方
+        b = b &lt;&lt; 2; // b * 2*2 即  5 * 2*2 = 20 &lt;&lt; 就是乘以2的2次方
+
+        // &gt;&gt; - 除以 2 的 N 次方
+        // a = a &gt;&gt; 2; // a/2*2 = 10/4 = 2.5 这是个小数3
+
+        Debug.Log(&quot;a:&quot; + a);
+        Debug.Log(&quot;b:&quot; + b);
+
+
+        // 小数和整数区别
+        float aa = 10;
+        int bb = 10;
+
+        float c = aa / 3; // 3.333...
+        bb = bb / 3; // 3
+
+        Debug.Log(&quot;bb:&quot; + bb);
+        Debug.Log(&quot;c:&quot; + c);
+
+        // &lt;&lt;= 、&gt;&gt;=
+        int c2 = 3;
+        c2 &lt;&lt;= 2; // c2 = c2 &lt;&lt; 2 = 3 * 2*2 =12
+        Debug.Log(&quot;c2:&quot; + c2);
+
+        // 尝试一下
+        int d = 5;
+        d = d &lt;&lt; 5;  // 5 * 2*5次 = 160 乘以2的5次方
+        Debug.Log(&quot;d:&quot; + d);
+
+    &#125;
+</code></pre>
+<hr>
+<center>下次再见~</center>
+<center>Morikiiii.</center>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">C# Study</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2022/09/02/Csharp/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" class="post-categoris-bottom-link">
+                  基础语法专题（1）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/02/Csharp/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/" class="post-categoris-bottom-link">
+                  基础语法专题（2）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/02/Csharp/Class%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" class="post-categoris-bottom-link">
+                  Class专题（1）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/03/Csharp/Class%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/" class="post-categoris-bottom-link">
+                  Class专题（2）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/04/Csharp/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E9%A2%98/" class="post-categoris-bottom-link">
+                  设计模式专题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/05/Csharp/IO%E6%93%8D%E4%BD%9C%E4%B8%93%E9%A2%98/" class="post-categoris-bottom-link">
+                  IO操作专题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/06/Csharp/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-categoris-bottom-link">
+                  数据结构
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Unity-VS-%E5%AE%89%E8%A3%85"><span class="space-toc-text">Unity + VS 安装</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#C-%E4%B8%8E-Unity-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="space-toc-text">C# 与 Unity 的关系</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#C-%E7%AE%80%E4%BB%8B"><span class="space-toc-text">| C# 简介:</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="space-toc-text">| 相关内容：</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAC-%E5%B0%8F%E7%A4%BA%E4%BE%8B"><span class="space-toc-text">第一个C#小示例</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="space-toc-text">| 一些知识点:</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%8F%98%E9%87%8F%EF%BC%88Variable%EF%BC%89"><span class="space-toc-text">变量（Variable）</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC%EF%BC%9A"><span class="space-toc-text">| 变量赋值：</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%96%E5%80%BC%E8%8C%83%E5%9B%B4%EF%BC%9A"><span class="space-toc-text">| 数据类型取值范围：</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="space-toc-text">| 常用的数据类型：</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A"><span class="space-toc-text">| 案例：</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%95%B0%E7%BB%84%EF%BC%88Array%EF%BC%89"><span class="space-toc-text">数组（Array）</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%87%BD%E6%95%B0%EF%BC%88Function%EF%BC%89"><span class="space-toc-text">函数（Function）</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9-1%EF%BC%9A"><span class="space-toc-text">运算符 相关内容 1：</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="space-toc-text">|算术运算符：</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="space-toc-text">| 赋值运算符：</span></a></li></ol></li></ol></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a> Player by <a target="_blank" rel="noopener" href="https://github.com/Morikiiii">Morikiiii</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/Morikiiii" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:Morikiiii@163.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://Morikiiii.github.io" target="_blank">
+                <i class="ri-skull-2-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>

@@ -1,0 +1,1300 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  设计模式专题 |    Morikiiii | &#39;ColdDog&#39; Space</title>
+  <meta name="description" content="Morikiiii Not Human">
+  <!-- 标签页图标 -->
+  
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/MorikiiiiLogo.png" type="image/x-icon">
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Morikiiii | &#39;ColdDog&#39; Space
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             SOME
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Study/">C# Study</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Novels/">Novels</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity-Study/">Unity Study</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Morikiiii | &#39;ColdDog&#39; Space
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">设计模式专题</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">9月 04 2022</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h2 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h2><h4 id="委托的定义和使用"><a href="#委托的定义和使用" class="headerlink" title="| 委托的定义和使用"></a>| 委托的定义和使用</h4><ul>
+<li><p>作用</p>
+<ul>
+<li><p>把方法作为函数来进行传递，用到委托。委托是一个类型，这个类型可以赋值一个方法的引用。</p>
+</li>
+<li><p>C# 的委托通过 <code>delegate</code> 关键字来声明。</p>
+</li>
+</ul>
+</li>
+<li><p>声明委托</p>
+<ul>
+<li><p>（1） <code>delegate void MyDelegate1( int x )</code></p>
+</li>
+<li><p>（2） <code>delegate void MyDelegate2&lt;T&gt;( T x )</code></p>
+</li>
+</ul>
+</li>
+<li><p>使用委托</p>
+<ul>
+<li><p>（1） <code>MyDelegate1 mydelegate = new MyDelegate( func )</code></p>
+</li>
+<li><p>（2） <code>MyDelegate1 mydelegate = func</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BaseDelegate : MonoBehaviour
+&#123;
+    public delegate void ShowDelegate();
+    public delegate void ShowDelegate2(int a, int b);
+    public delegate int ShowDelegate3();
+
+    public delegate void ShowDelegate4&lt;T&gt;(T a);
+
+
+    void Start()
+    &#123;
+        ShowDelegate show = Show1;
+        show();
+        //show.Invoke();
+
+        ShowDelegate2 show2 = Show2;
+        show2(1, 2);
+
+
+        ShowDelegate3 show3 = Show3;
+        int a = show3();
+        Debug.Log(a);
+
+        ShowDelegate4&lt;string&gt; show4 = Show4;
+        show4(&quot;Hello World&quot;);
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+
+    private void Show1()
+    &#123;
+        Debug.Log(&quot;Show1&quot;);
+    &#125;
+
+    private void Show2(int a, int b)
+    &#123;
+        Debug.Log(&quot;Show2 -&gt; a+b:&quot; + (a + b));
+
+    &#125;
+
+    private int Show3()
+    &#123;
+        return 1000;
+    &#125;
+
+    private void Show4(string a)
+    &#123;
+        Debug.Log(&quot;Show4 -&gt; a:&quot; + a);
+    &#125;
+&#125;
+</code></pre>
+<h4 id="系统内置-Action-委托"><a href="#系统内置-Action-委托" class="headerlink" title="| 系统内置 Action 委托"></a>| 系统内置 <code>Action</code> 委托</h4><p><strong>注意点：</strong></p>
+<ul>
+<li><p><code>Action</code> 委托至少 0 个参数，至多 16 个参数，无返回值</p>
+</li>
+<li><p><code>Action</code> 表示无参，无返回值的委托</p>
+</li>
+<li><p><code>Action&lt; int, string&gt;</code> 表示有传入参数 int，string 无返回值的委托</p>
+</li>
+<li><p><code>Action&lt; int, string, bool&gt;</code> 表示有传入参数 int，string，bool 无返回值的委托</p>
+</li>
+<li><p><code>Action&lt; int, int, int, int&gt;</code> 表示有传入 4 个 int 型参数，无返回值的委托</p>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SystemAction : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Action action1 = Show1;
+        action1();
+
+        Action&lt;int, int&gt; action2 = Show2;
+        action2(1, 2);
+
+        //Action&lt;
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+
+    void Show1()
+    &#123;
+        Debug.Log(&quot;Show1&quot;);
+    &#125;
+
+    void Show2(int arg1, int arg2)
+    &#123;
+        Debug.Log(&quot;Action:&quot; + (arg1 + arg2));
+    &#125;
+&#125;
+</code></pre>
+<h4 id="系统内置-Func-委托"><a href="#系统内置-Func-委托" class="headerlink" title="| 系统内置 Func 委托"></a>| 系统内置 <code>Func</code> 委托</h4><p><strong>什么是 <code>Func</code> 委托：</strong></p>
+<p>Func 是 .NET Framework 内置的带有返回值的泛型委托。</p>
+<p><strong>注意点：</strong></p>
+<ul>
+<li><p><code>System.Func</code> 可以不带参数，但是必须带一个返回值</p>
+</li>
+<li><p><code>System.Func</code> 若是调用的多个泛型的委托定义，最后的参数的数据类型是函数的返回值类型 需要保持一致；非最后一个泛型T的声明 需要与实现函数的参数个数及类型保持一致</p>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class SystemFunc : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Func&lt;string&gt; func1 = Show1;
+        string a =  func1();
+        Debug.Log(a);
+
+        //Func&lt;string, int&gt; func2 = Show2;
+        Func&lt;int,string&gt; func2 = Show2;
+        string b =  func2(1000);
+        Debug.Log(b);
+
+        //Func&lt;
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+
+    string Show1()
+    &#123;
+        return &quot;Show1&quot;;
+    &#125;
+
+    //int Show2(string a)
+    //&#123;
+    //    return int.Parse(a);
+    //&#125;
+
+    string Show2(int a)
+    &#123;
+        return a.ToString();
+    &#125;
+&#125;
+</code></pre>
+<h4 id="匿名方法、event-事件、多播委托"><a href="#匿名方法、event-事件、多播委托" class="headerlink" title="| 匿名方法、event 事件、多播委托"></a>| 匿名方法、event 事件、多播委托</h4><p><strong>什么是匿名方法：</strong></p>
+<ul>
+<li>没有名字的方法称之为匿名方法</li>
+</ul>
+<p><strong>什么是 Event 事件：</strong></p>
+<ul>
+<li><p>event 事件本身就是一种委托，只是该委托只能作为类的成员，且不可在类外进行调用</p>
+</li>
+<li><p>注意点</p>
+<ul>
+<li>（1）<ul>
+<li>event 事件 只允许作为类的成员变量 且仅在类的内部使用才可以，外部不得直接调用。</li>
+</ul>
+</li>
+<li>（2）<ul>
+<li>当作为 A 类的成员 <code>event</code>事件 在外部类赋值时，只能通过 <code>+=</code> 的方法；</li>
+<li>而对于 普通的 <code>Action</code> 则可以 <code>= / += -=</code> 的方式进行赋值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>什么是多播委托：</strong></p>
+<ul>
+<li><p>在 C# 语言中多播委托是指在一个委托中注册多个方法，在注册方法时可以在委托中使用 加号运算符 或者 减号运算符 来实现添加或者撤销方法</p>
+</li>
+<li><p>注意点</p>
+<ul>
+<li><p>+&#x3D; &amp; -&#x3D;</p>
+</li>
+<li><p>委托属于引用类型，引用类型的默认值是 null，直接使用的话会报错空异常；所以在使用之前需要先判断委托对象（引用对象）是否为空</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+
+public class MyEventClass
+&#123;
+    public event Action eventAction;
+    public Action defaultAction;
+
+    public void Send()
+    &#123;
+        if(eventAction != null)
+        &#123;
+            eventAction();
+        &#125;
+    &#125;
+
+&#125;
+
+public class BoardCast : MonoBehaviour
+&#123;
+
+    //event Action action;
+
+    void Start()
+    &#123;
+        //Action action = Show1;
+        //Action action = delegate ()
+        //&#123;
+        //    Debug.Log(&quot;匿名函数 被执行&quot;);
+
+        //&#125;;
+        //action();
+
+        //Action action = Show1;
+        //action += Show2;
+        //action -= Show2;
+        //action -= Show1;
+        //if(action != null)
+        //   action();
+
+        //action = Show1;
+        //action();
+
+        MyEventClass myClass = new MyEventClass();
+        myClass.eventAction += Show1;
+        myClass.Send();
+        //myClass.eventAction();
+        //myClass.eventAction -= Show1;
+        myClass.defaultAction = Show1;
+        myClass.defaultAction();
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+
+    private void Show1()
+    &#123;
+        Debug.Log(&quot;Show1 被执行&quot;);
+    &#125;
+
+    private void Show2()
+    &#123;
+        Debug.Log(&quot;Show2 被执行&quot;);
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="设计模式相关内容"><a href="#设计模式相关内容" class="headerlink" title="设计模式相关内容"></a>设计模式相关内容</h2><h4 id="设计模式（Design-pattern）"><a href="#设计模式（Design-pattern）" class="headerlink" title="| 设计模式（Design pattern）"></a>| 设计模式（Design pattern）</h4><p><strong>分类：</strong></p>
+<ul>
+<li><p>创建型模式：共 5 种 - <em>工厂方法模式</em> 、<em>抽象工厂模式</em> 、<em>单例模式</em> 、建造者模式 、原型模式</p>
+</li>
+<li><p>结构型模式：共 7 种 - <em>适配器模式</em> 、装饰器模式 、代理模式 、外观模式 、桥接模式 、组合模式 、享元模式</p>
+</li>
+<li><p>行为型模式：共 11 种 - 策略模式 、模板方法模式 、<em>观察者模式</em> 、迭代子模式 、责任链模式 、命令模式 、备忘录模式 、状态模式 、访问者模式 、中介者模式 、解释器模式</p>
+</li>
+</ul>
+<br>
+
+<h4 id="单例模式"><a href="#单例模式" class="headerlink" title="| 单例模式"></a>| 单例模式</h4><p>即所谓的一个类只能有一个实例，也就是类只能在内部实例一次，然后提供这一实例，外部无法对此类实例化。多用在 管理器</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li><p>实例全局唯一</p>
+<ul>
+<li><code>static</code> 静态变量 属于全局，并不属于类对象本身</li>
+</ul>
+</li>
+<li><p>实例只能在类的内部发生</p>
+<ul>
+<li>需要将构造函数私有化</li>
+</ul>
+</li>
+<li><p>需要提供一个供外部访问的变量</p>
+</li>
+</ul>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MySingleton
+&#123;
+    private static MySingleton _instance;
+    public static MySingleton instance
+    &#123;
+        get
+        &#123;
+            if (_instance == null)
+            &#123;
+                _instance = new MySingleton();
+            &#125;
+            return _instance;
+        &#125;
+    &#125;
+
+    private MySingleton()
+    &#123;
+        Debug.Log(&quot;构造函数执行&quot;);
+    &#125;
+
+    public void Show()
+    &#123;
+        Debug.Log(&quot;Show&quot;);
+    &#125;
+
+&#125;
+
+public class Singleton : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //MySingleton single1 = new MySingleton();
+        //MySingleton single2 = new MySingleton();
+        //MySingleton single3 = new MySingleton();
+
+        //Debug.Log(&quot;single1 =&quot; + single1.GetHashCode() + &quot;,single2 =&quot; + single2.GetHashCode() + &quot;,single3 =&quot; + single3.GetHashCode());
+
+        MySingleton single1 = MySingleton.instance;
+        single1.Show();
+
+        MySingleton single2 = MySingleton.instance;
+        single2.Show();
+
+        MySingleton single3 = MySingleton.instance;
+        single3.Show();
+
+        Debug.Log(&quot;single1 =&quot; + single1.GetHashCode() + &quot;,single2 =&quot; + single2.GetHashCode() + &quot;,single3 =&quot; + single3.GetHashCode());
+    &#125;
+&#125;
+</code></pre>
+<h4 id="观察者模式"><a href="#观察者模式" class="headerlink" title="| 观察者模式"></a>| 观察者模式</h4><p>有时被称为 发布 &#x2F; 订阅模式，观察者定义了一种 一对多 的依赖关系，让多个观察者对象同时监听某一主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己。此种模式通常被用来实现事件处理系统。</p>
+<p><strong>特点：</strong> 发布者 + 订阅者 &#x3D; 观察者模式</p>
+<p><em>观察者模式相关博文：</em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fws94/p/7453043.html">【Unity与23种设计模式】观察者模式（Observer） - Lumious - 博客园</a></p>
+<p><strong>演示：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+/*
+ *    观察者模式
+ *            需求：
+ *                野猫来了，老鼠 A B C 惊吓逃走
+ */
+
+public class Animal
+&#123;
+    protected string Name;
+    public Animal(string name)
+    &#123;
+        this.Name = name;
+    &#125;
+
+    public virtual void Run()
+    &#123;
+
+    &#125;
+&#125;
+
+public class Cat : Animal
+&#123;
+    public Action actions; // 发布者
+
+    public Cat(string name): base(name)
+    &#123;
+
+    &#125;
+
+    public void Coming(/*Animal mouseA, Animal mouseB, Animal mouseC, Animal mouseD*/)
+    &#123;
+        Debug.Log(Name + &quot;来了&quot;);
+        //mouseA.Run();
+        //mouseB.Run();
+        //mouseC.Run();
+        //mouseD.Run();
+        if (actions != null)
+        &#123;
+            actions(); // 通过 多播委托 实现一对多的关系
+        &#125;
+        this.Run();
+    &#125;
+
+    public override void Run()
+    &#123;
+        Debug.Log(Name + &quot;开始追三只老鼠...&quot;);
+    &#125;
+&#125;
+
+public class Mouse : Animal
+&#123;
+    public Mouse(string name,Cat cat) : base(name)
+    &#123;
+        cat.actions += this.Run; // 订阅者
+    &#125;
+
+    public override void Run()
+    &#123;
+        Debug.Log(Name + &quot;逃跑&quot;);
+    &#125;
+&#125;
+
+#region Tmp
+//public class MouseB : Animal
+//&#123;
+//    public MouseB(string name) : base(name)
+//    &#123;
+
+//    &#125;
+//    public override void Run()
+//    &#123;
+//        Debug.Log(Name + &quot;逃跑&quot;);
+//    &#125;
+//&#125;
+
+//public class MouseC : Animal
+//&#123;
+//    public MouseC(string name) : base(name)
+//    &#123;
+
+//    &#125;
+//    public override void Run()
+//    &#123;
+//        Debug.Log(Name + &quot;逃跑&quot;);
+//    &#125;
+//&#125;
+#endregion
+
+public class Visit : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Cat cat = new Cat(&quot;小野猫&quot;);
+
+        Animal mouseA = new Mouse(&quot;mouseA&quot;, cat);
+        Animal mouseB = new Mouse(&quot;mouseB&quot;, cat);
+        Animal mouseC = new Mouse(&quot;mouseC&quot;, cat);
+        Animal mouseD = new Mouse(&quot;mouseD&quot;, cat);
+        Animal mouseE = new Mouse(&quot;mouseE&quot;, cat);
+
+        cat.Coming(/*mouseA, mouseB, mouseC, mouseD*/);
+    &#125;
+&#125;
+</code></pre>
+<h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="| 工厂模式"></a>| 工厂模式</h4><p><strong>分类：</strong></p>
+<ul>
+<li><p>简单工厂模式</p>
+<ul>
+<li><p>属于创建型模式，又叫做静态工厂方法（Static Factory Method）模式。简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族种最简单实用的模式，可以理解为是不同工厂模式的一个特殊实现。</p>
+</li>
+<li><p>特点：只生产一种品牌（类型）的产品，在工厂种动态创建</p>
+</li>
+<li><p><em>简单工厂模式推荐阅读：</em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11236213.html">C#设计模式（1）——简单工厂模式 - Frank_520 - 博客园</a></p>
+</li>
+<li><p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/09.png" >
+        </sapn>
+      </p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>SampleFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace Factor
+&#123;
+    public class SampleFactor
+    &#123;
+        public AbstructMouse CreateMouse(MouseType emMouseType)
+        &#123;
+            AbstructMouse mouse = null;
+
+            switch (emMouseType)
+            &#123;
+                case MouseType.HpMouse:
+                    mouse = new HpMouse();
+                    break;
+                case MouseType.DellMouse:
+                    mouse = new DellMouse();
+                    break;
+
+                default:
+                    break;
+            &#125;
+            return mouse;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>HpMouse：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace Factor
+&#123;
+    public class HpMouse : AbstructMouse
+    &#123;
+        public override void Print()
+        &#123;
+            Debug.Log(&quot;生产了一个Hp鼠标&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>DellMouse：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+//using Factor;
+
+namespace Factor
+&#123;
+    public class DellMouse : /*Factor.*/ AbstructMouse
+    &#123;
+        public override void Print()
+        &#123;
+            Debug.Log(&quot;生产了一个Dell鼠标&quot;);
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p><strong>AbstructMouse：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Factor
+&#123;
+    public abstract class AbstructMouse
+    &#123;
+        public abstract void Print();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>FactorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public enum MouseType
+&#123;
+    None,
+    DellMouse,
+    HpMouse,
+&#125;
+
+public class FactorMain : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //RunNormal();
+        RunSampleFactor();
+    &#125;
+
+    void RunNormal()
+    &#123;
+        DellMouse dellMouse = new DellMouse();
+        dellMouse.Print();
+
+        HpMouse hpMouse = new HpMouse();
+        hpMouse.Print();
+
+    &#125;
+    void RunSampleFactor()
+    &#123;
+        SampleFactor factor = new SampleFactor();
+        AbstructMouse dellMouse = factor.CreateMouse(MouseType.DellMouse);
+        dellMouse.Print();
+
+        AbstructMouse hpMouse = factor.CreateMouse(MouseType.HpMouse);
+        hpMouse.Print();
+
+    &#125;
+    void RunFactor()
+    &#123;
+
+    &#125;
+
+    void Update()
+    &#123;
+
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li><p>工厂模式</p>
+<ul>
+<li><p>避免简单工厂模式种，新增产品品牌（类型）时，直接修改工厂类。为了解决这个问题出现了 工厂模式。</p>
+</li>
+<li><p>特点：只生产一种品牌（类型）的产品，在具体的子类工厂中创建。为了解决系列产品的问题，就有了抽象工厂模式。</p>
+</li>
+<li><p><em>工厂模式推荐阅读：</em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11241920.html">C#设计模式（2）——工厂模式 - Frank_520 - 博客园</a></p>
+</li>
+<li><p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/08.png" >
+        </sapn>
+      </p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>FactorBase：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Factor
+&#123;
+    public abstract class FactorBase
+    &#123;
+        public abstract AbstructMouse CreateMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>DellFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class DellFactor : FactorBase
+&#123;
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new DellMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>HpFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class HpFactor : FactorBase
+&#123;
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new HpMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AppleFactor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class AppleFactor : FactorBase
+&#123;
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new AppleMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>FactorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class FactorMain : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //RunNormal();
+        //RunSampleFactor();
+        RunFactor();
+    &#125;
+    void RunFactor()
+    &#123;
+        DellFactor dellFactor = new DellFactor();
+        AbstructMouse dellMouse = dellFactor.CreateMouse();
+        dellMouse.Print();
+
+        HpFactor hpFactor = new HpFactor();
+        AbstructMouse hpMouse = hpFactor.CreateMouse();
+        hpMouse.Print();
+
+        AppleFactor appleFactor = new AppleFactor();
+        AbstructMouse appleMouse = appleFactor.CreateMouse();
+        appleMouse.Print();
+    &#125;
+&#125;
+</code></pre>
+<ul>
+<li><p>抽象工厂模式</p>
+<ul>
+<li><p>为了解决系列产品的问题，就有了抽象工厂模式。</p>
+</li>
+<li><p>特点：抽象工厂可以生产多种产品。而简单工厂 &#x2F; 工厂模式 只生产一种产品</p>
+</li>
+<li><p><em>抽象工厂模式推荐阅读：</em><a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11241926.html">C#设计模式（3）——抽象工厂模式 - Frank_520 - 博客园</a></p>
+</li>
+<li><p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/10.png" >
+        </sapn>
+      </p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>AbstructKeyBoard：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public abstract class AbstructKeyBoard 
+&#123;
+    public abstract void Print();
+&#125;
+</code></pre>
+<p><strong>AppleKeyboard &#x2F; DellKeyboard &#x2F; HpKeyboard ：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class AppleKeyboard : AbstructKeyBoard // 其他两个同理
+&#123;
+    public override void Print()
+    &#123;
+        Debug.Log(&quot;Apple键盘&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AbstructFactor_Base：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+
+public abstract class AbstructFactor_Base 
+&#123;
+    public abstract AbstructMouse CreateMouse();
+    public abstract AbstructKeyBoard CreateKeyBoard();
+&#125;
+</code></pre>
+<p><strong>AbstructFactor_Apple &#x2F; AbstructFactor_Dell &#x2F; AbstructFactor_Hp：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class AbstructFactor_Apple : AbstructFactor_Base // 其他两个同理
+&#123;
+    public override AbstructKeyBoard CreateKeyBoard()
+    &#123;
+        return new AppleKeyboard();
+    &#125;
+
+    public override AbstructMouse CreateMouse()
+    &#123;
+        return new AppleMouse();
+    &#125;
+&#125;
+</code></pre>
+<p><strong>FactorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Factor;
+
+public class FactorMain : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        //RunNormal();
+        //RunSampleFactor();
+        //RunFactor();
+
+        RunAbstructFactor();
+    &#125;
+
+    void RunAbstructFactor()
+    &#123;
+        AbstructFactor_Apple apple = new AbstructFactor_Apple();
+        AbstructMouse appleMouse = apple.CreateMouse();
+        appleMouse.Print();
+        AbstructKeyBoard appleKeyBoard = apple.CreateKeyBoard();
+        appleKeyBoard.Print();
+
+        Debug.Log(&quot;------------------------------------------&quot;);
+
+        AbstructFactor_Dell dell = new AbstructFactor_Dell();
+        AbstructMouse dellMouse = dell.CreateMouse();
+        dellMouse.Print();
+        AbstructKeyBoard dellKeyBoard = dell.CreateKeyBoard();
+        dellKeyBoard.Print();
+
+        Debug.Log(&quot;------------------------------------------&quot;);
+
+        AbstructFactor_Hp hp = new AbstructFactor_Hp();
+        AbstructMouse hpMouse = hp.CreateMouse();
+        hpMouse.Print();
+        AbstructKeyBoard hpKeyBoard = hp.CreateKeyBoard();
+        hpKeyBoard.Print();
+    &#125;
+&#125;
+</code></pre>
+<h4 id="适配模式"><a href="#适配模式" class="headerlink" title="| 适配模式"></a>| 适配模式</h4><blockquote>
+<p>问题：Android &#x2F; iOS 充电线标准不一样，只有一根线时，如何完成不同型号手机充电？</p>
+<p>解决：适配器模式</p>
+</blockquote>
+<p><em>适配模式推荐阅读：</em> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/frank0812/p/11280195.html">C#设计模式（7）——适配器模式 - Frank_520 - 博客园</a></p>
+<p>图解：
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/11.png" >
+        </sapn>
+      </p>
+<p><strong>Adaptor：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Adaptor
+&#123;
+    public enum AdaptorType
+    &#123;
+        None,
+        Android,
+        iOS,
+    &#125;
+
+    public interface IAdaptor
+    &#123;
+        /// &lt;summary&gt;
+        /// 统一调用接口，大一统
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;adaptorType&quot;&gt;&lt;/param&gt;
+
+        void Charge(AdaptorType adaptorType);
+    &#125;
+
+    public class Adaptor : IAdaptor
+    &#123;
+        // 之前已经写了非常多的代码，但是 现在需要增加一个转换器的接口
+        // 接口 用于拓展原始类不足的功能
+
+        AndroidLine androidLine = new AndroidLine();
+        IosLine iosLine = new IosLine();
+
+        public void Charge(AdaptorType adaptorType)
+        &#123;
+            if (adaptorType == AdaptorType.Android)
+                androidLine.AndroidCharge();
+            else if (adaptorType == AdaptorType.iOS)
+                iosLine.IOSCharge();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>IosLine：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Adaptor
+&#123;
+    public class IosLine
+    &#123;
+        public void IOSCharge()
+        &#123;
+            Debug.Log(&quot;借助iOS充电线充电中...&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AndroidLine：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Adaptor
+&#123;
+    public class AndroidLine
+    &#123;
+        public void AndroidCharge()
+        &#123;
+            Debug.Log(&quot;借助Android充电线充电中...&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>AdaptorMain：</strong></p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+namespace Adaptor
+&#123;
+    public class AdaptorMain : MonoBehaviour
+    &#123;
+        void Start()
+        &#123;
+            IAdaptor adaptor = new Adaptor();
+            adaptor.Charge(AdaptorType.Android);
+            adaptor.Charge(AdaptorType.iOS);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<center>森木清树.</center>
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">C# Study</div>
+            <ul>
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/02/Csharp/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" class="post-categoris-bottom-link">
+                  基础语法专题（1）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/02/Csharp/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/" class="post-categoris-bottom-link">
+                  基础语法专题（2）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/02/Csharp/Class%E4%B8%93%E9%A2%98%EF%BC%881%EF%BC%89/" class="post-categoris-bottom-link">
+                  Class专题（1）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/03/Csharp/Class%E4%B8%93%E9%A2%98%EF%BC%882%EF%BC%89/" class="post-categoris-bottom-link">
+                  Class专题（2）
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2022/09/04/Csharp/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%93%E9%A2%98/" class="post-categoris-bottom-link">
+                  设计模式专题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/05/Csharp/IO%E6%93%8D%E4%BD%9C%E4%B8%93%E9%A2%98/" class="post-categoris-bottom-link">
+                  IO操作专题
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/06/Csharp/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-categoris-bottom-link">
+                  数据结构
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A7%94%E6%89%98"><span class="space-toc-text">委托</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%A7%94%E6%89%98%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="space-toc-text">| 委托的定义和使用</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AE-Action-%E5%A7%94%E6%89%98"><span class="space-toc-text">| 系统内置 Action 委托</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%86%85%E7%BD%AE-Func-%E5%A7%94%E6%89%98"><span class="space-toc-text">| 系统内置 Func 委托</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%8C%BF%E5%90%8D%E6%96%B9%E6%B3%95%E3%80%81event-%E4%BA%8B%E4%BB%B6%E3%80%81%E5%A4%9A%E6%92%AD%E5%A7%94%E6%89%98"><span class="space-toc-text">| 匿名方法、event 事件、多播委托</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="space-toc-text">设计模式相关内容</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Design-pattern%EF%BC%89"><span class="space-toc-text">| 设计模式（Design pattern）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="space-toc-text">| 单例模式</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="space-toc-text">| 观察者模式</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="space-toc-text">| 工厂模式</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%80%82%E9%85%8D%E6%A8%A1%E5%BC%8F"><span class="space-toc-text">| 适配模式</span></a></li></ol></li></ol></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a> Player by <a target="_blank" rel="noopener" href="https://github.com/Morikiiii">Morikiiii</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/Morikiiii" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:Morikiiii@163.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://Morikiiii.github.io" target="_blank">
+                <i class="ri-skull-2-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>
