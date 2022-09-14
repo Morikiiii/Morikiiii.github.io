@@ -211,9 +211,82 @@ public class L8_3Demo : MonoBehaviour
 <hr>
 <h2 id="模型资源与动画设置"><a href="#模型资源与动画设置" class="headerlink" title="模型资源与动画设置"></a>模型资源与动画设置</h2><p>Unity 常用模型格式：.fbx</p>
 <hr>
-<h2 id="人形动画的复用性"><a href="#人形动画的复用性" class="headerlink" title="人形动画的复用性"></a>人形动画的复用性</h2><hr>
-<h2 id="动画事件"><a href="#动画事件" class="headerlink" title="动画事件"></a>动画事件</h2><hr>
-<h2 id="角色控制器组件"><a href="#角色控制器组件" class="headerlink" title="角色控制器组件"></a>角色控制器组件</h2><hr>
+<h2 id="人形动画的复用性"><a href="#人形动画的复用性" class="headerlink" title="人形动画的复用性"></a>人形动画的复用性</h2><p>人性角色的骨骼结构是一致的</p>
+<p>Avatar 映射文件：人形动作中才使用，映射人体的位置对应什么游戏物体，这样动作文件才能正确工作，基于此可以让动作复用</p>
+<hr>
+<h2 id="动画事件"><a href="#动画事件" class="headerlink" title="动画事件"></a>动画事件</h2><p>自建动画：在 Animation 中添加事件</p>
+<p>模型动画：在模型中找到动画片段，添加事件</p>
+<hr>
+<h2 id="角色控制器组件"><a href="#角色控制器组件" class="headerlink" title="角色控制器组件"></a>角色控制器组件</h2><ol>
+<li><p>Transform 不具备物理特性</p>
+</li>
+<li><p>而 Rigidbody 却不稳定，很容易被弹开、穿模</p>
+</li>
+<li><p><strong>角色控制器（CharacterController）：</strong></p>
+<ul>
+<li><p>面板：</p>
+<ul>
+<li><p>Slope Limit：控制角色最大的爬坡斜率</p>
+</li>
+<li><p>Step Offset：控制角色可以迈上最大的台阶高度</p>
+</li>
+<li><p>Skin Width：在角色外围包裹一层 “皮肤”，这层皮肤的厚度，相当于角色身上透明的衣服，如果 Skin Width 设置为 1m，那么角色会 “浮空” 1m，一般保持默认即可</p>
+</li>
+<li><p>Min Move Distance：最小移动距离，默认是1毫米，如果该数值过大但代码中单位移动速度很慢，角色就不会动</p>
+</li>
+<li><p>Center &#x2F; Radius &#x2F; Height：角色控制器组件在 Scene面板 中体现为一个 “胶囊碰撞器” 的形状，这也导致其他的碰撞体我们并不需要，Center 为胶囊中心点位置，Radius 为半径，Height 为高度</p>
+</li>
+</ul>
+</li>
+<li><p>角色控制器组件所在的游戏物体身上不需要碰撞体和刚体</p>
+</li>
+<li><p>常用属性：</p>
+<ul>
+<li>isGrounded：是否在地面上</li>
+</ul>
+</li>
+<li><p>常用方法</p>
+<ul>
+<li><p><code>Move(Vector3 dir)</code> ：和 Transform.Translate雷同，没有重力，需要传递的是一个方向，数值的大小影响移动速度，所以需要乘上Time.deltaTime</p>
+</li>
+<li><p><code>SimpleMove(Vector3 speed)</code> ：会应用重力，需要传递的值是一个速度，并且本身就是按照时间来计算的，数值大小虽然也会影响移动速度，但是不会被帧率影响，所以不需要乘 Time.deltaTime</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L8_7Demo : MonoBehaviour
+&#123;
+
+    private CharacterController characterController;
+    void Start()
+    &#123;
+        characterController = GetComponent&lt;CharacterController&gt;();
+    &#125;
+
+    void Update()
+    &#123;
+        Debug.Log(characterController.isGrounded);
+
+        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);
+        float vertical = Input.GetAxis(&quot;Vertical&quot;);
+
+        //Vector3 dir = new Vector3(horizontal, -9.8f, vertical);
+        // 1
+        //characterController.Move(dir * Time.deltaTime * 30);
+
+        Vector3 dir = new Vector3(horizontal, 0, vertical);
+        // 2
+        characterController.SimpleMove(dir * 30);
+    &#125;
+&#125;
+</code></pre>
+<hr>
 <h2 id="案例：3D-角色移动"><a href="#案例：3D-角色移动" class="headerlink" title="案例：3D 角色移动"></a>案例：3D 角色移动</h2><hr>
 <center>森木清树.</center>
 
