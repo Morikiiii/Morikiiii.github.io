@@ -287,7 +287,74 @@ public class L8_7Demo : MonoBehaviour
 &#125;
 </code></pre>
 <hr>
-<h2 id="案例：3D-角色移动"><a href="#案例：3D-角色移动" class="headerlink" title="案例：3D 角色移动"></a>案例：3D 角色移动</h2><hr>
+<h2 id="案例：3D-角色移动"><a href="#案例：3D-角色移动" class="headerlink" title="案例：3D 角色移动"></a>案例：3D 角色移动</h2><p>使用角色控制器组件来控制角色位移，并且播放正确的待机或移动动画</p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L8_8Player : MonoBehaviour
+&#123;
+    private CharacterController characterController;
+    private Animator animator;
+
+    void Start()
+    &#123;
+        characterController = GetComponent&lt;CharacterController&gt;();
+        animator = GetComponent&lt;Animator&gt;();
+    &#125;
+
+    void Update()
+    &#123;
+        Demo2();
+    &#125;
+
+    // 实现基于自身坐标体系的移动，不考虑旋转
+    private void Demo1()
+    &#123;
+        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);
+        float vertical = Input.GetAxis(&quot;Vertical&quot;);
+
+        if (horizontal != 0 || vertical != 0)
+        &#123;
+            animator.SetBool(&quot;Run&quot;, true);
+        &#125;
+        else
+        &#123;
+            animator.SetBool(&quot;Run&quot;, false);
+        &#125;
+
+        Vector3 dir = new Vector3(horizontal, 0, vertical);
+
+        // 如果以 transform 为参考方向，得到我自己的前方
+        dir = transform.TransformDirection(dir);
+        characterController.SimpleMove(dir);
+    &#125;
+
+    private void Demo2()
+    &#123;
+        float horizontal = Input.GetAxis(&quot;Horizontal&quot;);
+        float vertical = Input.GetAxis(&quot;Vertical&quot;);
+
+        if (horizontal != 0 || vertical != 0)
+        &#123;
+            animator.SetBool(&quot;Run&quot;, true);
+        &#125;
+        else
+        &#123;
+            animator.SetBool(&quot;Run&quot;, false);
+        &#125;
+
+        Vector3 dir = new Vector3(0, 0, vertical);
+
+        // 如果以 transform 为参考方向，得到我自己的前方
+        dir = transform.TransformDirection(dir);
+        characterController.SimpleMove(dir);
+
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + horizontal * Time.deltaTime * 100, 0);
+    &#125;
+&#125;
+</code></pre>
+<hr>
 <center>森木清树.</center>
 
         <!-- 分类文章 -->
@@ -425,6 +492,28 @@ public class L8_7Demo : MonoBehaviour
                 <li class="me base">
                   <a  href="/2022/09/12/Unity/Unity-%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="post-categoris-bottom-link">
                   Unity 动画系统
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/14/Unity/Unity-%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" class="post-categoris-bottom-link">
+                  Unity 导航系统
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/14/Unity/Unity-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" class="post-categoris-bottom-link">
+                  Unity 资源管理
                 </a>
                 </li>
               
