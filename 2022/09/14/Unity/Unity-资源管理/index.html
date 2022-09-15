@@ -128,12 +128,193 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <h2 id="资源导入与导出"><a href="#资源导入与导出" class="headerlink" title="资源导入与导出"></a>资源导入与导出</h2><hr>
-<h2 id="预制体实例化"><a href="#预制体实例化" class="headerlink" title="预制体实例化"></a>预制体实例化</h2><hr>
-<h2 id="Resource-资源加载"><a href="#Resource-资源加载" class="headerlink" title="Resource 资源加载"></a>Resource 资源加载</h2><hr>
-<h2 id="数据存档-PlayerPrefsr"><a href="#数据存档-PlayerPrefsr" class="headerlink" title="数据存档 - PlayerPrefsr"></a>数据存档 - PlayerPrefsr</h2><hr>
-<h2 id="游戏场景加载"><a href="#游戏场景加载" class="headerlink" title="游戏场景加载"></a>游戏场景加载</h2><hr>
-<h2 id="声音系统"><a href="#声音系统" class="headerlink" title="声音系统"></a>声音系统</h2><hr>
+        <h2 id="资源导入与导出"><a href="#资源导入与导出" class="headerlink" title="资源导入与导出"></a>资源导入与导出</h2><p><strong>导出：</strong> 右键想要导出的物体或文件夹 –》Export Package</p>
+<p><strong>导入：</strong> 将对象拖入 Assets 即可</p>
+<hr>
+<h2 id="预制体实例化"><a href="#预制体实例化" class="headerlink" title="预制体实例化"></a>预制体实例化</h2><p>游戏中大多数情况下我们都需要通过代码生成子弹，刷新小兵等，所以需要将预制体实例化到场景中</p>
+<p><code>GameObject.Instantiate()</code> ：有多个重载，根据情况选择</p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L10_2Demo : MonoBehaviour
+&#123;
+    public GameObject Prefab_Cube;
+    void Start()
+    &#123;
+
+    &#125;
+    private void Update()
+    &#123;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Input.GetMouseButtonDown(0) &amp;&amp; Physics.Raycast(ray, out RaycastHit hitinfo, 1000))
+        &#123;
+            GameObject cube = GameObject.Instantiate(Prefab_Cube, hitinfo.point, Quaternion.identity, transform);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="Resource-资源加载"><a href="#Resource-资源加载" class="headerlink" title="Resource 资源加载"></a>Resource 资源加载</h2><p>特殊文件夹：Resource</p>
+<p>目的：预制体、Sprite 等资源在目录中，动态的加载进来</p>
+<p>使用：<code>Resource.Load&lt;GameObject&gt;(&quot;path&quot;);</code> </p>
+<p>重要：Resource 进行的预制体加载，不等于实例化</p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L10_2Demo : MonoBehaviour
+&#123;
+    private GameObject prefab_Cube;
+    public Sprite sprite;
+    void Start()
+    &#123;
+        prefab_Cube = Resources.Load&lt;GameObject&gt;(&quot;Prefabs/Cube&quot;);
+        sprite = Resources.Load&lt;Sprite&gt;(&quot;Test&quot;);
+    &#125;
+
+    private void Update()
+    &#123;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Input.GetMouseButtonDown(0) &amp;&amp; Physics.Raycast(ray, out RaycastHit hitinfo, 1000))
+        &#123;
+            GameObject cube = GameObject.Instantiate(prefab_Cube, hitinfo.point, Quaternion.identity, transform);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="数据存档-PlayerPrefsr"><a href="#数据存档-PlayerPrefsr" class="headerlink" title="数据存档 - PlayerPrefsr"></a>数据存档 - PlayerPrefsr</h2><p>单机游戏存放在本地，网络游戏中一般存放在服务端的数据库，一些没那么关键的数据也可以存放在本地</p>
+<p>PlayerPrefsr 是 Unity 提供的一种存档方式</p>
+<h4 id="存储和获取"><a href="#存储和获取" class="headerlink" title="| 存储和获取"></a>| 存储和获取</h4><p><strong>存储</strong></p>
+<ul>
+<li><p><code>PlayerPrefs.SetInt(&quot;Key&quot;,999);</code></p>
+</li>
+<li><p><code>PlayerPrefs.SetFloat(&quot;Key&quot;,1.11f);</code></p>
+</li>
+<li><p><code>PlayerPrefs.SetString(&quot;Key&quot;,&quot;Hello&quot;);</code></p>
+</li>
+</ul>
+<p><strong>获取</strong></p>
+<ul>
+<li><p><code>int value = PlayerPrefs.GetInt(&quot;key&quot;);</code></p>
+</li>
+<li><p><code>float value = PlayerPrefs.GetFloat(&quot;key&quot;); </code></p>
+</li>
+<li><p><code>string value = PlayerPrefs.GetString(&quot;key&quot;);</code></p>
+</li>
+</ul>
+<h4 id="删除数据、查找数据"><a href="#删除数据、查找数据" class="headerlink" title="| 删除数据、查找数据"></a>| 删除数据、查找数据</h4><p><strong>删除全部：</strong></p>
+<ul>
+<li><code>PlayerPrefs.DeleteAll();</code></li>
+</ul>
+<p><strong>删除指定的数据：</strong></p>
+<ul>
+<li><code>PlayerPrefs.DeleteKey(&quot;key&quot;);</code></li>
+</ul>
+<p><strong>查找有没有这个key的数值：</strong></p>
+<ul>
+<li><code>bool exist = PlayerPrefs.HasKey(&quot;key&quot;);</code></li>
+</ul>
+<h4 id="数据位置"><a href="#数据位置" class="headerlink" title="| 数据位置"></a>| 数据位置</h4><p>存储在注册表的 <code>HKEY_CURRENT_USER\Software[company name][product name]</code> 下</p>
+<p>打开方式：cmd 中 regedit.exe</p>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class L10_4Demo : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        // Save
+        PlayerPrefs.SetString(&quot;PlayerName&quot;, &quot;Morikiiii&quot;);
+        PlayerPrefs.SetFloat(&quot;floatValue&quot;, 2.5f);
+        PlayerPrefs.SetInt(&quot;Age&quot;, 22);
+
+        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey(&quot;Age&quot;);
+
+        // Load
+        string playName = PlayerPrefs.GetString(&quot;PlayerName&quot;);
+        float floatValue = PlayerPrefs.GetFloat(&quot;floatValue&quot;);
+        int age = -1;
+        if (PlayerPrefs.HasKey(&quot;Age&quot;))
+        &#123;
+            age = PlayerPrefs.GetInt(&quot;Age&quot;);
+        &#125;
+
+        Debug.Log(playName);
+        Debug.Log(floatValue);
+        Debug.Log(age);
+    &#125;
+
+    private void Update()
+    &#123;
+        if (Input.GetKeyDown(KeyCode.A))
+        &#123;
+            PlayerPrefs.SetString(&quot;PlayerName&quot;, &quot;Kiyoki&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="游戏场景加载"><a href="#游戏场景加载" class="headerlink" title="游戏场景加载"></a>游戏场景加载</h2><p>根据功能来划分场景，比如：登录场景、游戏大厅、角斗场、战斗场景、副本场景、不同的关卡场景</p>
+<p>场景就是 Unity 中的一个一个 Scene，我们重点需要掌握：</p>
+<ul>
+<li><strong>场景切换</strong></li>
+</ul>
+<p><em>场景切换的前提：</em></p>
+<p>该场景必须被打包，也就是 File –》Build Setting 将场景拖拽进Scenes in Build，排序第一（编号 0 代表的场景）的场景会作为游戏开始的开场场景</p>
+<p><em>完成场景切换:：</em></p>
+<ul>
+<li><p>命名空间：<code>using UnityEngine.SceneManagement;</code></p>
+</li>
+<li><p>加载场景：<code>SceneManager.LoadScene();</code> ，多个重载方式</p>
+<ul>
+<li><p>int：场景编号</p>
+</li>
+<li><p>string：场景名称</p>
+</li>
+</ul>
+</li>
+<li><p><strong>数据保留</strong></p>
+</li>
+</ul>
+<p>场景切换，会导致前面一个场景的全部游戏物体都销毁，但是实际开发中，有时候我们可能希望将一些游戏物体带到下一个场景中。</p>
+<ul>
+<li><p><code>GameObject.DontDestroyOnLoad(object)</code> ：加载场景不销毁</p>
+<ul>
+<li>object：一般直接使用 gameObject ，即可将整个游戏物体以及数据带入下一个场景</li>
+</ul>
+</li>
+</ul>
+<pre><code class="csharp">using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class L10_5Demo : MonoBehaviour
+&#123;
+    private void Awake()
+    &#123;
+        GameObject.DontDestroyOnLoad(gameObject);
+    &#125;
+
+    void Update()
+    &#123;
+        if (Input.GetKeyDown(KeyCode.A))
+        &#123;
+            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(&quot;1.资源导入与导出&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<hr>
+<h2 id="声音系统"><a href="#声音系统" class="headerlink" title="声音系统"></a>声音系统</h2><p>音效必不可少</p>
+<hr>
 <h2 id="案例：玩家设置保存"><a href="#案例：玩家设置保存" class="headerlink" title="案例：玩家设置保存"></a>案例：玩家设置保存</h2><hr>
 <h2 id="Windows-打包发布"><a href="#Windows-打包发布" class="headerlink" title="Windows 打包发布"></a>Windows 打包发布</h2><hr>
 <center>森木清树.</center>
@@ -310,7 +491,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%B5%84%E6%BA%90%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA"><span class="space-toc-text">资源导入与导出</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A2%84%E5%88%B6%E4%BD%93%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="space-toc-text">预制体实例化</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Resource-%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD"><span class="space-toc-text">Resource 资源加载</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E6%A1%A3-PlayerPrefsr"><span class="space-toc-text">数据存档 - PlayerPrefsr</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E5%8A%A0%E8%BD%BD"><span class="space-toc-text">游戏场景加载</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A3%B0%E9%9F%B3%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">声音系统</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%8E%A9%E5%AE%B6%E8%AE%BE%E7%BD%AE%E4%BF%9D%E5%AD%98"><span class="space-toc-text">案例：玩家设置保存</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Windows-%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83"><span class="space-toc-text">Windows 打包发布</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%B5%84%E6%BA%90%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA"><span class="space-toc-text">资源导入与导出</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A2%84%E5%88%B6%E4%BD%93%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="space-toc-text">预制体实例化</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Resource-%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD"><span class="space-toc-text">Resource 资源加载</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E6%A1%A3-PlayerPrefsr"><span class="space-toc-text">数据存档 - PlayerPrefsr</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AD%98%E5%82%A8%E5%92%8C%E8%8E%B7%E5%8F%96"><span class="space-toc-text">| 存储和获取</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E3%80%81%E6%9F%A5%E6%89%BE%E6%95%B0%E6%8D%AE"><span class="space-toc-text">| 删除数据、查找数据</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BD%8D%E7%BD%AE"><span class="space-toc-text">| 数据位置</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E5%8A%A0%E8%BD%BD"><span class="space-toc-text">游戏场景加载</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A3%B0%E9%9F%B3%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">声音系统</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%8E%A9%E5%AE%B6%E8%AE%BE%E7%BD%AE%E4%BF%9D%E5%AD%98"><span class="space-toc-text">案例：玩家设置保存</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Windows-%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83"><span class="space-toc-text">Windows 打包发布</span></a></li></ol>
            </div>
         
       </div>
