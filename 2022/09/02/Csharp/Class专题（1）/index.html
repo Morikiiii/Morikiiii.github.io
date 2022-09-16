@@ -809,6 +809,18 @@ public class Abstract : MonoBehaviour
 <h4 id="泛型类-amp-泛型方法"><a href="#泛型类-amp-泛型方法" class="headerlink" title="| 泛型类 &amp; 泛型方法"></a>| 泛型类 &amp; 泛型方法</h4><ul>
 <li><p>小概念：类名后可以添加 <code>&lt;T1.T2.T3...&gt;</code> 这将变成一个泛型类。泛型类 T1.T2.T3 可以通过 <code>where</code> 关键字 来限定类型。</p>
 </li>
+<li><p>特点：</p>
+<ul>
+<li><p>在声明时可以不指定具体的类型，但是在 <em>new 实例化时必须指定 T类型</em></p>
+</li>
+<li><p>可指定泛型类型约束</p>
+</li>
+<li><p>如果子类也是泛型的，那么继承的时候可以不指定具体类型</p>
+</li>
+</ul>
+</li>
+<li><p>一般用在：处理一组功能一样，仅类型不同的任务时</p>
+</li>
 <li><p>泛型约束 注意点：</p>
 <ul>
 <li><p>.NET 含有以下五种泛型约束：</p>
