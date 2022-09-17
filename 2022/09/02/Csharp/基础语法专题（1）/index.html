@@ -415,7 +415,6 @@ public class HelloWorld : MonoBehaviour
 <li><p>（循环）访问数组</p>
 <pre><code class="csharp"> void Start()
  &#123;
-
      int[] array;                // 数组的声明 并没有分配内存
      int[] array2 = new int[5];  // 数组的声明和内存分配
 
@@ -519,12 +518,10 @@ public class HelloWorld : MonoBehaviour
  void ShowName(string strName)
  &#123;
      Debug.Log(&quot;ShowName 输出参数：&quot; + strName);
-
  &#125;
  void ShowName2(string strName, int iAge)
  &#123;
      Debug.Log(&quot;ShowName 输出参数：&quot; + strName + &quot;,年龄：&quot; + iAge);
-
  &#125;
 
  int GetSum(int a,int b)
@@ -651,7 +648,6 @@ public class HelloWorld : MonoBehaviour
     &#123;
         Func1();
         Func2();
-
     &#125;
 
     void Func1()
@@ -692,7 +688,6 @@ public class HelloWorld : MonoBehaviour
         Debug.Log(&quot;a:&quot; + a);
         Debug.Log(&quot;b:&quot; + b);
 
-
         // 小数和整数区别
         float aa = 10;
         int bb = 10;
@@ -712,7 +707,6 @@ public class HelloWorld : MonoBehaviour
         int d = 5;
         d = d &lt;&lt; 5;  // 5 * 2*5次 = 160 乘以2的5次方
         Debug.Log(&quot;d:&quot; + d);
-
     &#125;
 </code></pre>
 <hr>

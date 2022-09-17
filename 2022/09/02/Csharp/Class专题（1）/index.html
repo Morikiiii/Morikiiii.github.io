@@ -157,7 +157,6 @@ public class MyClass
     &#125;
 &#125;
 
-
 public class StudyBaseClass : MonoBehaviour
 &#123;
     void Start()
@@ -223,7 +222,6 @@ public class StudyBaseClass2 : MonoBehaviour
     void Start()
     &#123;
         myClass = new MySpace.MyClass(100);
-
         // int b = myClass.a;
         // myClass.Show();
     &#125;
@@ -231,11 +229,9 @@ public class StudyBaseClass2 : MonoBehaviour
     void Update()
     &#123;
         // Input 这个是键盘鼠标监听工具类
-
         if (Input.GetMouseButton(0)) // 0-鼠标左键 1-鼠标右键 2-滚轮
         &#123;
             Destroy(this.gameObject);
-
         &#125;
     &#125;
 &#125;
@@ -336,8 +332,6 @@ public class Extern1 : MonoBehaviour
         triangle.name = &quot;三角形&quot;;
         triangle.color = &quot;黄色&quot;;
         Debug.Log(triangle.color + &quot;多边形&quot; + triangle.name + &quot;，长&quot; + triangle.Length + &quot;，宽&quot; + triangle.Width);
-
-
     &#125;
 &#125;
 </code></pre>
@@ -423,7 +417,6 @@ public class Extern1 : MonoBehaviour
         rectTangle.CalcArea();
         Debug.Log(&quot;矩形的面积：&quot; + rectTangle.Area);
 
-
         // 三角形面积 = 长 * 宽（高）/2
         Triangle triangle = new Triangle();
         triangle.emPolygon = POLYGON.Triangle;
@@ -434,7 +427,6 @@ public class Extern1 : MonoBehaviour
         triangle.ShowBaseInfo();
         triangle.CalcArea();
         Debug.Log(&quot;三角形的面积：&quot; + triangle.Area);
-
     &#125;
 &#125;
 </code></pre>
@@ -480,7 +472,6 @@ public class Extern1 : MonoBehaviour
 
         baseParent1.Show();
         baseParent2.Show();
-
     &#125;
 &#125;
 </code></pre>
@@ -622,7 +613,6 @@ public class Extern1 : MonoBehaviour
 
 static class MyClass3 : MyClass4
 &#123;
-
     public const int mValue1 = 10;
     public static int mValue;
 
@@ -663,7 +653,6 @@ public class StaticClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     &#123;
-
         MyClass3 myClass3 = new MyClass3();
         // int a = myClass3.mValue;
         int a = MyClass3.mValue;
@@ -673,10 +662,8 @@ public class StaticClass : MonoBehaviour
         // int d = myClass3.mValue4;
         // myClass3.mValue4 = 1000;
 
-
         MyClass3 myclass1 = new MyClass3();
         MyClass3 myclass2 = new MyClass3();
-
     &#125; 
 &#125;
 </code></pre>
@@ -790,10 +777,8 @@ public class MyClass7 : MyClass6
     &#125;
 &#125;
 
-
 public class Abstract : MonoBehaviour
 &#123;
-
     void Start()
     &#123;
         // MyClass5 myclass5 = new MyClass5();
@@ -803,7 +788,6 @@ public class Abstract : MonoBehaviour
 
         // MyClass7 myclass8 = new MyClass7();
     &#125;
-
 &#125;
 </code></pre>
 <h4 id="泛型类-amp-泛型方法"><a href="#泛型类-amp-泛型方法" class="headerlink" title="| 泛型类 &amp; 泛型方法"></a>| 泛型类 &amp; 泛型方法</h4><ul>
@@ -978,7 +962,6 @@ public class TClass : MonoBehaviour
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public interface BaseInterface1
 &#123;
     void ShowWindow();
@@ -992,7 +975,6 @@ public interface BaseInterface1
     */
 
     // private void Show3(); 错误的，不能将函数的声明 改为 私有的
-
 &#125;
 
 public interface BaseInterface2
@@ -1153,7 +1135,6 @@ public class TInterface : MonoBehaviour
 <pre><code class="csharp">using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public interface BaseInteface_1
 &#123;

@@ -287,7 +287,6 @@ public class L2_6Demo : MonoBehaviour
         print(temptransform.position);
         print(boxCollider.isTrigger);
 
-
         gameObject.SetActive(false);
     &#125;
 &#125;
@@ -337,13 +336,11 @@ public class L2_8Demo : MonoBehaviour
     &#123;
         // 如 背包
         print(&quot;OnEnable&quot;);
-
     &#125;
 
     void Start()
     &#123;
         print(&quot;Start&quot;);
-
     &#125;
 
     void Update()
@@ -352,13 +349,11 @@ public class L2_8Demo : MonoBehaviour
         print(&quot;Update&quot;);
         // 我渲染上一帧的时间
         //print(Time.deltaTime);
-
     &#125;
 
     private void LateUpdate()
     &#123;
         print(&quot;LateUpdate&quot;);
-
     &#125;
 
     private void FixedUpdate()
@@ -369,13 +364,11 @@ public class L2_8Demo : MonoBehaviour
     private void OnDisable()
     &#123;
         print(&quot;OnDisable&quot;);
-
     &#125;
 
     private void OnDestroy()
     &#123;
         print(&quot;OnDestroy&quot;);
-
     &#125;
 &#125;
 </code></pre>
@@ -421,11 +414,6 @@ public class L2_9Demo : MonoBehaviour
 
         // 5s 后执行取消Demo
         Invoke(&quot;CancelDemo&quot;, 5);
-    &#125;
-
-    void Update()
-    &#123;
-
     &#125;
 
     private void CancelDemo()
@@ -487,7 +475,6 @@ using UnityEngine;
 
 public class L2_10Demo : MonoBehaviour
 &#123;
-
     void Start()
     &#123;
         //StartCoroutine(&quot;Demo&quot;);
@@ -498,7 +485,6 @@ public class L2_10Demo : MonoBehaviour
         //StartCoroutine(Demo2());
         StartCoroutine(Demo3());
         StartCoroutine(Demo4());
-
     &#125;
 
     // 常规函数
@@ -593,7 +579,6 @@ using UnityEngine;
 
 public class L2_11Demo : MonoBehaviour
 &#123;
-
     void Start()
     &#123;
         #region math
@@ -622,11 +607,9 @@ public class L2_11Demo : MonoBehaviour
         #region time
         Time.timeScale = 3;
         #endregion
-
     &#125;
     private void Update()
     &#123;
-
         #region time
         //print(Time.time);
 
