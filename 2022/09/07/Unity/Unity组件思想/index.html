@@ -428,16 +428,20 @@ public class L2_9Demo : MonoBehaviour
 &#125;
 </code></pre>
 <hr>
-<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><h4 id="概念-2"><a href="#概念-2" class="headerlink" title="| 概念"></a>| 概念</h4><p>协同程序，并不是多线程</p>
-<p>要有一个主程序，这个主程序就是生命周期函数</p>
-<h4 id="函数的定义"><a href="#函数的定义" class="headerlink" title="| 函数的定义"></a>| 函数的定义</h4><p><strong>小演示：</strong></p>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><h4 id="概念-2"><a href="#概念-2" class="headerlink" title="| 概念"></a>| 概念</h4><p>协同程序，并不是多线程。</p>
+<p>要有一个主程序，这个主程序就是生命周期函数。</p>
+<p>为什么需要？主程序已经在执行某个任务，希望 “同时运行” 其他逻辑，这里的同时并不是多线程意义的，只是感官上同时。</p>
+<h4 id="函数的定义"><a href="#函数的定义" class="headerlink" title="| 函数的定义"></a>| 函数的定义</h4><p><strong>协程特定返回值：</strong> <code>IEnumerator</code></p>
+<p><strong>返回：</strong> <code>yield return</code></p>
+<p>协程不会因为前面返回则不执行后面的代码</p>
+<p><strong>小演示：</strong></p>
 <pre><code class="csharp">    // 常规函数
     public int GetNum()
     &#123;
         return 0;
     &#125;
     // 协程函数
-    public IEnumerable Demo()
+    public IEnumerator Demo()
     &#123;
         print(&quot;先执行的&quot;);
 
@@ -459,7 +463,7 @@ public class L2_9Demo : MonoBehaviour
 <h4 id="函数的停止"><a href="#函数的停止" class="headerlink" title="| 函数的停止"></a>| 函数的停止</h4><ul>
 <li><p><code>StopAllCoroutines()</code> ：结束全部协程</p>
 </li>
-<li><p><code>StopCoroutine</code> ：结束某个协程程序</p>
+<li><p><code>StopCoroutine(demo())</code> ：结束某个协程程序</p>
 </li>
 <li><p><code>StopCoroutine(IEnumerator routine)</code> 和调用协程一样使用，但是如果协程有参数不要使用这个</p>
 </li>

@@ -164,9 +164,7 @@ public class BaseDelegate : MonoBehaviour
     public delegate void ShowDelegate();
     public delegate void ShowDelegate2(int a, int b);
     public delegate int ShowDelegate3();
-
     public delegate void ShowDelegate4&lt;T&gt;(T a);
-
 
     void Start()
     &#123;
@@ -186,11 +184,6 @@ public class BaseDelegate : MonoBehaviour
         show4(&quot;Hello World&quot;);
     &#125;
 
-    void Update()
-    &#123;
-
-    &#125;
-
     private void Show1()
     &#123;
         Debug.Log(&quot;Show1&quot;);
@@ -199,7 +192,6 @@ public class BaseDelegate : MonoBehaviour
     private void Show2(int a, int b)
     &#123;
         Debug.Log(&quot;Show2 -&gt; a+b:&quot; + (a + b));
-
     &#125;
 
     private int Show3()
@@ -213,7 +205,10 @@ public class BaseDelegate : MonoBehaviour
     &#125;
 &#125;
 </code></pre>
-<h4 id="系统内置-Action-委托"><a href="#系统内置-Action-委托" class="headerlink" title="| 系统内置 Action 委托"></a>| 系统内置 <code>Action</code> 委托</h4><p><strong>注意点：</strong></p>
+<h4 id="系统内置-Action-委托"><a href="#系统内置-Action-委托" class="headerlink" title="| 系统内置 Action 委托"></a>| 系统内置 <code>Action</code> 委托</h4><p>需要命名空间： <code>using Ststem;</code> </p>
+<p><strong>什么是Action委托：</strong></p>
+<p><code>Action&lt;T&gt;</code> 是.NET Framework内置的泛型委托，可以使用 <code>Action&lt;T&gt;</code> 委托以参数形式传递方法，而不用显示声明自定义的委托。封装的方法必须与此委托定义的方法签名相对时应。也就是说，封装的方法必须具有一个通过值传递给它的参数，并且<u>不能有返回值</u>。 还有一种是非泛型委托 <code>Action</code> 。</p>
+<p><strong>注意点：</strong></p>
 <ul>
 <li><p><code>Action</code> 委托至少 0 个参数，至多 16 个参数，无返回值</p>
 </li>
@@ -245,11 +240,6 @@ public class SystemAction : MonoBehaviour
         //Action&lt;
     &#125;
 
-    void Update()
-    &#123;
-
-    &#125;
-
     void Show1()
     &#123;
         Debug.Log(&quot;Show1&quot;);
@@ -262,12 +252,22 @@ public class SystemAction : MonoBehaviour
 &#125;
 </code></pre>
 <h4 id="系统内置-Func-委托"><a href="#系统内置-Func-委托" class="headerlink" title="| 系统内置 Func 委托"></a>| 系统内置 <code>Func</code> 委托</h4><p><strong>什么是 <code>Func</code> 委托：</strong></p>
-<p>Func 是 .NET Framework 内置的带有返回值的泛型委托。</p>
+<p>Func 是 .NET Framework 内置的带有返回类型的泛型委托。</p>
 <p><strong>注意点：</strong></p>
 <ul>
+<li><p><code>Func</code> ：至少 0 个传入参数，至多16个传入参数，根据返回值 <em>泛型</em> 返回。必须有 <em>返回值</em>，不可void。 </p>
+</li>
+<li><p><code>Func&lt;int&gt;</code>  ：表示没有传入参数，返回值为 int 类型的委托。</p>
+</li>
+<li><p><code>Func&lt;object,string,int&gt;</code>  ：表示传入参数为为object，string ，返回值为 int 类型的委托。</p>
+</li>
+<li><p><code>Func&lt;object,string,int&gt;</code>  ：表示传入参数为为object，string，返回值为 int 类型的委托。 </p>
+</li>
+<li><p><code>Func&lt;T1,T2..T3,int&gt;</code> ： 表示传入参数为T1, T2..T3(泛型)，返回值为 int 类型的委托。</p>
+</li>
 <li><p><code>System.Func</code> 可以不带参数，但是必须带一个返回值</p>
 </li>
-<li><p><code>System.Func</code> 若是调用的多个泛型的委托定义，最后的参数的数据类型是函数的返回值类型 需要保持一致；非最后一个泛型T的声明 需要与实现函数的参数个数及类型保持一致</p>
+<li><p><code>System.Func</code> 若是调用的多个泛型的委托定义，<em>最后的参数的数据类型</em> 是函数的返回值类型，需要保持一致；非最后一个泛型T的声明，需要与实现函数的参数个数及类型保持一致</p>
 </li>
 </ul>
 <p><strong>演示：</strong></p>
@@ -290,11 +290,6 @@ public class SystemFunc : MonoBehaviour
         Debug.Log(b);
 
         //Func&lt;
-    &#125;
-
-    void Update()
-    &#123;
-
     &#125;
 
     string Show1()
@@ -354,12 +349,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 public class MyEventClass
 &#123;
     public event Action eventAction;
     public Action defaultAction;
-
     public void Send()
     &#123;
         if(eventAction != null)
@@ -367,21 +360,17 @@ public class MyEventClass
             eventAction();
         &#125;
     &#125;
-
 &#125;
 
 public class BoardCast : MonoBehaviour
 &#123;
-
     //event Action action;
-
     void Start()
     &#123;
         //Action action = Show1;
         //Action action = delegate ()
         //&#123;
         //    Debug.Log(&quot;匿名函数 被执行&quot;);
-
         //&#125;;
         //action();
 
@@ -398,15 +387,10 @@ public class BoardCast : MonoBehaviour
         MyEventClass myClass = new MyEventClass();
         myClass.eventAction += Show1;
         myClass.Send();
-        //myClass.eventAction();
+        //myClass.eventAction(); error
         //myClass.eventAction -= Show1;
-        myClass.defaultAction = Show1;
+        myClass.defaultAction = Show2;
         myClass.defaultAction();
-    &#125;
-
-    void Update()
-    &#123;
-
     &#125;
 
     private void Show1()
@@ -477,7 +461,6 @@ public class MySingleton
     &#123;
         Debug.Log(&quot;Show&quot;);
     &#125;
-
 &#125;
 
 public class Singleton : MonoBehaviour
@@ -574,7 +557,7 @@ public class Mouse : Animal
     &#125;
 &#125;
 
-#region Tmp
+#region Temp
 //public class MouseB : Animal
 //&#123;
 //    public MouseB(string name) : base(name)
