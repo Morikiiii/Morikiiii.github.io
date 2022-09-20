@@ -431,6 +431,8 @@ public class BoardCast : MonoBehaviour
 </li>
 <li><p>需要提供一个供外部访问的变量</p>
 </li>
+<li><p>只能自己创建自己的唯一实例</p>
+</li>
 </ul>
 <p><strong>演示：</strong></p>
 <pre><code class="csharp">using System.Collections;
@@ -442,7 +444,7 @@ public class MySingleton
     private static MySingleton _instance;
     public static MySingleton instance
     &#123;
-        get
+        get //初始化
         &#123;
             if (_instance == null)
             &#123;
