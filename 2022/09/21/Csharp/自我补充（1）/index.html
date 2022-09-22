@@ -128,103 +128,127 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <h2 id="get-方法和-set-方法（属性）"><a href="#get-方法和-set-方法（属性）" class="headerlink" title="get 方法和 set 方法（属性）"></a>get 方法和 set 方法（属性）</h2><p><strong>属性：</strong> 是类的一种成员，它可用作公共数据成员，通过读&#x2F;写（ get &#x2F; set ）操作提供更加灵活和安全的数据访问机制。</p>
-<p>在C#中可以创建三种不同形式的属性：</p>
-<ol>
-<li><p><strong>具有支持字段的属性：</strong><br>对象的数据信息主要存储于常量和字段成员之中，虽然通过访问修饰符 public、private或 protected 可以限制对这些成员的访问，但仍然无法保证每一次读、写操作的正确性和一致性。</p>
-<p>例如，在为 Circle 的半径r字段赋值时，人为的输入了错误值-5，这就需要检查所赋值是否大于0，因此可以先把半径r定义为 private，再定义属性 R 来读写该字段的值并在读写过程中进行检查。</p>
-<p>C#提供一个使用属性的基本模式，该模式利用 get访问器 返回私有字段的值，利用 set访问器 对私有字段先进性验证在进行赋值。一般格式如下：</p>
-<pre><code class="csharp">public 类型 属性名
-&#123;
-      get&#123;
-              return  私有字段;
-&#125;
-      set&#123;
-              //逻辑检查;
-              //私有字段 = value;注：value 为C#保留字，代表外部赋给本属性的值
-         &#125;
-&#125;
-</code></pre>
-<p>其中，可根据实际应用的需求，省略 get访问器 或 set访问器，若只省略 set访问器，则表示属性为 只读属性，若只省略 get访问器，则表示属性为 只写属性。</p>
-<p>例如，针对 Circle类，可定义属性为 只写属性。</p>
-<pre><code class="csharp">
-    private double r;
-    public double R
-    &#123;
-        get
+        <h2 id="get-方法和-set-方法"><a href="#get-方法和-set-方法" class="headerlink" title="get 方法和 set 方法"></a>get 方法和 set 方法</h2><p>在 <strong>面向对象编程（OOP）</strong> 中，是不允许外界直接对 <em>类的成员变量</em> 直接访问的，既然不能访问，那定义这些成员变量还有什么意义呢？所以 C# 中就要用 <strong>set和get方法</strong> 来访问私有成员变量，它们相当于外界访问对象的一个通道，一个“接口”。</p>
+<p>先来看一段代码：</p>
+<pre><code class="csharp">class Employee
+  &#123;
+        private string name;
+        private byte age;
+        public string Name
         &#123;
-            return r;
+            get &#123; return name; &#125;
+            set &#123; name = value; &#125;
         &#125;
-        set
+        public byte Age
         &#123;
-            if (value &lt; 0) 
-            &#123;
-                r = 0;
+            get &#123; return age; &#125;
+            set &#123; age = value; &#125;
+        &#125;
+  &#125;
+</code></pre>
+<p>代码中定义了两个私有变量 name 和 age ，当我们不想让外界随意访问该私有变量时，可以使用属性来访问，语法为：</p>
+<pre><code class="csharp">public &lt; 返回类型（要与被访问变量的类型相同）&gt; &lt; 属性名（不能与被访问变量同名）&gt;
+  &#123;
+        get&#123; return &lt;被访问变量&gt;; &#125;
+        set&#123; &lt;被访问变量&gt; = value; &#125;
+  &#125;
+</code></pre>
+<p>当我们使用属性来访问私有成员变量时就会调用里面的get方法，当我们要修改该变量时就会调用set方法，当然在定义的时候可以只定义一个get方法或只定义一个set方法。</p>
+<p>如果只定义get方法，那么这个相应变量就是 “只读” 的；如果只定义set方法，那么相应变量就是 “只写” 的。</p>
+<p>既然外界可以通过 set和get 访问类内私有成员，那为什么不直接把它定义成共有，直接供外界访问呢？拿上面的Employee类来说明：</p>
+<pre><code class="csharp">class Employee
+    &#123;
+        private string name;
+        private byte age;
+        public string Name
+        &#123;
+            get &#123; return name; &#125;
+            set &#123; name = value; &#125;
+        &#125;
+        //****修改后****↓↓↓↓↓↓↓↓
+        public byte Age
+        &#123;
+            get &#123; return age; &#125;  
+            set
+            &#123;                
+                if (value &gt; 10 &amp;&amp; value&lt;=100)   //一般在公司雇员的年龄都在10到100岁之间
+                age = value;   
             &#125;
-            else
-            &#123;
-                r = value; //value 为C#保留字，代表外部赋给本属性的值
-            &#125;
+        &#125;
+        //****修改后****↑↑↑↑↑↑↑↑
+    &#125;
+</code></pre>
+<p>上例中，set就像一位门卫大叔一样，只有好人才能进来。可以通过属性来控制对员变量的读写，防止对成员变量的非法赋值等。</p>
+<p>再举个小例子，以下是个温度计的类：</p>
+<pre><code class="csharp">class Thermometer
+    &#123;
+        private double temperature;
+        public Thermometer(double temperature)  //构造函数
+        &#123;
+            this.temperature = temperature;
+        &#125;
+        public double Temperature
+        &#123;
+            get &#123; return temperature; &#125;
+            set &#123; temperature = value; &#125;
         &#125;
     &#125;
-    public double Area
+</code></pre>
+<p>假设这里的温度单位表示的是摄氏度（℃），如果在需求分析阶段误解了客户的原始意愿或者客户在日后变更了需求，需要把系统中所有表示温度的变量temperature都用来表示开尔文温度（K）。那么不必动系统中成百上千个Temperature属性，只需在get和set函数中稍微修改一下代码即可：</p>
+<pre><code class="csharp">class Thermometer
     &#123;
-        get
+        private double temperature;
+        public Thermometer(double temperature)  //构造函数
         &#123;
-            return 3.14 * R * R;
+            this.temperature = temperature;
+        &#125;
+        public double Temperature
+        &#123;
+            //****修改后****↓↓↓↓↓↓↓↓
+            get &#123; return temperature-273.15; &#125;
+            set &#123; temperature = value+273.15; &#125;
+            //****修改后****↑↑↑↑↑↑↑↑
         &#125;
     &#125;
-&#125;
 </code></pre>
-</li>
-<li><p><strong>采用表达式主体定义属性：</strong></p>
-<p>属性范围访问器通常由单行语句组成，这些语句只分配或返回表达式的结果。为了简化属性的定义，从C#7开始，可以将这些属性作为表达式主体（Expression-bodied）成员来实现，即在get关键字或set关键字的后面使用 &#x3D;&gt; 符号指定 读或写操作的表达式，这样就组成了表达式主体定义。</p>
-<p>此时，属性的get和set访问器的简化格式如下：</p>
+<p>建一个控制台应用程序来测试一下，主函数为：</p>
+<pre><code class="csharp">class Test
+    &#123;
+        static void Main(string[] args)
+        &#123;
+            Thermometer a = new Thermometer(40);
+            Console.WriteLine(a.Temperature);
+        &#125;
+    &#125;
+</code></pre>
+<p>上面代码中用构造函数给温度设的初值为40度，代码修改前运行结果为“40”，代码修改后运行结果为“-233.15”。</p>
+<p>get、set 用法特点如下：</p>
 <ul>
-<li><p>get &#x3D;&gt; 私有字段；</p>
+<li><p>一则是隐藏组件或类内部的真是成员；</p>
 </li>
-<li><p>set &#x3D;&gt; 私有字段 &#x3D; value或者包含 “私有字段 &#x3D; value” 表达式</p>
+<li><p>二是用来建立约束的，比如，实现“有我没你”这种约束；</p>
+</li>
+<li><p>三是用来响应属性变化事件，当属性变化是做某事，只要写在set方法里就行;</p>
 </li>
 </ul>
-<p>对于只读属性，还可以进一步简化，直接使用表达式主体成员实现，既不使用get访问器关键字，也不使用return关键字。例如，针对上面的例子：</p>
-<pre><code class="csharp">private double r;//字段成员
-public double R//可读可写属性
-&#123;
-            get =&gt; r;//采用表达式主体定义get访问器
-            set =&gt; r = (value &lt;0)？ 0：value;//采用表达式主体定义set访问器
-&#125;
-</code></pre>
-</li>
-<li><p><strong>自动实现的属性：</strong><br>在某些情况下，属性get和set访问器仅向支持字段赋值或仅从其中检索值，而不包括任何附加逻辑。</p>
-<p>通过使用自动实现的属性，即能简化代码，还能让C#编译器透明地提供支持字段。</p>
-<p>如果属性具有get和set访问器，则必须自动实现这两个访问器。</p>
-<p>自动实现的属性通过以下方式定义：使用get和set关键字，但不提供任何实现。</p>
-<p>例如：</p>
-<pre><code class="csharp">public class Goods  //商品类
-&#123;
-      public string Name//商品类的名称，自动实现的属性
-      &#123;
-          get； set;
-      &#125;
-      public decimal Price
-      &#123;
-          get； set;
-      &#125;
-&#125;
-</code></pre>
-</li>
-</ol>
+<p>当想读出或写入属性的值时，存取标志限定了被实现的语句。</p>
+<p>用于读出属性的值的存取标志记为关键字get，而要修改属性的值的读写符标志记为set。</p>
+<br>
+
 <blockquote>
 <p>在C#中，类的成员包括常量、字段、属性、方法、构造函数、索引器、事件等。</p>
 <p>其中，常量、字段和属性都是类的数据有关的成员，经常被称为数据成员。</p>
 <p>方法提供针对数据的逻辑处理。</p>
 <p>构造函数在创建对象时用来初始化字段成员。</p>
+<br>
+
+<p>字段：一般为私有的，不对外开放</p>
+<p>属性：一般为公有的，作为外部访问对应字段的一个接口</p>
 </blockquote>
-<hr>
-<p>作者：大鱼鱼  </p>
-<p>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/02decb837565">https://www.jianshu.com/p/02decb837565</a></p>
-<p>来源：简书</p>
-<p>著作权归作者所有。</p>
+<br>
+
+<p>[相关链接：C#中的set和get方法 - 细胞的理想 - 博客园](<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xinhuawei/p/15690980.html#:~:text=C%23%E4%B8%ADget%E3%80%81s,%E9%92%B1%E5%8F%96%E5%87%BA%E6%9D%A5%E7%BB%99%E4%BD%A0%E7%9A%84%E3%80%82">C#中的set和get方法 - 细胞的理想 - 博客园</a>)</p>
+<p><a href="%5BC#%E4%B8%AD%E7%9A%84set%E5%92%8Cget%E6%96%B9%E6%B3%95_wh123asd%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2%5D(http://blog.csdn.net/u013095889/article/details/52804360)">相关链接：C#中的set和get方法_wh123asd的博客-CSDN博客</a></p>
 <hr>
 <h2 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h2><p>8好意思，经典记不住单词意思&#x3D;.&#x3D;）</p>
 <table>
@@ -258,12 +282,12 @@ public double R//可读可写属性
 <tr>
 <td>Split</td>
 <td>分裂</td>
-<td>大致分割符作用吧</td>
+<td>大致分隔符作用吧</td>
 </tr>
 <tr>
 <td>Trim</td>
 <td>修剪</td>
-<td>但好像更多用在清楚空格</td>
+<td>但好像更多用在清除空格</td>
 </tr>
 <tr>
 <td>Append</td>
@@ -452,7 +476,7 @@ public double R//可读可写属性
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#get-%E6%96%B9%E6%B3%95%E5%92%8C-set-%E6%96%B9%E6%B3%95%EF%BC%88%E5%B1%9E%E6%80%A7%EF%BC%89"><span class="space-toc-text">get 方法和 set 方法（属性）</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="space-toc-text">常见用法</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#get-%E6%96%B9%E6%B3%95%E5%92%8C-set-%E6%96%B9%E6%B3%95"><span class="space-toc-text">get 方法和 set 方法</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="space-toc-text">常见用法</span></a></li></ol>
            </div>
         
       </div>
