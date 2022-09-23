@@ -229,18 +229,43 @@ public class L5_11Demo : MonoBehaviour
 <li><p>Graphic Raycaster：射线检测</p>
 </li>
 </ul>
-<h4 id="相关组件"><a href="#相关组件" class="headerlink" title="| 相关组件"></a>| 相关组件</h4><p>
-        <span class="lazyload-img-span">
-        <img   
-           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/38.png" >
-        </sapn>
-      </p>
-<p>
-        <span class="lazyload-img-span">
-        <img   
-           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/39.png" >
-        </sapn>
-      </p>
+<h4 id="相关组件"><a href="#相关组件" class="headerlink" title="| 相关组件"></a>| 相关组件</h4><p><strong>Render Mode：</strong> 渲染模式</p>
+<ul>
+<li><p>Screen Space-Overlay 模式：Canvas 将置于屏幕最上层，自动填充屏幕，不会被其他模式的Canvas或 2D &#x2F; 3D 物体遮挡</p>
+</li>
+<li><p>Screen Space-Camera 模式：Canvas 将置于相机前方，此时在 Canvas 和相机中间的2D &#x2F; 3D 物体将显示在 UI 上面，利用这一点，可以实现在 UI 界面展示 3D 模型</p>
+<ul>
+<li><p>Render Camera：对应的渲染相机，也就是该 Canvas 显示在哪个 Camera 前面</p>
+</li>
+<li><p>Plane Distance：Canvas 与 Camera 的距离</p>
+</li>
+</ul>
+</li>
+<li><p>World Space 模式：Canvas 将作为一个游戏对象显示在 3D 场景内</p>
+<ul>
+<li>Event Camera：接收 UI 事件的 Camera</li>
+</ul>
+</li>
+<li><p>Pixel Pefect：安美像素，边缘更加清晰</p>
+</li>
+<li><p>Sort Order：画布排序，场景中具备多个 Canvas 时才有意义</p>
+</li>
+<li><p>Canvas Scaler 也是屏幕适配的主要方式，一般通过该组件就可以完成适配</p>
+</li>
+</ul>
+<p><strong>UI Scaler Mode</strong> 缩放模式：</p>
+<ul>
+<li><p>Constant Pixel Size 模式：固定像素大小，不论屏幕分辨率尺寸大小如何变化，像素保持原有大小不变</p>
+<ul>
+<li>Scale Factor：缩放倍数</li>
+</ul>
+</li>
+<li><p>Scale With Screen Size 模式：屏幕自适应常用方式</p>
+<ul>
+<li>Reference Resolution：参考分辨率，进行屏幕适配，自动缩放 UI 大小时，将以此作为参考</li>
+</ul>
+</li>
+</ul>
 <hr>
 <h2 id="UI-事件"><a href="#UI-事件" class="headerlink" title="UI 事件"></a>UI 事件</h2><h4 id="事件介绍"><a href="#事件介绍" class="headerlink" title="| 事件介绍"></a>| 事件介绍</h4><p>按钮点击就是事件，但不止点击这一种，比如鼠标悬浮、鼠标按下、鼠标弹起、鼠标拖拽等等。UI本身也并不是一个按钮，要通过给游戏物体创建脚本来实现</p>
 <h4 id="事件接口"><a href="#事件接口" class="headerlink" title="| 事件接口"></a>| 事件接口</h4><p>脚本中添加 <code>using UnityEngine.EventSystems;</code> 事件相关命名空间</p>
