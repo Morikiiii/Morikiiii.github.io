@@ -299,6 +299,336 @@
 <td>数</td>
 <td>一般前面会是int index，index为开始索引位置，count为从index开始获取元素的个数;（有点类似Length？不是直接使用，可以配合print）</td>
 </tr>
+<tr>
+<td>Intersect</td>
+<td>相交</td>
+<td>IntersectWith 交集</td>
+</tr>
+<tr>
+<td>Union</td>
+<td>联盟</td>
+<td>UnionWith 并集</td>
+</tr>
+<tr>
+<td>Except</td>
+<td>除了</td>
+<td>ExceptWith 差集</td>
+</tr>
+<tr>
+<td>Symmetric</td>
+<td>对称</td>
+<td>SymmetricExceptWith 对称差集</td>
+</tr>
+<tr>
+<td>Parameter</td>
+<td>参数</td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="关于属性和方法"><a href="#关于属性和方法" class="headerlink" title="关于属性和方法"></a>关于属性和方法</h2><p><strong>属性（Property）</strong> </p>
+<p>是类（class）&#x2F;结构（structure）&#x2F;接口（interface）的命名（named）成员。类或结构中的成员变量或方法称为 <em>域（Field）</em>。</p>
+<p>属性（Property）是域（Field）的扩展，且可使用相同的语法来访问。它们使用 <em>访问器（accessors）</em> 让私有域的值可被读写或操作。</p>
+<p>属性（Property）的 <em>访问器（accessor）</em> 包含有助于获取（读取或计算）或设置（写入）属性的可执行语句。访问器（accessor）声明可包含一个 get 访问器、一个 set 访问器，或者同时包含二者。</p>
+<p>如下一个实例：</p>
+<pre><code class="csharp">using System;
+namespace runoob
+&#123;
+   class Student
+   &#123;
+      private string code = &quot;N.A&quot;;
+      private string name = &quot;not known&quot;;
+      private int age = 0;
+
+      // 声明类型为 string 的 Code 属性
+      public string Code
+      &#123;
+         get
+         &#123;
+            return code;
+         &#125;
+         set
+         &#123;
+            code = value;
+         &#125;
+      &#125;
+      // 声明类型为 string 的 Name 属性
+      public string Name
+      &#123;
+         get
+         &#123;
+            return name;
+         &#125;
+         set
+         &#123;
+            name = value;
+         &#125;
+      &#125;
+      // 声明类型为 int 的 Age 属性
+      public int Age
+      &#123;
+         get
+         &#123;
+            return age;
+         &#125;
+         set
+         &#123;
+            age = value;
+         &#125;
+      &#125;
+      public override string ToString()
+      &#123;
+         return &quot;Code = &quot; + Code +&quot;, Name = &quot; + Name + &quot;, Age = &quot; + Age;
+      &#125;
+    &#125;
+    class ExampleDemo
+    &#123;
+      public static void Main()
+      &#123;
+         // 创建一个新的 Student 对象
+         Student s = new Student();
+
+         // 设置 student 的 code、name 和 age
+         s.Code = &quot;001&quot;;
+         s.Name = &quot;Zara&quot;;
+         s.Age = 9;
+         Console.WriteLine(&quot;Student Info: &#123;0&#125;&quot;, s);  //Debug.Log(s.ToString());
+         // 增加年龄
+         s.Age += 1;
+         Console.WriteLine(&quot;Student Info: &#123;0&#125;&quot;, s);
+         Console.ReadKey();
+       &#125;
+   &#125;
+&#125;
+</code></pre>
+<p><strong>方法（method）</strong></p>
+<p>一个方法是把一些相关的语句组织在一起，用来执行一个任务的语句块。每一个 C# 程序至少有一个带有 Main 方法的类。</p>
+<p>要使用一个方法，您需要：</p>
+<ul>
+<li><p>定义方法</p>
+</li>
+<li><p>调用方法</p>
+</li>
+</ul>
+<p>当定义一个方法时，从根本上说是在声明它的结构的元素。在 C# 中，定义方法的语法如下：</p>
+<pre><code class="csharp">&lt;Access Specifier&gt; &lt;Return Type&gt; &lt;Method Name&gt;(Parameter List)
+&#123;
+   Method Body
+&#125;
+</code></pre>
+<ul>
+<li><strong>Access Specifier</strong>：访问修饰符，这个决定了变量或方法对于另一个类的可见性。</li>
+<li><strong>Return type</strong>：返回类型，一个方法可以返回一个值。返回类型是方法返回的值的数据类型。如果方法不返回任何值，则返回类型为 <strong>void</strong>。</li>
+<li><strong>Method name</strong>：方法名称，是一个唯一的标识符，且是大小写敏感的。它不能与类中声明的其他标识符相同。</li>
+<li><strong>Parameter list</strong>：参数列表，使用圆括号括起来，该参数是用来传递和接收方法的数据。参数列表是指方法的参数类型、顺序和数量。参数是可选的，也就是说，一个方法可能不包含参数。</li>
+<li><strong>Method body</strong>：方法主体，包含了完成任务所需的指令集。</li>
+</ul>
+<hr>
+<h2 id="C-的程序结构"><a href="#C-的程序结构" class="headerlink" title="C# 的程序结构"></a>C# 的程序结构</h2><p>一个 C# 程序主要包括以下部分：</p>
+<ul>
+<li>命名空间声明（Namespace declaration）</li>
+<li>一个 class</li>
+<li>Class 方法</li>
+<li>Class 属性</li>
+<li>一个 Main 方法</li>
+<li>语句（Statements）&amp; 表达式（Expressions）</li>
+<li>注释</li>
+</ul>
+<p>C# 文件的后缀为 .cs</p>
+<p>以下创建一个 <strong>test.cs</strong> 文件，文件包含了可以打印出 “Hello World” 的简单代码：</p>
+<pre><code class="csharp">using System;
+namespace HelloWorldApplication
+&#123;
+   class HelloWorld
+   &#123;
+      static void Main(string[] args)
+      &#123;
+         /* 我的第一个 C# 程序*/
+         Console.WriteLine(&quot;Hello World&quot;);
+         Console.ReadKey();
+      &#125;
+   &#125;
+&#125;
+</code></pre>
+<p>让我们看一下上面程序的各个部分：</p>
+<ul>
+<li><p>程序的第一行 <code>using System;</code> using 关键字用于在程序中包含 <em>System</em> 命名空间。一个程序一般有多个 <em>using</em> 语句。</p>
+</li>
+<li><p>下一行是 <code>namespace</code> 声明。一个 <em>namespace</em> 里包含了一系列的类。<em>HelloWorldApplication</em> 命名空间包含了类 _HelloWorld_。</p>
+</li>
+<li><p>下一行是 <code>class</code> 声明。类 <em>HelloWorld</em> 包含了程序使用的数据和方法声明。类一般包含多个方法。方法定义了类的行为。在这里，<em>HelloWorld</em> 类只有一个 <em>Main</em> 方法。</p>
+</li>
+<li><p>下一行定义了 <code>Main</code> 方法，是所有 C# 程序的 <em>入口点</em>。<em>Main</em> 方法说明当执行时 类将做什么动作。</p>
+</li>
+<li><p>下一行 <code>/*...*/</code> 将会被编译器忽略，且它会在程序中添加额外的 <em>注释</em>。</p>
+</li>
+<li><p>Main 方法通过语句 <code>Console.WriteLine(&quot;Hello World&quot;);</code> 指定了它的行为。</p>
+<p><em>WriteLine</em> 是一个定义在 <em>System</em> 命名空间中的 <em>Console</em> 类的一个方法。该语句会在屏幕上显示消息 “Hello World”。</p>
+</li>
+<li><p>最后一行 <code>Console.ReadKey();</code> 是针对 VS.NET 用户的。这使得程序会等待一个按键的动作，防止程序从 Visual Studio .NET 启动时屏幕会快速运行并关闭。</p>
+</li>
+</ul>
+<hr>
+<h2 id="C-关键字"><a href="#C-关键字" class="headerlink" title="C# 关键字"></a>C# 关键字</h2><h4 id="保留关键字（Reserved-Keywords）："><a href="#保留关键字（Reserved-Keywords）：" class="headerlink" title="| 保留关键字（Reserved Keywords）："></a>| 保留关键字（Reserved Keywords）：</h4><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>abstract</td>
+<td>as</td>
+<td>base</td>
+<td>bool</td>
+<td>break</td>
+<td>byte</td>
+<td>case</td>
+</tr>
+<tr>
+<td>catch</td>
+<td>char</td>
+<td>checked</td>
+<td>class</td>
+<td>const</td>
+<td>continue</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>default</td>
+<td>delegate</td>
+<td>do</td>
+<td>double</td>
+<td>else</td>
+<td>enum</td>
+<td>event</td>
+</tr>
+<tr>
+<td>explicit</td>
+<td>extern</td>
+<td>false</td>
+<td>finally</td>
+<td>fixed</td>
+<td>float</td>
+<td>for</td>
+</tr>
+<tr>
+<td>foreach</td>
+<td>goto</td>
+<td>if</td>
+<td>implicit</td>
+<td>in</td>
+<td>in (generic modifier)</td>
+<td>int</td>
+</tr>
+<tr>
+<td>interface</td>
+<td>internal</td>
+<td>is</td>
+<td>lock</td>
+<td>long</td>
+<td>namespace</td>
+<td>new</td>
+</tr>
+<tr>
+<td>null</td>
+<td>object</td>
+<td>operator</td>
+<td>out</td>
+<td>out (generic modifier)</td>
+<td>override</td>
+<td>params</td>
+</tr>
+<tr>
+<td>private</td>
+<td>protected</td>
+<td>public</td>
+<td>readonly</td>
+<td>ref</td>
+<td>return</td>
+<td>sbyte</td>
+</tr>
+<tr>
+<td>sealed</td>
+<td>short</td>
+<td>sizeof</td>
+<td>stackalloc</td>
+<td>static</td>
+<td>string</td>
+<td>struct</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>this</td>
+<td>throw</td>
+<td>true</td>
+<td>try</td>
+<td>typeof</td>
+<td>uint</td>
+</tr>
+<tr>
+<td>ulong</td>
+<td>unchecked</td>
+<td>unsafe</td>
+<td>ushort</td>
+<td>using</td>
+<td>virtual</td>
+<td>void</td>
+</tr>
+<tr>
+<td>volatile</td>
+<td>while</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="上下文关键字（Contextual-Keywords）："><a href="#上下文关键字（Contextual-Keywords）：" class="headerlink" title="| 上下文关键字（Contextual Keywords）："></a>| 上下文关键字（Contextual Keywords）：</h4><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add</td>
+<td>alias</td>
+<td>ascending</td>
+<td>descending</td>
+<td>dynamic</td>
+<td>from</td>
+<td>get</td>
+</tr>
+<tr>
+<td>global</td>
+<td>group</td>
+<td>into</td>
+<td>join</td>
+<td>let</td>
+<td>orderby</td>
+<td>partial (type)</td>
+</tr>
+<tr>
+<td>partial (method)</td>
+<td>remove</td>
+<td>select</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody></table>
 <hr>
 <center>内容取自世界各地.</center>
@@ -476,7 +806,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#get-%E6%96%B9%E6%B3%95%E5%92%8C-set-%E6%96%B9%E6%B3%95"><span class="space-toc-text">get 方法和 set 方法</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="space-toc-text">常见用法</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#get-%E6%96%B9%E6%B3%95%E5%92%8C-set-%E6%96%B9%E6%B3%95"><span class="space-toc-text">get 方法和 set 方法</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="space-toc-text">常见用法</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="space-toc-text">关于属性和方法</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#C-%E7%9A%84%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="space-toc-text">C# 的程序结构</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#C-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="space-toc-text">C# 关键字</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BF%9D%E7%95%99%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88Reserved-Keywords%EF%BC%89%EF%BC%9A"><span class="space-toc-text">| 保留关键字（Reserved Keywords）：</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88Contextual-Keywords%EF%BC%89%EF%BC%9A"><span class="space-toc-text">| 上下文关键字（Contextual Keywords）：</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
