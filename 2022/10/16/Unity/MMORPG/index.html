@@ -276,7 +276,6 @@
 </li>
 </ul>
 <hr>
-<h2 id="框架设计"><a href="#框架设计" class="headerlink" title="框架设计"></a>框架设计</h2><hr>
 <h2 id="网络消息处理"><a href="#网络消息处理" class="headerlink" title="网络消息处理"></a>网络消息处理</h2><p>通讯组件（依据情况）</p>
 <ul>
 <li><p>NetworkClient &amp; TcpSocketListener</p>
@@ -291,6 +290,58 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lfanyize/article/details/109624929">网络消息处理通信与协议_Break The Sky的博客-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="http://c.biancheng.net/socket/">socket编程入门：1天玩转socket通信技术（非常详细）</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/orez88/articles/2513460.html">阻塞与非阻塞的区别 - 麦飞 - 博客园</a></p>
+<hr>
+<h4 id="生成数据库："><a href="#生成数据库：" class="headerlink" title="| 生成数据库："></a>| 生成数据库：</h4><ol>
+<li><p>右键 - 新增 - 实体</p>
+</li>
+<li><p>属性 - 右键 - 标量属性</p>
+</li>
+<li><p>右键 - 根据模型生成数据库 - 全部是是是</p>
+</li>
+<li><p>在 SQL Server Management 里【执行】 .sql 文件 - 然后表就会更新过去</p>
+</li>
+</ol>
+<h4 id="生成协议编译成功："><a href="#生成协议编译成功：" class="headerlink" title="| 生成协议编译成功："></a>| 生成协议编译成功：</h4><p>如：注册加一个年龄</p>
+<ol>
+<li><p>修改 - 如先加一个新字段：在UserRegisterRequest 【+】<code>int32 age = 3;</code></p>
+</li>
+<li><p>生成：Tools - genproto.cmd</p>
+</li>
+<li><p>查看：Src - Lib - Protocol - message.cs - 可以用git diff看到新增的内容</p>
+</li>
+<li><p>可以直接使用此类了</p>
+</li>
+</ol>
+<hr>
+<h4 id="客户端发送消息到服务器"><a href="#客户端发送消息到服务器" class="headerlink" title="| 客户端发送消息到服务器"></a>| 客户端发送消息到服务器</h4><p>编写流程：</p>
+<p>一. GameServer.cs - 服务监听</p>
+<ol>
+<li><p>在 <code>class GameServer</code> + <code>NetService network;</code></p>
+</li>
+<li><p>在 <code>public bool Init()&#123;&#125;</code> + <code>network = new NetService();</code> and <code>network.Init(8000);</code></p>
+</li>
+<li><p>在 <code>public void Start()</code> + <code>network.Start();</code></p>
+</li>
+<li><p>在 <code>public void Stop()</code> + <code>network.Stop();</code></p>
+</li>
+<li><p>执行一下</p>
+</li>
+</ol>
+<p>二. 自建文件 - 初始化和链接到服务器</p>
+<p>在 <code>void Start ()</code> 添加了</p>
+<p><code>Network.NetClient.Instance.Init(&quot;127.0.0.1&quot;, 8000);</code></p>
+<p><code>Network.NetClient.Instance.Connect();</code></p>
+<p>三. message.proto - 修改协议</p>
+<ol>
+<li><p>在 <code>message NetMessageRequest</code> 添加 <code>FirstTestRequest firstRequestr = 10;</code></p>
+</li>
+<li><p>新写一个 <code>message FirstTestRequest &#123; string helloworld = 1; &#125;</code></p>
+</li>
+<li><p>先到服务器 - 右键选择解决方案 - 生成解决方案</p>
+</li>
+<li><p>将 \Src\Lib\Protocol\bin\Debug 下的四个文件粘贴到 \Src\Client\Assets\References 替换更新</p>
+</li>
+</ol>
 <hr>
 <center>森木清树</center>
 
@@ -520,7 +571,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="space-toc-text">开发环境</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%BC%80%E5%8F%91%E7%9B%AE%E5%BD%95%E8%A7%84%E5%88%92"><span class="space-toc-text">开发目录规划</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87"><span class="space-toc-text">项目准备</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%AD%B9%E5%A4%87%E7%8E%AF%E8%8A%82"><span class="space-toc-text">筹备环节</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1"><span class="space-toc-text">框架设计</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BD%91%E7%BB%9C%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86"><span class="space-toc-text">网络消息处理</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="space-toc-text">开发环境</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%BC%80%E5%8F%91%E7%9B%AE%E5%BD%95%E8%A7%84%E5%88%92"><span class="space-toc-text">开发目录规划</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%87%86%E5%A4%87"><span class="space-toc-text">项目准备</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%AD%B9%E5%A4%87%E7%8E%AF%E8%8A%82"><span class="space-toc-text">筹备环节</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BD%91%E7%BB%9C%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86"><span class="space-toc-text">网络消息处理</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%9A"><span class="space-toc-text">| 生成数据库：</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%9F%EF%BC%9A"><span class="space-toc-text">| 生成协议编译成功：</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="space-toc-text">| 客户端发送消息到服务器</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
