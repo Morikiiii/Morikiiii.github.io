@@ -366,6 +366,42 @@
 <hr>
 <p><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/HOWTO-UIWorldSpace.html">网址推荐：Creating a World Space UI | Unity UI | 1.0.0</a></p>
 <hr>
+<p>| 小地图</p>
+<ul>
+<li><p>小地图的资源制作</p>
+<ul>
+<li><p>实时渲染场景 - 【摄像机挂在上空 - 影响性能 - 写实性高】</p>
+</li>
+<li><p>预渲染顶视图 + 润色 -【用的较多】</p>
+</li>
+<li><p>纯美术制作</p>
+</li>
+</ul>
+</li>
+<li><p>小地图的 UI 元素</p>
+</li>
+<li><p>小地图的配置与加载 - 如下</p>
+</li>
+<li><p>小地图与场景的坐标映射</p>
+</li>
+</ul>
+<hr>
+<p>小地图的配置与加载？</p>
+<ul>
+<li><p><code>\Src\Data\Tables</code> 下的 MapDefine.xlsx 文件 –&gt; 修改Name + 添加一个字段（右键插入 - 修改即可）</p>
+</li>
+<li><p>运行 <code>\Src\Data</code> 下的 Excel2Json.cmd 【右键编辑可以看到操作的事】</p>
+</li>
+<li><p>到 GameServer 的 <code>Common\Data\MapDefine.cs</code> 中把新加的字段添加进去</p>
+</li>
+<li><p>右键【生成解决方案】</p>
+</li>
+<li><p>在 <code>\Src\Lib\Common\bin\Debug</code> 下复制 <code>Common.dll(pdb)</code> 【只改Data可以只复制Common这俩，后面四个是协议内容】 + <code>protobuf-net.dll(xml)</code> + <code>protocol.dll(pdb)</code></p>
+</li>
+<li><p>粘贴到 <code>\Src\Client\Assets\References</code> 替换掉</p>
+</li>
+</ul>
+<hr>
 <center>森木清树</center>
 
         <!-- 分类文章 -->

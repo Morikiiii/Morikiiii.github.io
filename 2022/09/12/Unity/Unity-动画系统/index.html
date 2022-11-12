@@ -131,12 +131,26 @@
         <h2 id="动画系统介绍"><a href="#动画系统介绍" class="headerlink" title="动画系统介绍"></a>动画系统介绍</h2><h4 id="游戏动画"><a href="#游戏动画" class="headerlink" title="| 游戏动画"></a>| 游戏动画</h4><p>一般指模型的动作，服务视觉，实际攻击计算还靠碰撞体</p>
 <p>暂时只尝试制作简单动画来知道动画的运行原理</p>
 <p><strong>如何给角色配置动作、如何切换动作、代码控制动作</strong></p>
-<h4 id="Unity动画"><a href="#Unity动画" class="headerlink" title="| Unity动画"></a>| Unity动画</h4><p>
-        <span class="lazyload-img-span">
-        <img   
-           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/47.png" >
-        </sapn>
-      </p>
+<h4 id="Unity动画"><a href="#Unity动画" class="headerlink" title="| Unity动画"></a>| Unity动画</h4><ul>
+<li><p>模型和动作</p>
+<ul>
+<li><p>非人形角色，比如一个章鱼怪，他的动作基本上是完全为了这一个模型来设计的，无法复用到其他模型</p>
+</li>
+<li><p>人形角色，符合标准的都可以复用，基于Avatar</p>
+</li>
+</ul>
+</li>
+<li><p>角色动作组成</p>
+<ul>
+<li><p>游戏物体上挂载 Animator 动画组件</p>
+</li>
+<li><p>Animator组件上持有 Controller(动画控制器)，Controller 上配置好动作以及动作切换逻辑</p>
+</li>
+<li><p>利用Animator组件来播放动画以及切换动画</p>
+</li>
+</ul>
+</li>
+</ul>
 <hr>
 <h2 id="Unity-内制作动画"><a href="#Unity-内制作动画" class="headerlink" title="Unity 内制作动画"></a>Unity 内制作动画</h2><p>选择一个具备 Animator组件的游戏物体后切换到 Animation 面板，即可进行动画的制作</p>
 <hr>
@@ -156,12 +170,19 @@
 <ul>
 <li><p>当我们选择一个状态后，检查面板中会出现这个状态的一些参数</p>
 </li>
-<li><p>
-        <span class="lazyload-img-span">
-        <img   
-           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/48.png" >
-        </sapn>
-      </p>
+<li><p>Motion：这个状态具体要播方收的动画文件</p>
+</li>
+<li><p>Speed：动画的播放速度，float类型</p>
+</li>
+<li><p>Mirror：镜像动画，动画左右相反</p>
+</li>
+<li><p>Transitions：该状态参与的状态转换</p>
+<ul>
+<li><p>Solo：当两个状态之间有多条条件时候仅此一条生效</p>
+</li>
+<li><p>Mute：禁用</p>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -178,14 +199,18 @@
 </ul>
 </li>
 <li><p>代码控制</p>
+<ul>
+<li><p>游戏运行后，动画会自行从入口开始执行，但是我们可以获取 Animator 组件后修改参数，使动画切换</p>
+</li>
+<li><p><code>SetInteger(&quot;Run&quot;，1)</code> ：修改参数的值，对应的还有SetBool、SetTrigger、SetFloat</p>
+</li>
+<li><p><code>GetInteger(&quot;Run&quot;)</code> ：获取参数的值，对应的GetBool、GetFloat </p>
+</li>
+<li><p>speed：整体的播放速度</p>
 </li>
 </ul>
-<p>
-        <span class="lazyload-img-span">
-        <img   
-           data-src="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/49.png" >
-        </sapn>
-      </p>
+</li>
+</ul>
 <pre><code class="csharp">using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
