@@ -356,6 +356,112 @@
 </li>
 </ul>
 <hr>
+<p>20221123</p>
+<p>出了一个小问题：gameserver窗口出来了，但登录时报错，看起来和SQL有关系，然后直接查看服务器资源管理器发现，数据连接显示红色，刷新依旧连接不上，然后到 SSMS 里登录，登不上去（平时都是很快速的状态）</p>
+<p>等了一会出现报错：</p>
+<pre><code>标题: 连接到服务器
+
+无法连接到 MORIKI\MMORPG。
+
+* * *
+
+其他信息:
+
+在与 SQL Server 建立连接时出现与网络相关的或特定于实例的错误。未找到或无法访问服务器。请验证实例名称是否正确并且 SQL Server 已配置为允许远程连接。 (provider: SQL Network Interfaces, error: 26 - 定位指定的服务器/实例时出错) (Microsoft SQL Server，错误: -1)
+
+有关帮助信息，请单击: http://go.microsoft.com/fwlink?ProdName=Microsoft%20SQL%20Server&amp;EvtSrc=MSSQLServer&amp;EvtID=-1&amp;LinkId=20476
+
+* * *
+
+按钮:确定
+</code></pre>
+<p>首先上浏览器查了一下：</p>
+<ol>
+<li><p>可能是服务器名称问题</p>
+</li>
+<li><p>也可能是 Configuration Manager（配置管理器）里SQL Server 网络配置里 TCP&#x2F;IP 没启用</p>
+</li>
+</ol>
+<p>但都不是，最后发现</p>
+<p><strong>SQL Server 服务 - 里的 SQL Server 根本就没运行（说白了就是服务器根本没开，连个毛）</strong></p>
+<p>总之可能是 清理的时候 自动帮我关闭了，简单记录一下。（都怪 C盘 太挤，我还得老清理）</p>
+<hr>
+<h2 id="装备系统"><a href="#装备系统" class="headerlink" title="装备系统"></a>装备系统</h2><ul>
+<li><p>需求分析</p>
+</li>
+<li><p>UI 设计</p>
+</li>
+<li><p>功能</p>
+<ul>
+<li><p>装备管理</p>
+</li>
+<li><p>装备穿戴</p>
+</li>
+</ul>
+</li>
+<li><p>系统设计</p>
+</li>
+</ul>
+<br>
+
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="| 数据结构"></a>| 数据结构</h4><table>
+<thead>
+<tr>
+<th align="center">EQUIP_DATA</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">WEAPON</td>
+<td align="center">ACCESSORY</td>
+<td align="center">HELMET</td>
+<td align="center">CHEST</td>
+<td align="center">SHOULDER</td>
+<td align="center">PANTS</td>
+<td align="center">BOOTS</td>
+</tr>
+</tbody></table>
+<br>
+
+<p>装备系统</p>
+<ul>
+<li><p>配置与协议</p>
+<ul>
+<li><p>ItemEquipRequest</p>
+</li>
+<li><p>ItemEquipResponse</p>
+</li>
+<li><p>EquipDefine</p>
+</li>
+</ul>
+</li>
+<li><p>Client</p>
+<ul>
+<li><p>EquipManager</p>
+</li>
+<li><p>ItemService</p>
+</li>
+<li><p>UICharEquip</p>
+</li>
+</ul>
+</li>
+<li><p>Server</p>
+<ul>
+<li><p>EquipManager</p>
+</li>
+<li><p>ItemService</p>
+</li>
+</ul>
+</li>
+<li><p>DB</p>
+</li>
+</ul>
+<hr>
 
         <!-- 分类文章 -->
         
@@ -598,7 +704,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">UI 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#NPC-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">NPC 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">道具系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90%E3%80%90%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F%E4%B9%9F%E6%9C%89%E7%9B%B8%E4%BC%BC%E4%B9%8B%E5%A4%84%E3%80%91"><span class="space-toc-text">| 道具系统组成【其他系统也有相似之处】</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">背包系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 背包系统数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">商店系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 商店系统组成</span></a></li></ol></li></ol></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">UI 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#NPC-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">NPC 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">道具系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90%E3%80%90%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F%E4%B9%9F%E6%9C%89%E7%9B%B8%E4%BC%BC%E4%B9%8B%E5%A4%84%E3%80%91"><span class="space-toc-text">| 道具系统组成【其他系统也有相似之处】</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">背包系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 背包系统数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">商店系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 商店系统组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%A3%85%E5%A4%87%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">装备系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
