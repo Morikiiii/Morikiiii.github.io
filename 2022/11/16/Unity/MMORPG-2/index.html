@@ -531,79 +531,170 @@
 <h4 id="任务系统组成"><a href="#任务系统组成" class="headerlink" title="| 任务系统组成"></a>| 任务系统组成</h4><table>
 <thead>
 <tr>
-<th>配置与协议</th>
-<th>Client</th>
-<th>Server</th>
-<th>DB</th>
+<th align="center">配置与协议</th>
+<th align="center">Client</th>
+<th align="center">Server</th>
+<th align="center">DB</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>QuestRequest</td>
-<td>QuestManager</td>
-<td>QuestManager</td>
-<td>TCharacterQuest</td>
+<td align="center">QuestRequest</td>
+<td align="center">QuestManager</td>
+<td align="center">QuestManager</td>
+<td align="center">TCharacterQuest</td>
 </tr>
 <tr>
-<td>QuestResponse</td>
-<td>QuestService</td>
-<td>QuestService</td>
-<td></td>
+<td align="center">QuestResponse</td>
+<td align="center">QuestService</td>
+<td align="center">QuestService</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td>QuestDefine</td>
-<td>UIQuestSystem</td>
-<td></td>
-<td></td>
+<td align="center">QuestDefine</td>
+<td align="center">UIQuestSystem</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td></td>
-<td>UIQuestDialog</td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center">UIQuestDialog</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td></td>
-<td>UIQuestTracker</td>
-<td></td>
-<td></td>
+<td align="center"></td>
+<td align="center">UIQuestTracker</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 </tbody></table>
 <hr>
 <h4 id="任务系统-数据结构"><a href="#任务系统-数据结构" class="headerlink" title="| 任务系统 - 数据结构"></a>| 任务系统 - 数据结构</h4><table>
 <thead>
 <tr>
-<th>TCharacterQuest</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
+<th align="center">TCharacterQuest</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>ID</td>
-<td>QuestID</td>
-<td>CharacterID</td>
-<td>Target1</td>
-<td>Target2</td>
-<td>Target3</td>
-<td>Status</td>
+<td align="center">ID</td>
+<td align="center">QuestID</td>
+<td align="center">CharacterID</td>
+<td align="center">Target1</td>
+<td align="center">Target2</td>
+<td align="center">Target3</td>
+<td align="center">Status</td>
 </tr>
 </tbody></table>
 <p>⬇</p>
 <table>
 <thead>
 <tr>
-<th>QuestStatus</th>
-<th></th>
+<th align="center">QuestStatus</th>
+<th align="center"></th>
 </tr>
 </thead>
 <tbody><tr>
-<td>IN_PROGRESS</td>
-<td>FINISHED</td>
+<td align="center">IN_PROGRESS</td>
+<td align="center">FINISHED</td>
 </tr>
 </tbody></table>
+<hr>
+<h2 id="刷怪系统"><a href="#刷怪系统" class="headerlink" title="刷怪系统"></a>刷怪系统</h2><ul>
+<li><p>刷怪规则</p>
+<ul>
+<li><p>时间</p>
+</li>
+<li><p>地点</p>
+</li>
+<li><p>类型</p>
+</li>
+</ul>
+</li>
+<li><p>刷怪逻辑</p>
+<ul>
+<li><p>模块</p>
+</li>
+<li><p>流程</p>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h4 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="| 数据结构"></a>| 数据结构</h4><table>
+<thead>
+<tr>
+<th align="center">SpawnRuleDefine</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ID</td>
+<td align="center">MapID</td>
+<td align="center">SpawnMonID</td>
+<td align="center">SpawnLevel</td>
+<td align="center">SpawnPeriod</td>
+<td align="center">SpawnPoint</td>
+</tr>
+</tbody></table>
+<p>⬇</p>
+<table>
+<thead>
+<tr>
+<th align="center">SpawnPointDefine</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ID</td>
+<td align="center">MapID</td>
+<td align="center">Position</td>
+<td align="center">Direction</td>
+</tr>
+</tbody></table>
+<br>
+
+<h4 id="组成"><a href="#组成" class="headerlink" title="| 组成"></a>| 组成</h4><table>
+<thead>
+<tr>
+<th align="center">配置与协议</th>
+<th align="center">Client</th>
+<th align="center">Server</th>
+<th align="center">DB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SpawnRuleDefine</td>
+<td align="center">SpawnPoint</td>
+<td align="center">MonsterManager</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">SpawnPointDefine</td>
+<td align="center">MapTools</td>
+<td align="center">SpawnManager</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Spawner</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>角色进入的协议可以被复用</p>
 <hr>
 
         <!-- 分类文章 -->
@@ -851,7 +942,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">UI 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#NPC-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">NPC 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">道具系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90%E3%80%90%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F%E4%B9%9F%E6%9C%89%E7%9B%B8%E4%BC%BC%E4%B9%8B%E5%A4%84%E3%80%91"><span class="space-toc-text">| 道具系统组成【其他系统也有相似之处】</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">背包系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 背包系统数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">商店系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 商店系统组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#20221123Q"><span class="space-toc-text">20221123Q</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%A3%85%E5%A4%87%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">装备系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">任务系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%86%E6%9E%90"><span class="space-toc-text">| 分析</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 任务系统组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 任务系统 - 数据结构</span></a></li></ol></li></ol></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">UI 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#NPC-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">NPC 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">道具系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90%E3%80%90%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F%E4%B9%9F%E6%9C%89%E7%9B%B8%E4%BC%BC%E4%B9%8B%E5%A4%84%E3%80%91"><span class="space-toc-text">| 道具系统组成【其他系统也有相似之处】</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">背包系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 背包系统数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">商店系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 商店系统组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#20221123Q"><span class="space-toc-text">20221123Q</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%A3%85%E5%A4%87%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">装备系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">任务系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%86%E6%9E%90"><span class="space-toc-text">| 分析</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 任务系统组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 任务系统 - 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%88%B7%E6%80%AA%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">刷怪系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1"><span class="space-toc-text">| 数据结构</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li></ol>
            </div>
         
       </div>
