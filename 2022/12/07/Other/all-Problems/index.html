@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>  Flappy Bird |    Morikiiii | &#39;ColdDog&#39; Space</title>
+  <title>  All-Problems |    Morikiiii | &#39;ColdDog&#39; Space</title>
   <meta name="description" content="Morikiiii Not Human">
   <!-- 标签页图标 -->
   
@@ -117,8 +117,8 @@
 <article class="post-inner">
   <div class="post-content-outer">
     <div class="post-intro">
-      <div class="post-title animate__animated  animate__fadeInUp">Flappy Bird</div>
-      <div class="meta-intro animate__animated  animate__fadeInUp">9月 24 2022</div>
+      <div class="post-title animate__animated  animate__fadeInUp">all-Problems</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">12月 07 2022</div>
       
     </div>
     <div class="post-content-inner">
@@ -128,93 +128,114 @@
       <div class="post-content-main animate__animated  animate__fadeInUp">
         <!-- top型目录 -->
         
-        <h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>初始场景 - 无操作时不动</p>
-<p>操作时 - 游戏中</p>
-<p>失败时 - 出现的 UI</p>
-<p><strong>美术资源：</strong></p>
-<p>你甚至可以纸绘抠图</p>
-<p>如 角色、背景、UI、场景元素</p>
-<hr>
-<p><strong>随时使用官方文档：</strong></p>
-<p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/index.html">Unity User Manual 2021.3 (LTS) - Unity 手册</a></p>
-<hr>
-<p>紫方块是方法，可执行</p>
-<p>小扳手是属性，可设置或可取值</p>
-<hr>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
-<li><p>三种游戏状态：</p>
+        <h2 id="Q1：Win10-中-TortoiseGit-没有绿勾等图标问题"><a href="#Q1：Win10-中-TortoiseGit-没有绿勾等图标问题" class="headerlink" title="Q1：Win10 中 TortoiseGit 没有绿勾等图标问题"></a>Q1：Win10 中 TortoiseGit 没有绿勾等图标问题</h2><ol>
+<li><p>在 TortoiseGit ➡ 设置（settings）➡ Icon Overlays ➡ Status cache ➡ 选择第三项 Shell ➡ 确定</p>
 </li>
-<li><p>先用 枚举 定义三个状态，然后写三个状态的 对应属性</p>
+<li><p>打开 regedit.exe，准备修改注册表：</p>
+</li>
+</ol>
 <ul>
-<li><p>待启动</p>
-<ul>
-<li><p>角色不动</p>
+<li><p>找到 <code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer</code> </p>
 </li>
-<li><p>UI：启动按钮</p>
+<li><p>新建一个“字符串值”名称为 “ Max Cached Icons ” , 值是 “ 2000 ”</p>
 </li>
-</ul>
-</li>
-<li><p>游戏中</p>
-<ul>
-<li><p>鼠标点击，角色行动</p>
-</li>
-<li><p>UI：积分 - 可以用触发</p>
-</li>
-</ul>
-</li>
-<li><p>游戏结束</p>
-<ul>
-<li>UI：显示积分、重新开始</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>角色两种动作：</p>
-<ul>
-<li><p>默认</p>
-</li>
-<li><p>飞行</p>
-</li>
-</ul>
-</li>
-<li><p>地面移动</p>
-</li>
-<li><p>管道</p>
-<ul>
-<li><p>移动</p>
-</li>
-<li><p>自增</p>
-</li>
-<li><p>自减</p>
-</li>
-</ul>
-</li>
-<li><p>刚体碰撞体</p>
+<li><p>重启一下电脑或者重启资源管理器(explorer.exe)进程，图标就显示了 - Win10任务管理器里就叫 <strong>windows资源管理器</strong></p>
 </li>
 </ul>
 <hr>
-<p>给开始游戏写一个行为 <code>public void StartGame()</code> 在 Button 里添加调用</p>
-<p>给 UI 写一个识别游戏状态改变的方法 <code>public void UpdateUI()</code> ，内部包括：哪个游戏状态是 true，就让哪个面板激活</p>
-<p>管道管理器，先实例管道预制体，协程（生成多个管道）</p>
-<p>给管道加脚本，为了让管道在开始游戏后不断地向左飞行（即更改位置）</p>
-<p>每次更换游戏状态就要更新UI，那么（字段方法和属性中）我们可以使用属性</p>
-<hr>
-<h2 id="一些参考"><a href="#一些参考" class="headerlink" title="一些参考"></a>一些参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Ha1f_Awake/article/details/100990902">网址推荐：【Unity脚本】游戏开发常用功能笔记——游戏得分显示以及最高分记录_至肝主义圈毛君的博客-CSDN博客</a></p>
-<hr>
-<br>
+<h2 id="Q2：SQL-SSMS-连接不上"><a href="#Q2：SQL-SSMS-连接不上" class="headerlink" title="Q2：SQL - SSMS 连接不上"></a>Q2：SQL - SSMS 连接不上</h2><p>出了一个小问题：gameserver窗口出来了，但登录时报错，看起来和SQL有关系，然后直接查看服务器资源管理器发现，数据连接显示红色，刷新依旧连接不上，然后到 SSMS 里登录，登不上去（平时都是很快速的状态）</p>
+<p>等了一会出现报错：</p>
+<pre><code>标题: 连接到服务器
 
-<center>👾森木清树👾</center>
+无法连接到 MORIKI\MMORPG。
 
-<br>
+* * *
+
+其他信息:
+
+在与 SQL Server 建立连接时出现与网络相关的或特定于实例的错误。未找到或无法访问服务器。请验证实例名称是否正确并且 SQL Server 已配置为允许远程连接。 (provider: SQL Network Interfaces, error: 26 - 定位指定的服务器/实例时出错) (Microsoft SQL Server，错误: -1)
+
+有关帮助信息，请单击: http://go.microsoft.com/fwlink?ProdName=Microsoft%20SQL%20Server&amp;EvtSrc=MSSQLServer&amp;EvtID=-1&amp;LinkId=20476
+
+* * *
+
+按钮:确定
+</code></pre>
+<p>首先上浏览器查了一下：</p>
+<ol>
+<li><p>可能是服务器名称问题</p>
+</li>
+<li><p>也可能是 Configuration Manager（配置管理器）里 SQL Server 网络配置里 TCP&#x2F;IP 没启用</p>
+</li>
+</ol>
+<p>但都不是，最后发现：</p>
+<p><strong>SQL Server 服务 - 里的 SQL Server 根本就没运行（说白了就是服务器根本没开，连个毛）</strong></p>
+<p>总之可能是清理的时候自动帮我关闭了，简单记录一下。（都怪 C盘 太挤，我还得老清理）</p>
+<hr>
 
         <!-- 分类文章 -->
         
           <div class="post-categoris-bottom">
-            <div class="post-categoris-name">Unity Study</div>
+            <div class="post-categoris-name">Other</div>
             <ul>
             
             
               
+                <li class="base">
+                  <a  href="/2022/09/02/Other/hello-world/" class="post-categoris-bottom-link">
+                  Hello World
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
             
             
             
@@ -252,63 +273,8 @@
             
               
                 <li class="base">
-                  <a  href="/2022/09/06/Unity/Unity%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" class="post-categoris-bottom-link">
-                  Unity 基础操作
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/09/07/Unity/Unity%E7%BB%84%E4%BB%B6%E6%80%9D%E6%83%B3/" class="post-categoris-bottom-link">
-                  unity 组件思想
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/09/08/Unity/Unity-2D%E9%83%A8%E5%88%86/" class="post-categoris-bottom-link">
-                  Unity 2D部分
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/09/09/Unity/Unity-%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F/" class="post-categoris-bottom-link">
-                  Unity 输入系统
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/09/10/Unity/Unity-UI%E7%B3%BB%E7%BB%9F(1)/" class="post-categoris-bottom-link">
-                  Unity UI系统（1）
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/09/10/Unity/Unity-UI%E7%B3%BB%E7%BB%9F%EF%BC%882%EF%BC%89/" class="post-categoris-bottom-link">
-                  Unity UI系统（2）
+                  <a  href="/2022/09/16/Other/Markdown-using/" class="post-categoris-bottom-link">
+                  Markdown using
                 </a>
                 </li>
               
@@ -321,56 +287,25 @@
             
             
               
-                <li class="base">
-                  <a  href="/2022/09/12/Unity/Unity-3D%E9%83%A8%E5%88%86/" class="post-categoris-bottom-link">
-                  Unity 3D部分
-                </a>
-                </li>
-              
+            
+            
+            
               
             
             
             
               
-                <li class="base">
-                  <a  href="/2022/09/12/Unity/Unity-%E6%B8%B2%E6%9F%93%E5%9F%BA%E7%A1%80/" class="post-categoris-bottom-link">
-                  Unity 渲染基础
-                </a>
-                </li>
-              
+            
+            
+            
               
             
             
             
               
-                <li class="base">
-                  <a  href="/2022/09/12/Unity/Unity-%E5%8A%A8%E7%94%BB%E7%B3%BB%E7%BB%9F/" class="post-categoris-bottom-link">
-                  Unity 动画系统
-                </a>
-                </li>
-              
-              
             
             
             
-              
-                <li class="base">
-                  <a  href="/2022/09/14/Unity/Unity-%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" class="post-categoris-bottom-link">
-                  Unity 导航系统
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/09/14/Unity/Unity-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" class="post-categoris-bottom-link">
-                  Unity 资源管理
-                </a>
-                </li>
-              
               
             
             
@@ -393,57 +328,11 @@
             
               
                 <li class="me base">
-                  <a  href="/2022/09/24/Unity/Flappy-Bird/" class="post-categoris-bottom-link">
-                  Flappy Bird
+                  <a  href="/2022/12/07/Other/all-Problems/" class="post-categoris-bottom-link">
+                  all-Problems
                 </a>
                 </li>
               
-              
-            
-            
-            
-              
-            
-            
-            
-              
-            
-            
-            
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/10/16/Unity/MMORPG/" class="post-categoris-bottom-link">
-                  MMORPG
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-            
-            
-            
-              
-                <li class="base">
-                  <a  href="/2022/11/16/Unity/MMORPG-2/" class="post-categoris-bottom-link">
-                  MMORPG(2)
-                </a>
-                </li>
-              
-              
-            
-            
-            
-              
-            
-            
-            
               
             
             
@@ -456,7 +345,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%80%9D%E8%80%83"><span class="space-toc-text">思考</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%88%86%E6%9E%90"><span class="space-toc-text">分析</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%B8%80%E4%BA%9B%E5%8F%82%E8%80%83"><span class="space-toc-text">一些参考</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Q1%EF%BC%9AWin10-%E4%B8%AD-TortoiseGit-%E6%B2%A1%E6%9C%89%E7%BB%BF%E5%8B%BE%E7%AD%89%E5%9B%BE%E6%A0%87%E9%97%AE%E9%A2%98"><span class="space-toc-text">Q1：Win10 中 TortoiseGit 没有绿勾等图标问题</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Q2%EF%BC%9ASQL-SSMS-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A"><span class="space-toc-text">Q2：SQL - SSMS 连接不上</span></a></li></ol>
            </div>
         
       </div>
