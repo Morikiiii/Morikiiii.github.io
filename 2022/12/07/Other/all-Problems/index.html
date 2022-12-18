@@ -172,6 +172,20 @@
 <p><strong>SQL Server 服务 - 里的 SQL Server 根本就没运行（说白了就是服务器根本没开，连个毛）</strong></p>
 <p>总之可能是清理的时候自动帮我关闭了，简单记录一下。（都怪 C盘 太挤，我还得老清理）</p>
 <hr>
+<h2 id="Q3：SQL-Server列名显示无效"><a href="#Q3：SQL-Server列名显示无效" class="headerlink" title="Q3：SQL Server列名显示无效"></a>Q3：SQL Server列名显示无效</h2><p>在SQLServer中，当设计（修改）表结构之后，再用SQL语句时，列名会显示无效，但执行可以通过</p>
+<p>原因是SQL Server的intellisense（智能感知功能）需要重新整理一下，用快捷键Ctrl+Shift+R即可</p>
+<p>关于intellisense（智能感知功能）的主要功能，就是在用户具有权限的前提下，</p>
+<p>在Query Editior中输入架构并加上”.”符号后就可以看到架构下的表、视图和用户函数了，</p>
+<p>当用户继续输入表名或视图名并加上”.”符号后就可以看到表和视图中的字段列表</p>
+<p>简单地说，就是自动提示当前框架（表、视图）的结构</p>
+<br>
+
+<p>打开这个智能感知功能的方法，工具➜选项➜文本编辑器➜Transact SQL➜IntelliSense来启用&#x2F;禁用。</p>
+<p>有时不工作也可能是因为超出了最大脚本大小，可以通过调整<strong>最大脚本大小</strong>为<strong>无限制</strong>试试。</p>
+<blockquote>
+<p>版权声明：本文为CSDN博主「Naix1573」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39019865/article/details/78476604">https://blog.csdn.net/qq_39019865/article/details/78476604</a></p>
+</blockquote>
+<hr>
 
         <!-- 分类文章 -->
         
@@ -345,7 +359,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Q1%EF%BC%9AWin10-%E4%B8%AD-TortoiseGit-%E6%B2%A1%E6%9C%89%E7%BB%BF%E5%8B%BE%E7%AD%89%E5%9B%BE%E6%A0%87%E9%97%AE%E9%A2%98"><span class="space-toc-text">Q1：Win10 中 TortoiseGit 没有绿勾等图标问题</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Q2%EF%BC%9ASQL-SSMS-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A"><span class="space-toc-text">Q2：SQL - SSMS 连接不上</span></a></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Q1%EF%BC%9AWin10-%E4%B8%AD-TortoiseGit-%E6%B2%A1%E6%9C%89%E7%BB%BF%E5%8B%BE%E7%AD%89%E5%9B%BE%E6%A0%87%E9%97%AE%E9%A2%98"><span class="space-toc-text">Q1：Win10 中 TortoiseGit 没有绿勾等图标问题</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Q2%EF%BC%9ASQL-SSMS-%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8A"><span class="space-toc-text">Q2：SQL - SSMS 连接不上</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Q3%EF%BC%9ASQL-Server%E5%88%97%E5%90%8D%E6%98%BE%E7%A4%BA%E6%97%A0%E6%95%88"><span class="space-toc-text">Q3：SQL Server列名显示无效</span></a></li></ol>
            </div>
         
       </div>
