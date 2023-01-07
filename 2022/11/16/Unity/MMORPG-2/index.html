@@ -1151,6 +1151,86 @@
 <br>
 
 <hr>
+<h2 id="导航系统"><a href="#导航系统" class="headerlink" title="导航系统"></a>导航系统</h2><ul>
+<li><p>常见寻路方式</p>
+</li>
+<li><p>选择寻路方案</p>
+<ul>
+<li><p>服务器寻路</p>
+</li>
+<li><p>客户端寻路</p>
+</li>
+<li><p>客户端寻路、服务器校验</p>
+</li>
+</ul>
+</li>
+<li><p>NavMesh 寻路</p>
+</li>
+<li><p>任务目标追踪</p>
+</li>
+</ul>
+<br>
+
+<p>常见寻路方式</p>
+<ul>
+<li><p>寻路建模</p>
+<ul>
+<li><p>Grid</p>
+</li>
+<li><p>Waypoint</p>
+</li>
+<li><p>NavMesh</p>
+</li>
+</ul>
+</li>
+<li><p>寻路算法</p>
+<ul>
+<li><p>数据结构</p>
+<ul>
+<li><p>数</p>
+</li>
+<li><p>图</p>
+</li>
+</ul>
+</li>
+<li><p>算法</p>
+<ul>
+<li><p>深度优先</p>
+</li>
+<li><p>广度优先</p>
+</li>
+<li><p>Dijkstra</p>
+</li>
+<li><p>A*（读音：A星）</p>
+</li>
+<li><p>B*</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+
+
+
+<p>相关推荐文章：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/needmorecode/article/details/82050409">寻路建模的三种方式比较_长三月的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zerokkqq/article/details/76282908">深入理解游戏中寻路算法_zerokkqq的博客-CSDN博客_多人寻路算法</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/greyhh/p/4713256.html">WayPoint寻路 - greyhh - 博客园</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/isayes/p/6556808.html">对 Unity 导航网格 NavMesh 的调研 - Hu&amp;Fei - 博客园</a></p>
+<br>
+
+<p><strong>NavMesh 寻路</strong></p>
+<ul>
+<li><p>NavMesh的创建</p>
+</li>
+<li><p>NavAgent</p>
+</li>
+<li><p>如何生成服务器可用的数据</p>
+</li>
+</ul>
+<hr>
 <br>
 
 <center>Hello,Unity</center>
@@ -1418,7 +1498,7 @@
       <div class="post-content-inner-space">
         
           <div class="space-toc-main animate__animated  animate__fadeInUp">
-            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">UI 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#NPC-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">NPC 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">道具系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90%E3%80%90%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F%E4%B9%9F%E6%9C%89%E7%9B%B8%E4%BC%BC%E4%B9%8B%E5%A4%84%E3%80%91"><span class="space-toc-text">| 道具系统组成【其他系统也有相似之处】</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">背包系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">商店系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 商店系统组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%A3%85%E5%A4%87%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">装备系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 数据结构</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-1"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">任务系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%86%E6%9E%90"><span class="space-toc-text">| 分析</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-2"><span class="space-toc-text">| 组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%88%B7%E6%80%AA%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">刷怪系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2"><span class="space-toc-text">| 数据结构</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-3"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A5%BD%E5%8F%8B%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">好友系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-4"><span class="space-toc-text">| 组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%84%E9%98%9F%E5%8A%9F%E8%83%BD"><span class="space-toc-text">组队功能</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-5"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%85%AC%E4%BC%9A%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">公会系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-6"><span class="space-toc-text">| 组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">聊天系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-7"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%9D%90%E9%AA%91%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">坐骑系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-8"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A3%B0%E9%9F%B3%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">声音系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%A3%B0%E9%9F%B3%E7%B1%BB%E5%9E%8B"><span class="space-toc-text">| 声音类型</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="space-toc-text">|核心组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="space-toc-text">| 接口设计</span></a></li></ol></li></ol></li></ol>
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#UI-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">UI 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#NPC-%E7%9A%84%E5%88%86%E7%B1%BB"><span class="space-toc-text">NPC 的分类</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">道具系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E9%81%93%E5%85%B7%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90%E3%80%90%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F%E4%B9%9F%E6%9C%89%E7%9B%B8%E4%BC%BC%E4%B9%8B%E5%A4%84%E3%80%91"><span class="space-toc-text">| 道具系统组成【其他系统也有相似之处】</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%83%8C%E5%8C%85%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">背包系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">商店系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%95%86%E5%BA%97%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="space-toc-text">| 商店系统组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%A3%85%E5%A4%87%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">装备系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="space-toc-text">| 数据结构</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-1"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">任务系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%88%86%E6%9E%90"><span class="space-toc-text">| 分析</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-2"><span class="space-toc-text">| 组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%88%B7%E6%80%AA%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">刷怪系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2"><span class="space-toc-text">| 数据结构</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-3"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A5%BD%E5%8F%8B%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">好友系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-4"><span class="space-toc-text">| 组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%BB%84%E9%98%9F%E5%8A%9F%E8%83%BD"><span class="space-toc-text">组队功能</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-5"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%85%AC%E4%BC%9A%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">公会系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-6"><span class="space-toc-text">| 组成</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-4"><span class="space-toc-text">| 数据结构</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%81%8A%E5%A4%A9%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">聊天系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-7"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%9D%90%E9%AA%91%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">坐骑系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E7%BB%84%E6%88%90-8"><span class="space-toc-text">| 组成</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%A3%B0%E9%9F%B3%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">声音系统</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%A3%B0%E9%9F%B3%E7%B1%BB%E5%9E%8B"><span class="space-toc-text">| 声音类型</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="space-toc-text">|核心组件</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1"><span class="space-toc-text">| 接口设计</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F"><span class="space-toc-text">导航系统</span></a></li></ol>
            </div>
         
       </div>
