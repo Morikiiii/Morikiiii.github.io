@@ -1,0 +1,808 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Lua |    Morikiiii | &#39;ColdDog&#39; Space</title>
+  <meta name="description" content="Morikiiii Not Human">
+  <!-- 标签页图标 -->
+  
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/Morikiiii/FigureBed/main/img/MorikiiiiLogo.png" type="image/x-icon">
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          Morikiiii | &#39;ColdDog&#39; Space
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="sort">
+             SOME
+             <div class="categories-outer " id="sort-div">
+               <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Study/">C# Study</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/EveryDay/">EveryDay</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Novels/">Novels</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity-Study/">Unity Study</a></li></ul>
+             </div>
+          </li>
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        Morikiiii | &#39;ColdDog&#39; Space
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Lua</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">1月 09 2023</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>window 下可以使用一个叫 “SciTE” 的 IDE环境来执行 lua 程序，下载地址为：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rjpcomputing/luaforwindows/releases">Releases · rjpcomputing&#x2F;luaforwindows · GitHub</a></p>
+<p>也可以使用 VS Code - Lua 和 Lua Debug 扩展，当然，要先下载lua</p>
+<hr>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>Lua 交互式编程模式可以通过命令 <code>lua -i</code> 或 <code>lua</code> 来启用：</p>
+<pre><code class="lua">C:\Users\森木清树&gt;lua -i
+Lua 5.1.5  Copyright (C) 1994-2012 Lua.org, PUC-Rio
+print(&quot;Hello,World!&quot;)
+Hello,World!
+</code></pre>
+<hr>
+<h4 id="标示符"><a href="#标示符" class="headerlink" title="| 标示符"></a>| 标示符</h4><p>Lua 标示符用于定义一个变量，函数获取其他用户定义的项。标示符以一个字母 A 到 Z 或 a 到 z 或下划线 _ 开头后加上 0 个或多个字母，下划线，数字（0 到 9）。</p>
+<p>最好不要使用下划线加大写字母的标示符，因为Lua的保留字也是这样的。</p>
+<p>Lua 不允许使用特殊字符如 <strong>@</strong>, <strong>$</strong>, 和 <strong>%</strong> 来定义标示符。 Lua 是一个区分大小写的编程语言。因此在 Lua 中 Runoob 与 runoob 是两个不同的标示符。以下列出了一些正确的标示符：</p>
+<table>
+<thead>
+<tr>
+<th align="center">mohd</th>
+<th align="center">zara</th>
+<th align="center">abc</th>
+<th align="center">move_name</th>
+<th align="center">a_123</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">myname50</td>
+<td align="center">_temp</td>
+<td align="center">j</td>
+<td align="center">a23b9</td>
+<td align="center">retVal</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="关键词"><a href="#关键词" class="headerlink" title="| 关键词"></a>| 关键词</h4><p>以下列出了 Lua 的保留关键词。保留关键字不能作为常量或变量或其他用户自定义标示符：</p>
+<table>
+<thead>
+<tr>
+<th>and</th>
+<th>break</th>
+<th>do</th>
+<th>else</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>elseif</td>
+<td>end</td>
+<td>false</td>
+<td>for</td>
+</tr>
+<tr>
+<td>function</td>
+<td>if</td>
+<td>in</td>
+<td>local</td>
+</tr>
+<tr>
+<td>nil</td>
+<td>not</td>
+<td>or</td>
+<td>repeat</td>
+</tr>
+<tr>
+<td>return</td>
+<td>then</td>
+<td>true</td>
+<td>until</td>
+</tr>
+<tr>
+<td>while</td>
+<td>goto</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>一般约定，以下划线开头连接一串大写字母的名字（比如 _VERSION）被保留用于 Lua 内部全局变量。</p>
+<hr>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Lua 是动态类型语言，变量不要类型定义,只需要为变量赋值。 值可以存储在变量中，作为参数传递或结果返回。</p>
+<p>Lua 中有 8 个基本类型分别为：nil、boolean、number、string、userdata、function、thread 和 table。</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nil</td>
+<td>这个最简单，只有值nil属于该类，表示一个无效值（在条件表达式中相当于false）</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>包含两个值：false和true</td>
+</tr>
+<tr>
+<td>number</td>
+<td>表示双精度类型的实浮点数</td>
+</tr>
+<tr>
+<td>string</td>
+<td>字符串由一对双引号或单引号来表示</td>
+</tr>
+<tr>
+<td>function</td>
+<td>由 C 或 Lua 编写的函数</td>
+</tr>
+<tr>
+<td>userdata</td>
+<td>表示任意存储在变量中的C数据结构</td>
+</tr>
+<tr>
+<td>thread</td>
+<td>表示执行的独立线路，用于执行协同程序</td>
+</tr>
+<tr>
+<td>table</td>
+<td>Lua 中的表（table）其实是一个”关联数组”（associative arrays），数组的索引可以是数字、字符串或表类型。在 Lua 里，table 的创建是通过”构造表达式”来完成，最简单构造表达式是{}，用来创建一个空表</td>
+</tr>
+</tbody></table>
+<p>我们可以使用 type 函数测试给定变量或者值的类型：</p>
+<pre><code class="lua">print(type(&quot;Hello world&quot;))      --&gt; string
+print(type(10.4*3))             --&gt; number
+print(type(print))              --&gt; function
+print(type(type))               --&gt; function
+print(type(true))               --&gt; boolean
+print(type(nil))                --&gt; nil
+print(type(type(X)))            --&gt; string
+</code></pre>
+<hr>
+<h4 id="nil（空）"><a href="#nil（空）" class="headerlink" title="| nil（空）"></a>| nil（空）</h4><p>对于全局变量和 table，nil 还有一个”删除”作用，给全局变量或者 table 表里的变量赋一个 nil 值，等同于把它们删掉，执行下面代码就知：</p>
+<pre><code class="lua">tab1 = &#123;key1 =&quot;val1&quot;,key2 = &quot;val2&quot;,&quot;val3&quot; &#125;
+for k, v in pairs(tab1) do
+    print(k..&quot;-&quot;..v)
+end
+
+print(&quot;------compare------&quot;)
+
+tab1.key1 = nil
+for k, v in pairs(tab1) do
+    print(k..&quot;-&quot;..v)
+end
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="lua">1-val3
+key2-val2
+key1-val1
+------compare------
+1-val3
+key2-val2
+</code></pre>
+<p><strong>| nil 作比较时应该加上双引号 “：</strong></p>
+<pre><code class="lua">&gt; type(X)
+nil
+&gt; type(X)==nil
+false
+&gt; type(X)==&quot;nil&quot;
+true
+&gt;
+</code></pre>
+<p><code>type(X)==nil</code> 结果为 <strong>false</strong> 的原因是 type(X) 实质是返回的 “nil” 字符串，是一个 string 类型：</p>
+<pre><code class="lua">type(type(X))==string
+</code></pre>
+<hr>
+<h4 id="boolean（布尔）"><a href="#boolean（布尔）" class="headerlink" title="| boolean（布尔）"></a>| boolean（布尔）</h4><hr>
+<h4 id="number（数字）"><a href="#number（数字）" class="headerlink" title="| number（数字）"></a>| number（数字）</h4><hr>
+<h4 id="string（字符串）"><a href="#string（字符串）" class="headerlink" title="| string（字符串）"></a>| string（字符串）</h4><hr>
+<h4 id="table（表）"><a href="#table（表）" class="headerlink" title="| table（表）"></a>| table（表）</h4><hr>
+<h4 id="function（函数）"><a href="#function（函数）" class="headerlink" title="| function（函数）"></a>| function（函数）</h4><hr>
+<h4 id="thread（线程）"><a href="#thread（线程）" class="headerlink" title="| thread（线程）"></a>| thread（线程）</h4><p>在 Lua 里，最主要的线程是协同程序（coroutine）。它跟线程（thread）差不多，拥有自己独立的栈、局部变量和指令指针，可以跟其他协同程序共享全局变量和其他大部分东西。</p>
+<p>线程跟协程的区别：线程可以同时多个运行，而协程任意时刻只能运行一个，并且处于运行状态的协程只有被挂起（suspend）时才会暂停。</p>
+<hr>
+<h4 id="userdata（自定义类型）"><a href="#userdata（自定义类型）" class="headerlink" title="| userdata（自定义类型）"></a>| userdata（自定义类型）</h4><p>userdata 是一种用户自定义数据，用于表示一种由应用程序或 C&#x2F;C++ 语言库所创建的类型，可以将任意 C&#x2F;C++ 的任意数据类型的数据（通常是 struct 和 指针）存储到 Lua 变量中调用。</p>
+<hr>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量在使用前，需要在代码中进行声明，即创建该变量。</p>
+<p>编译程序执行代码之前编译器需要知道如何给语句变量开辟存储区，用于存储变量的值。</p>
+<p><strong>Lua 变量有三种类型：全局变量、局部变量、表中的域。</strong></p>
+<p>Lua 中的变量全是全局变量，哪怕是语句块或是函数里，除非用 local 显式声明为局部变量。</p>
+<p>局部变量的作用域为从声明位置开始到所在语句块结束。</p>
+<p>变量的默认值均为 nil。</p>
+<hr>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><p>Lua 语言提供了以下几种循环处理方式：</p>
+<table>
+<thead>
+<tr>
+<th>循环类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-while-loop.html" title="Lua while 循环">while 循环</a></td>
+<td>在条件为 true 时，让程序重复地执行某些语句。执行语句前会先检查条件是否为 true。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-for-loop.html" title="Lua for 循环">for 循环</a></td>
+<td>重复执行指定语句，重复次数可在 for 语句中控制。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-repeat-until-loop.html" title="repeat...until 循环">repeat…until</a></td>
+<td>重复执行循环，直到 指定的条件为真时为止</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-nested-loops.html" title="Lua 循环嵌套">循环嵌套</a></td>
+<td>可以在循环内嵌套一个或多个循环语句（while do … end;for … do … end;repeat … until;）</td>
+</tr>
+</tbody></table>
+<h4 id="循环控制语句"><a href="#循环控制语句" class="headerlink" title="| 循环控制语句"></a>| 循环控制语句</h4><p>循环控制语句用于控制程序的流程， 以实现程序的各种结构方式。</p>
+<p>Lua 支持以下循环控制语句：</p>
+<table>
+<thead>
+<tr>
+<th>控制语句</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-break-statement.html" title="Lua break 语句">break 语句</a></td>
+<td>退出当前循环或语句，并开始脚本执行紧接着的语句。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-goto.html" title="Lua break 语句">goto 语句</a></td>
+<td>将程序的控制点转移到一个标签处。</td>
+</tr>
+</tbody></table>
+<h4 id="无限循环"><a href="#无限循环" class="headerlink" title="| 无限循环"></a>| 无限循环</h4><p>在循环体中如果条件永远为 true 循环语句就会永远执行下去</p>
+<pre><code class="lua">while( true )
+do
+   print(&quot;循环将永远执行下去&quot;)
+end
+</code></pre>
+<hr>
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><p>Lua 编程语言流程控制语句通过程序设定一个或多个条件语句来设定。在条件为 true 时执行指定程序代码，在条件为 false 时执行其他指定代码。</p>
+<p>
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://www.runoob.com/wp-content/uploads/2015/12/if.png" >
+        </sapn>
+      </p>
+<p>Lua 提供了以下控制结构语句：</p>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/if-statement-in-lua.html" title="Lua if 语句">if 语句</a></td>
+<td><strong>if 语句</strong> 由一个布尔表达式作为条件判断，其后紧跟其他语句组成。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/if-else-statement-in-lua.html" title="Lua if...else 语句">if…else 语句</a></td>
+<td><strong>if 语句</strong> 可以与 <strong>else 语句</strong>搭配使用, 在 if 条件表达式为 false 时执行 else 语句代码。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/nested-if-statements-in-lua.html" title="Lua if 嵌套语句">if 嵌套语句</a></td>
+<td>你可以在<strong>if</strong> 或 <strong>else if</strong>中使用一个或多个 <strong>if</strong> 或 <strong>else if</strong> 语句 。</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>在Lua中，函数是对语句和表达式进行抽象的主要方法。既可以用来处理一些特殊的工作，也可以用来计算一些值。</p>
+<p>Lua 提供了许多的内建函数，你可以很方便的在程序中调用它们，如print()函数可以将传入的参数打印在控制台上。</p>
+<p>Lua 函数主要有两种用途：</p>
+<ul>
+<li>1.完成指定的任务，这种情况下函数作为调用语句使用；</li>
+<li>2.计算并返回值，这种情况下函数作为赋值语句的表达式使用。</li>
+</ul>
+<h4 id="函数定义"><a href="#函数定义" class="headerlink" title="| 函数定义"></a>| 函数定义</h4><pre><code class="lua">optional_function_scope function function_name( argument1, argument2, argument3..., argumentn)
+    function_body
+    return result_params_comma_separated
+end
+</code></pre>
+<p>解析：</p>
+<ul>
+<li><p><strong>optional_function_scope:</strong> 该参数是可选的制定函数是全局函数还是局部函数，未设置该参数默认为全局函数，如果你需要设置函数为局部函数需要使用关键字 <strong>local</strong>。</p>
+</li>
+<li><p><strong>function_name:</strong> 指定函数名称。</p>
+</li>
+<li><p><strong>argument1, argument2, argument3…, argumentn:</strong> 函数参数，多个参数以逗号隔开，函数也可以不带参数。</p>
+</li>
+<li><p><strong>function_body:</strong> 函数体，函数中需要执行的代码语句块。</p>
+</li>
+<li><p><strong>result_params_comma_separated:</strong> 函数返回值，Lua语言函数可以返回多个值，每个值以逗号隔开。</p>
+</li>
+</ul>
+<br>
+
+<h4 id="多返回值"><a href="#多返回值" class="headerlink" title="| 多返回值"></a>| 多返回值</h4><p>Lua函数可以返回多个结果值，比如string.find，其返回匹配串”开始和结束的下标”（如果不存在匹配串返回nil）。</p>
+<pre><code class="lua">&gt; s, e = string.find(&quot;www.runoob.com&quot;, &quot;runoob&quot;) 
+&gt; print(s, e)
+5    10
+</code></pre>
+<p>Lua函数中，在return后列出要返回的值的列表即可返回多值</p>
+<pre><code class="lua">function maximum (a)
+    local mi = 1             -- 最大值索引
+    local m = a[mi]          -- 最大值
+    for i,val in ipairs(a) do
+       if val &gt; m then
+           mi = i
+           m = val
+       end
+    end
+    return m, mi
+end
+
+print(maximum(&#123;8,10,23,12,5&#125;))
+
+&gt; 23 3
+</code></pre>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="| 可变参数"></a>| 可变参数</h4><hr>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><table>
+<thead>
+<tr>
+<th>从高到低</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>not</td>
+<td>- (unary)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>*</td>
+<td>&#x2F;</td>
+<td>%</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>+</td>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>..</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>&gt;</td>
+<td>&lt;&#x3D;</td>
+<td>&gt;&#x3D;</td>
+<td>~&#x3D;</td>
+<td>&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>and</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>or</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>除了 ^ 和 .. 外所有的二元运算符都是左连接的。</p>
+<pre><code class="lua">a+i &lt; b/2+1          &lt;--&gt;       (a+i) &lt; ((b/2)+1)
+5+x^2*8              &lt;--&gt;       5+((x^2)*8)
+a &lt; y and y &lt;= z     &lt;--&gt;       (a &lt; y) and (y &lt;= z)
+-x^2                 &lt;--&gt;       -(x^2)
+x^y^z                &lt;--&gt;       x^(y^z)
+</code></pre>
+<hr>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-strings.html">Lua 字符串 | 菜鸟教程</a></p>
+<hr>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><hr>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-iterators.html">Lua 迭代器 | 菜鸟教程</a></p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/lua/lua-tutorial.html">Lua 教程 | 菜鸟教程</a></p>
+<hr>
+<br>
+
+
+
+<center>Lua Study</center>
+
+
+
+<br>
+
+
+
+        <!-- 分类文章 -->
+        
+          <div class="post-categoris-bottom">
+            <div class="post-categoris-name">Other</div>
+            <ul>
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/02/Other/hello-world/" class="post-categoris-bottom-link">
+                  Hello World
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/09/16/Other/Markdown-using/" class="post-categoris-bottom-link">
+                  Markdown using
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="base">
+                  <a  href="/2022/12/07/Other/all-Problems/" class="post-categoris-bottom-link">
+                  all-Problems
+                </a>
+                </li>
+              
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+            
+            
+            
+              
+                <li class="me base">
+                  <a  href="/2023/01/09/Other/Lua/" class="post-categoris-bottom-link">
+                  Lua
+                </a>
+                </li>
+              
+              
+            
+            
+            </ul>
+
+          </div>
+
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="space-toc-text">环境搭建</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="space-toc-text">基本语法</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%A0%87%E7%A4%BA%E7%AC%A6"><span class="space-toc-text">| 标示符</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="space-toc-text">| 关键词</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="space-toc-text">数据类型</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#nil%EF%BC%88%E7%A9%BA%EF%BC%89"><span class="space-toc-text">| nil（空）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#boolean%EF%BC%88%E5%B8%83%E5%B0%94%EF%BC%89"><span class="space-toc-text">| boolean（布尔）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#number%EF%BC%88%E6%95%B0%E5%AD%97%EF%BC%89"><span class="space-toc-text">| number（数字）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#string%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89"><span class="space-toc-text">| string（字符串）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#table%EF%BC%88%E8%A1%A8%EF%BC%89"><span class="space-toc-text">| table（表）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#function%EF%BC%88%E5%87%BD%E6%95%B0%EF%BC%89"><span class="space-toc-text">| function（函数）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#thread%EF%BC%88%E7%BA%BF%E7%A8%8B%EF%BC%89"><span class="space-toc-text">| thread（线程）</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#userdata%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B%EF%BC%89"><span class="space-toc-text">| userdata（自定义类型）</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%8F%98%E9%87%8F"><span class="space-toc-text">变量</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%BE%AA%E7%8E%AF"><span class="space-toc-text">循环</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="space-toc-text">| 循环控制语句</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF"><span class="space-toc-text">| 无限循环</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="space-toc-text">流程控制</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%87%BD%E6%95%B0"><span class="space-toc-text">函数</span></a><ol class="space-toc-child"><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89"><span class="space-toc-text">| 函数定义</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="space-toc-text">| 多返回值</span></a></li><li class="space-toc-item space-toc-level-4"><a class="space-toc-link" href="#%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="space-toc-text">| 可变参数</span></a></li></ol></li></ol></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="space-toc-text">运算符</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="space-toc-text">字符串</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%95%B0%E7%BB%84"><span class="space-toc-text">数组</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="space-toc-text">迭代器</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a> Player by <a target="_blank" rel="noopener" href="https://github.com/Morikiiii">Morikiiii</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/Morikiiii" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:Morikiiii@163.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://space.bilibili.com/88008879?spm_id_from=333.1007.0.0" target="_blank">
+                <i class="ri-bilibili-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="https://music.163.com/#/user/home?id=105580982" target="_blank">
+                <i class="ri-netease-cloud-music-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+</body>
+</html>
